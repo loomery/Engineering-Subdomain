@@ -2,11 +2,56 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Welcome to Loomery Engineering.">
+<Layout title="Welcome to the Loomery lab.">
 	
-	<section class="flex flex-col justify-center items-center mt-44 md:mt-96 space-y-8">
-		<h1 class="text-5xl font-bold">Welcome to Loomery's engineering hub</h1>
-		<h3 class="text-2xl">What we are building</h3>
+	<section class="flex flex-col justify-center items-center space-y-8 text-center h-screen bg-[url('/Hero.svg')] bg-cover bg-center m-0">
+		<h1 class="text-5xl font-bold">Welcome to the <b class="text-brand-dark">Loomery</b> lab</h1>
+		<h3 class="text-2xl">See what we are experimenting with</h3>
 	</section>
+
+	<section class="flex flex-col justify-center items-center text-center space-y-16">
+		<h1 class="text-9xl mb-16 tracking-wide">GenML <b class="text-brand-dark font-bold">x</b> XR</h1>
+
+		<div class="space-y-4">
+			<h2 class="text-5xl">Introducing StorySight</h2>
+			<h2 class="text-3xl text-gray-400">Apple Vision Pro</h2>
+		</div>
+
+		<iframe 
+  		src="https://player.vimeo.com/video/844899766?h=ab41a358f5&autoplay=1&loop=1" 
+  		width="900" 
+  		height="700" 
+  		allow="autoplay; fullscreen" 
+  		allowfullscreen />
+
+		<p class="max-w-3xl text-xl">
+			StorySight is an experience that combines XR and GenML that allows you to be <em>inside</em> the story, experiencing books in a whole new dimension. 
+			StorySight is an example of how GenML can be married up with spatial computing to create new experiences.
+		</p>
+
+		<a href="" class="text-2xl text-brand-dark">Learn more</a>
+	</section>
+
+	<section class="space-y-16 mt-44 md:mt-96">
+		<div class="flex flex-col md:grid md:grid-cols-2 gap-8">
+		  <div>
+			<img src="path/to/your/image.jpg" alt="ML related image" class="w-full h-auto">
+		  </div>
+		  <div>
+			<h2 class="text-2xl font-bold">Generative Machine Learning</h2>
+			<p class="mt-2">This is some text.</p>
+		  </div>
+		</div>
+		
+		<div class="flex flex-col-reverse md:grid md:grid-cols-2 gap-8">
+		  <div>
+			<h2 class="text-2xl font-bold">Spatial Computing</h2>
+			<p class="mt-2">This is some text.</p>
+		  </div>
+		  <div>
+			<img src="path/to/your/image.jpg" alt="XR related image" class="w-full h-auto">
+		  </div>
+		</div>
+	  </section>
 
 </Layout>
