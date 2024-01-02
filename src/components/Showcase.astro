@@ -1,0 +1,24 @@
+---
+// Define the props for the component
+const { title, subtitle1, subtitle2, videoSrc, description, learnMoreLink } = Astro.props;
+---
+
+<section class="flex flex-col justify-center items-center text-center space-y-16 mt-44 md:mt-96">
+  <h1 class="text-8xl mb-16 tracking-wide">{title}</h1>
+
+  <div class="space-y-4 max-w-4xl">
+    <h2 class="text-5xl leading-tight">{subtitle1}</h2>
+    <h2 class="text-3xl text-gray-400">{subtitle2}</h2>
+  </div>
+
+  <iframe 
+    src={videoSrc} 
+    width="900" 
+    height="700" 
+    allow="autoplay; fullscreen" 
+    allowfullscreen />
+
+  <p class="max-w-3xl text-xl">{description}</p>
+
+  <a href={learnMoreLink} class="text-2xl text-brand-dark">Learn more</a>
+</section>
