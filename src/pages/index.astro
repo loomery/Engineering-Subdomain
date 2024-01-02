@@ -1,113 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Showcase from '../Showcase.astro';
+import Showcase from '../components/Showcase.astro';
 ---
 
 <Layout title="Welcome to the Loomery lab.">
-	
-	<section class="flex flex-col justify-center items-center space-y-8 text-center h-screen bg-[url('/')] bg-cover bg-center m-0">
+
+	<section
+		class="flex flex-col justify-center items-center space-y-8 text-center h-screen bg-[url('/')] bg-cover bg-center m-0">
 		<h1 class="text-6xl font-bold">Welcome to the <b class="text-brand-dark">Loomery</b> lab</h1>
 		<h3 class="text-4xl">See what we are experimenting with</h3>
 	</section>
 
-	<section class="flex flex-col justify-center items-center text-center space-y-16">
-		<div class="flex flex-row items-center space-x-8">
-			<img class="h-24" src="/ML.svg">
-			<img class="h-24" src="/XR.svg">
-		</div>
+	<Showcase title="GenML x XR" subtitle1="Introducing StorySight" subtitle2="Apple Vision Pro"
+		videoSrc="https://player.vimeo.com/video/844899766?h=ab41a358f5&autoplay=1&loop=1"
+		description="StorySight is an experience that combines XR and GenML that allows you to be inside the story, experiencing books in a whole new dimension. StorySight is an example of how GenML can be married up with spatial computing to create new experiences."
+		learnMoreLink="#" />
 
-		<h1 class="text-8xl tracking-wide">GenML <b class="text-brand-dark font-bold">x</b> XR</h1>
+	<Showcase title="Machine Learning" subtitle1="Generate narration and voiceover for ANY video" subtitle2="iOS"
+		videoSrc="https://player.vimeo.com/video/899177107?h=ab41a358f5&autoplay=1&loop=1"
+		description="Generate cool voiceoevers to your videos in any style your like. This is me doing callisthenics in the video with narration in the style of Alan Partrige doing a eulogy."
+		learnMoreLink="#" />
 
-		<div class="space-y-4 max-w-4xl">
-			<h2 class="text-5xl leading-tight">Introducing StorySight</h2>
-			<h2 class="text-3xl text-gray-400">Apple Vision Pro</h2>
-		</div>
-
-		<iframe
-  		src="https://player.vimeo.com/video/844899766?h=ab41a358f5&autoplay=1&loop=1" 
-  		width="900" 
-  		height="700" 
-  		allow="autoplay; fullscreen" 
-  		allowfullscreen />
-
-		<p class="max-w-3xl text-xl">
-			StorySight is an experience that combines XR and GenML that allows you to be <em>inside</em> the story, experiencing books in a whole new dimension. 
-			StorySight is an example of how GenML can be married up with spatial computing to create new experiences.
-		</p>
-
-		<a href="" class="text-2xl text-brand-dark">Learn more</a>
-	</section>
-
-	<section class="flex flex-col justify-center items-center text-center space-y-16 mt-44 md:mt-96">
-		<img class="h-24" src="/ML.svg">
-
-		<h1 class="text-8xl mb-16 tracking-wide">Machine Learning</h1>
-
-		<div class="space-y-4 max-w-4xl">
-			<h2 class="text-5xl leading-tight">Generate narration and voiceover for ANY video</h2>
-			<h2 class="text-3xl text-gray-400">iOS</h2>
-		</div>
-
-		<iframe 
-  		src="https://player.vimeo.com/video/899177107?h=ab41a358f5&autoplay=1&loop=1" 
-  		width="900" 
-  		height="900" 
-  		allow="autoplay; fullscreen" 
-  		allowfullscreen />
-
-		<p class="max-w-3xl text-xl">
-			Generate cool voiceoevers to your videos in any style your like. This is me doing callisthenics 
-			in the video with narration in the style of Alan Partrige doing a eulogy. 
-		</p>
-
-		<a href="" class="text-2xl text-brand-dark">Learn more</a>
-	</section>
-
-	<section class="flex flex-col justify-center items-center text-center space-y-16 mt-44 md:mt-96">
-		<img class="h-24" src="/XR.svg">
-
-		<h1 class="text-8xl mb-16 tracking-wide">Extended Reality</h1>
-
-		<div class="space-y-4 max-w-4xl">
-			<h2 class="text-5xl leading-tight">Your personalised shopping experience with XR</h2>
-			<h2 class="text-3xl text-gray-400">Apple Vision Pro</h2>
-		</div>
-
-		<iframe 
-  		src="https://player.vimeo.com/video/899182055?h=ab41a358f5&autoplay=1&loop=1" 
-  		width="900" 
-  		height="700" 
-  		allow="autoplay; fullscreen" 
-  		allowfullscreen />
-
-		<p class="max-w-3xl text-xl">
-			StorySight is an experience that combines XR and GenML that allows you to be <em>inside</em> the story, experiencing books in a whole new dimension. 
-			StorySight is an example of how GenML can be married up with spatial computing to create new experiences.
-		</p>
-
-		<a href="" class="text-2xl text-brand-dark">Learn more</a>
-	</section>
+	<Showcase title="Extended Reality" subtitle1="Your personalised shopping experience with XR"
+		subtitle2="Apple Vision Pro" videoSrc="https://player.vimeo.com/video/899182055?h=ab41a358f5&autoplay=1&loop=1"
+		description="StorySight is an experience that combines XR and GenML that allows you to be inside the story, experiencing books in a whole new dimension. StorySight is an example of how GenML can be married up with spatial computing to create new experiences."
+		learnMoreLink="#" />
 
 	<section class="space-y-16 mt-44 md:mt-96">
 		<div class="flex flex-col md:grid md:grid-cols-2 gap-8">
-		  <div>
-			<img src="path/to/your/image.jpg" alt="ML related image" class="w-full h-auto">
-		  </div>
-		  <div>
-			<h2 class="text-2xl font-bold">Generative Machine Learning</h2>
-			<p class="mt-2">This is some text.</p>
-		  </div>
+			<div>
+				<img src="path/to/your/image.jpg" alt="ML related image" class="w-full h-auto">
+			</div>
+			<div>
+				<h2 class="text-2xl font-bold">Generative Machine Learning</h2>
+				<p class="mt-2">This is some text.</p>
+			</div>
 		</div>
-		
+
 		<div class="flex flex-col-reverse md:grid md:grid-cols-2 gap-8">
-		  <div>
-			<h2 class="text-2xl font-bold">Spatial Computing</h2>
-			<p class="mt-2">This is some text.</p>
-		  </div>
-		  <div>
-			<img src="path/to/your/image.jpg" alt="XR related image" class="w-full h-auto">
-		  </div>
+			<div>
+				<h2 class="text-2xl font-bold">Spatial Computing</h2>
+				<p class="mt-2">This is some text.</p>
+			</div>
+			<div>
+				<img src="path/to/your/image.jpg" alt="XR related image" class="w-full h-auto">
+			</div>
 		</div>
-	  </section>
+	</section>
 
 </Layout>
