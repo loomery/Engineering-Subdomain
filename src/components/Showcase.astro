@@ -1,10 +1,19 @@
 ---
 // Define the props for the component
-const { title, subtitle1, subtitle2, videoSrc, description, learnMoreLink } = Astro.props;
+const { 
+  title1, 
+  divider = "", 
+  title2 = "", 
+  subtitle1, 
+  subtitle2, 
+  videoSrc, 
+  description, 
+  learnMoreLink 
+} = Astro.props;
 ---
 
 <section class="flex flex-col justify-center items-center text-center space-y-16 mt-44 md:mt-96">
-  <h1 class="text-8xl mb-16 tracking-wide">{title}</h1>
+  <h1 class="text-8xl mb-16 tracking-wide">{title1} <b class="text-brand-dark font-bold">{divider}</b> {title2}</h1>
 
   <div class="space-y-4 max-w-4xl">
     <h2 class="text-5xl leading-tight">{subtitle1}</h2>
