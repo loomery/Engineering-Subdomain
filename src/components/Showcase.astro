@@ -1,35 +1,23 @@
 ---
-// Define the props for the component
 const {
-    icons = [],
-    title1,
-    divider = "",
-    title2 = "",
-    subtitle,
-    platform,
-    videoSrc,
-    description,
-    learnMoreLink
+title,
+platform,
+videoSrc,
+description,
+learnMoreLink
 } = Astro.props;
 ---
 
-<section class="flex flex-col justify-center items-center text-center space-y-8 md:space-y-16 mt-20 md:mt-44 lg:mt-96">
-    <div class="flex flex-wrap justify-center space-x-2 md:space-x-4">
-        {icons.map((icon: string) => (
-            <img class="h-12 md:h-24" src={icon} />
-        ))}
-    </div>
-
-    <h1 class="text-4xl md:text-8xl mb-8 md:mb-16 tracking-wide">{title1} <b class="text-brand-dark font-bold">{divider}</b> {title2}</h1>
-
+<div class="flex flex-col text-center items-center space-y-8 md:space-y-16">
     <div class="space-y-2 md:space-y-4 max-w-xs md:max-w-4xl">
-        <h2 class="text-3xl md:text-5xl leading-tight">{subtitle}</h2>
+        <h2 class="text-3xl md:text-5xl leading-tight">{title}</h2>
         <h2 class="text-xl md:text-3xl text-gray-400">{platform}</h2>
     </div>
-
-    <iframe src={videoSrc} class="w-[70vw] h-[30vh] lg:w-[900px] lg:h-[700px]" allow="autoplay; fullscreen" allowfullscreen />
-
+    
+    <iframe src={videoSrc} class="w-[70vw] h-[30vh] lg:w-[900px] lg:h-[700px]" allow="autoplay; fullscreen"
+        allowfullscreen />
+    
     <p class="max-w-xs md:max-w-3xl text-sm md:text-xl">{description}</p>
-
+    
     <a href={learnMoreLink} class="text-xl md:text-2xl text-brand-dark">Learn more</a>
-</section>
+</div>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Showcase from '../components/Showcase.astro';
+import TechnologySection from '../components/TechnologySection.astro';
 ---
 
 <Layout title="Welcome to the Loomery lab.">
@@ -11,20 +12,26 @@ import Showcase from '../components/Showcase.astro';
 		<h3 class="text-4xl">See what we are experimenting with</h3>
 	</section>
 
-	<Showcase icons={["/ML.svg", "/XR.svg" ]} title1="GenML" divider="x" title2="XR" subtitle="Introducing StorySight"
-		platform="Apple Vision Pro" videoSrc="https://player.vimeo.com/video/844899766?h=ab41a358f5&autoplay=1&loop=1"
-		description="StorySight is an experience that combines XR and GenML that allows you to be inside the story, experiencing books in a whole new dimension. StorySight is an example of how GenML can be married up with spatial computing to create new experiences."
-		learnMoreLink="#" />
+	<TechnologySection icons={["/ML.svg", "/XR.svg" ]} title1="GenML" divider="x" title2="XR">
+		<Showcase title="Introducing StorySight" platform="Apple Vision Pro"
+			videoSrc="https://player.vimeo.com/video/844899766?h=ab41a358f5&autoplay=1&loop=1"
+			description="StorySight is an experience that combines XR and GenML that allows you to be inside the story, experiencing books in a whole new dimension. StorySight is an example of how GenML can be married up with spatial computing to create new experiences."
+			learnMoreLink="#" />
+	</TechnologySection>
 
-	<Showcase icons={["/ML.svg"]} title1="Machine Learning" subtitle="Generate narration for ANY video"
-		platform="iOS" videoSrc="https://player.vimeo.com/video/899177107?h=ab41a358f5&autoplay=1&loop=1"
-		description="Generate cool voiceoevers to your videos in any style your like. This is me doing callisthenics in the video with narration in the style of Alan Partrige doing a eulogy."
-		learnMoreLink="#" />
+	<TechnologySection icons={["/ML.svg"]} title1="Machine Learning">
+		<Showcase title="Generate narration for ANY video" platform="iOS"
+			videoSrc="https://player.vimeo.com/video/899177107?h=ab41a358f5&autoplay=1&loop=1"
+			description="Generate cool voiceoevers to your videos in any style your like. This is me doing callisthenics in the video with narration in the style of Alan Partrige doing a eulogy."
+			learnMoreLink="#" />
+	</TechnologySection>
 
-	<Showcase icons={["/XR.svg"]} title1="Extended Reality" subtitle="Your personalised shopping experience with XR"
-		platform="Apple Vision Pro" videoSrc="https://player.vimeo.com/video/899182055?h=ab41a358f5&autoplay=1&loop=1"
-		description="StorySight is an experience that combines XR and GenML that allows you to be inside the story, experiencing books in a whole new dimension. StorySight is an example of how GenML can be married up with spatial computing to create new experiences."
-		learnMoreLink="#" />
+	<TechnologySection icons={["/XR.svg"]} title1="Extended Reality">
+		<Showcase title="Your personalised shopping experience with XR" platform="Apple Vision Pro"
+			videoSrc="https://player.vimeo.com/video/899182055?h=ab41a358f5&autoplay=1&loop=1"
+			description="All the benefits of a brick and mortar store, but in the comfort of your own home. This is a demo of how XR can be used to create a personalised shopping experience with fully customisable life size shop items."
+			learnMoreLink="#" />
+	</TechnologySection>
 
 	<section class="space-y-16 mt-44 md:mt-96">
 		<div class="flex flex-col md:grid md:grid-cols-2 gap-8">

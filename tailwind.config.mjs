@@ -7,7 +7,11 @@ export default {
 				brand: {
 					light: '#FFFFFF',
 					dark: '#42B49F',
-				}
+				},
+				bg: {
+					light: '#FFFFFF',
+					dark: '#141414',
+				},
 			},
 		},
 	},
