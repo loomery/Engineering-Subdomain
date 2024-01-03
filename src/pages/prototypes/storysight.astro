@@ -3,11 +3,11 @@ import Prototype from '../../layouts/Prototype.astro';
 import Summary from '../../components/Summary.astro';
 ---
 
-<Prototype filename="storysight" title="Be inside the story with Storysight"
+<Prototype filename="storysight" title="Jump inside the story with Storysight"
     subtitle="Pairing GenML and spatial computing for a truely unique and immersive reading expirience"
-    heroSrc='/Storysight-Hero.png'>
+    heroSrc='/storysight/Storysight-Hero.png'>
 
-    <Summary icons={["/ML.svg", "/XR.svg" ]} technologies={[
+    <Summary icons={["/ML.svg", "/XR.svg"]} technologies={[
         "Generative machine learning",
         "Virtual reality"
     ]} tools={[
@@ -19,4 +19,22 @@ import Summary from '../../components/Summary.astro';
         "A new dimension for content consuption",
         "AI assistance with understanding writing techniques and the story"
     ]} />
+
+    <section class="flex flex-col items-center">
+        <h2 class="text-5xl p-8" data-aos="fade-in">The inspiration for building Storysight</h2>
+        <div class="flex flex-col-reverse md:grid md:grid-cols-2 gap-8">
+            <div class="space-y-8 text-lg leading-relaxed" data-aos="fade-in" data-aos-delay="0">
+				<p>
+                    Off the back of WWDC23's Apple Vision Pro reveal and the release of GPT-4 along with stable diffusion models eariler in the year, 
+                    we wanted to explore the possibilities for new experiences that would sit at the crossroads of generative machine learning and spatial computing. 
+                </p>
+                <p>
+                    We wanted to see how we could use these technologies to create a new way of consuming content.
+                </p>
+			</div>
+			<div data-aos="fade-in" data-aos-delay="200">
+				<img src="path/to/your/image.jpg" class="w-full h-auto">
+			</div>
+		</div>
+    </section>
 </Prototype>
