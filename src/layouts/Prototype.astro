@@ -1,0 +1,98 @@
+---
+interface Props {
+    title: string;
+    subtitle: string;
+    heroSrc: string;
+}
+
+const { 
+    title,
+    subtitle,
+    heroSrc,
+} = Astro.props;
+
+// Convert the title to snake case
+const titleSnakeCase = title.toLowerCase().replace(/ /g, '_');
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={subtitle} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="/global.css" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} - Loomery Lab</title>
+	
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={`https://lab.loomery.com/prototypes/${titleSnakeCase}`} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={subtitle} />
+		<meta property="og:image" content={heroSrc} />
+	
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={`https://lab.loomery.com/prototypes/${titleSnakeCase}`} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={subtitle} />
+		<meta property="twitter:image" content={heroSrc} />
+	</head>
+
+	<body>
+		<div class="bg-cover bg-center" style={`background-image: url('${heroSrc}')`}>
+            <header>
+				<div class="px-16 py-8 md:px-32 md:py-16">
+				  <nav class="text-brand-light flex md:flex-row justify-between items-center">
+					<a href="https://loomery.com" class="px-4"><img src="/Loomery.svg"></a>
+			  
+					<div class="hidden md:block">
+					  <a href="https://loomery.com" class="px-4">Back to Loomery.com</a>
+					</div>
+					<div class="md:hidden">
+					  <a href="https://loomery.com">
+						<!-- Home icon -->
+						<svg class="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 002 0v-6a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 002 0V10m-9 5a1 1 0 11-2 0 1 1 0 012 0z" />
+						</svg>
+					  </a>
+					</div>
+				  </nav>
+				</div>
+			  </header>
+
+            <section class="flex flex-col items-center text-center space-y-12 mt-48 p-24 bg-gradient-to-t from-bg-dark">
+                <h1 class="text-8xl">{title}</h1>
+                <h2 class="text-4xl">{subtitle}</h2>
+            </section>
+        </div>
+
+		<main class="px-16 py-8 md:px-32 md:py-16">
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--accent: #52A894;
+	}
+    
+	html {
+		background: #141414;
+		color: #FFFFFF;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+</style>
