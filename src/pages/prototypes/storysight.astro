@@ -1,38 +1,22 @@
 ---
 import Prototype from '../../layouts/Prototype.astro';
+import Summary from '../../components/Summary.astro';
 ---
 
-<Prototype title="Storysight" subtitle="Be inside the story" heroSrc='/Storysight-Hero.png'>
-    <section class="flex flex-col items-center">
-        <div class="flex flex-row space-x-4 p-12">
-            <img class="h-16" src="/ML.svg">
-            <img class="h-16" src="/XR.svg">
-        </div>
+<Prototype filename="storysight" title="Be inside the story with Storysight"
+    subtitle="Pairing GenML and spatial computing for a truely unique and immersive reading expirience"
+    heroSrc='/Storysight-Hero.png'>
 
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-16">
-            <div>
-                <h1 class="text-3xl">Key technologies</h1>
-                <ul class="text-lg space-y-2 py-4">
-                    <li>Generative machine learning</li>
-                    <li>Extended reality</li>
-                </ul>
-            </div>
-        
-            <div>
-                <h1 class="text-3xl">Tools</h1>
-                <ul class="text-lg space-y-2 py-4">
-                    <li>Skybox AI</li>
-                    <li>Xcode - RealityKit, SwiftUI</li>
-                </ul>
-            </div>
-        
-            <div>
-                <h1 class="text-3xl">Features</h1>
-                <ul class="text-lg space-y-2 py-4">
-                    <li>Fully immersive books</li>
-                    <li>Extended reality</li>
-                </ul>
-            </div>
-        </section>
-    </section>
+    <Summary icons={["/ML.svg", "/XR.svg" ]} technologies={[
+        "Generative machine learning",
+        "Virtual reality"
+    ]} tools={[
+        "Skybox AI",
+        "GPT-4",
+        "Xcode - RealityKit, SwiftUI"
+    ]} features={[
+        "Fully immersive books",
+        "A new dimension for content consuption",
+        "AI assistance with understanding writing techniques and the story"
+    ]} />
 </Prototype>

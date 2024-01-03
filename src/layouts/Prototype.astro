@@ -1,18 +1,20 @@
 ---
 interface Props {
+	filename: string;
     title: string;
     subtitle: string;
     heroSrc: string;
 }
 
-const { 
+const {
+	filename,
     title,
     subtitle,
     heroSrc,
 } = Astro.props;
 
-// Convert the title to snake case
-const titleSnakeCase = title.toLowerCase().replace(/ /g, '_');
+// Convert the filename to snake case
+const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 ---
 
 <!doctype html>
@@ -28,14 +30,14 @@ const titleSnakeCase = title.toLowerCase().replace(/ /g, '_');
 	
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content={`https://lab.loomery.com/prototypes/${titleSnakeCase}`} />
+		<meta property="og:url" content={`https://lab.loomery.com/prototypes/${filenameSnakeCase}`} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={subtitle} />
 		<meta property="og:image" content={heroSrc} />
 	
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={`https://lab.loomery.com/prototypes/${titleSnakeCase}`} />
+		<meta property="twitter:url" content={`https://lab.loomery.com/prototypes/${filenameSnakeCase}`} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={subtitle} />
 		<meta property="twitter:image" content={heroSrc} />
@@ -63,15 +65,17 @@ const titleSnakeCase = title.toLowerCase().replace(/ /g, '_');
 				</div>
 			  </header>
 
-            <section class="flex flex-col items-center text-center space-y-12 mt-48 p-24 bg-gradient-to-t from-bg-dark">
-                <h1 class="text-8xl">{title}</h1>
-                <h2 class="text-4xl">{subtitle}</h2>
-            </section>
+			  <section class="flex flex-col items-center text-center space-y-12 mt-48 p-24 bg-gradient-to-t from-bg-dark">
+				<h1 class="max-w-4xl text-5xl lg:text-7xl">{title}</h1>
+				<h2 class="max-w-4xl text-2xl lg:text-3xl">{subtitle}</h2>
+			</section>
         </div>
 
 		<main class="px-16 py-8 md:px-32 md:py-16">
 			<slot />
 		</main>
+
+		<script src="../js/main"></script>
 	</body>
 </html>
 
