@@ -44,9 +44,9 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 	</head>
 
 	<body>
-		<div class="bg-cover bg-center" style={`background-image: url('${heroSrc}'); background-attachment: fixed;`}>
+		<div class="bg-cover bg-center md:bg-fixed" style={`background-image: url('${heroSrc}')`}>
             <header>
-				<div class="px-16 py-8 md:px-32 md:py-16">
+				<div class="p-8 md:px-32 md:py-16">
 				  <nav class="text-brand-light flex md:flex-row justify-between items-center">
 					<a href="https://loomery.com" class="px-4"><img src="/Loomery.svg"></a>
 			  
@@ -71,7 +71,7 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 			</section>
         </div>
 
-		<main class="px-16 py-8 space-y-48 mb-32 md:px-32 md:py-16">
+		<main class="p-8 space-y-48 mb-32 md:px-32 md:py-16">
 			<slot />
 		</main>
 

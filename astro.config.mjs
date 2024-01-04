@@ -5,11 +5,12 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   site: "https://tommy-holmes.github.io",
-  base: "/Loomery-Lab-Prod",
+  base: "/Loomery-Lab-Prod", // for gh-pages
+  // trailingSlash: "always",
   output: "static",
   build: {
     format: "directory",
-    // assetsPrefix: "",
+    // assetsPrefix: "Loomery-Lab-Prod/", // for gh-pages
   },
   vite: {
     build: {
