@@ -6,10 +6,11 @@ import TechnologySection from '../components/TechnologySection.astro';
 
 <Layout title="Welcome to the Loomery lab.">
 
-	<section
-		class="flex flex-col justify-center items-center space-y-8 text-center h-screen bg-[url('/')] bg-cover bg-center m-0">
-		<h1 class="text-6xl font-bold">Welcome to the <b class="text-brand-dark">Loomery</b> lab</h1>
-		<h3 class="text-4xl">See what we are experimenting with</h3>
+	<section class="text-center h-screen md:h-1/2" data-aos="fade-in">
+		<div class="flex flex-col justify-center items-center space-y-8 my-24 py-24 md:my-48 md:py-48">
+			<h1 class="text-3xl md:text-6xl font-bold">Welcome to the <b class="text-brand-dark">Loomery</b> lab</h1>
+			<h3 class="text-xl md:text-4xl">See what we are experimenting with</h3>
+		</div>
 	</section>
 
 	<TechnologySection icons={["/ML.svg", "/XR.svg" ]} title1="GenML" divider="x" title2="XR">
@@ -32,27 +33,5 @@ import TechnologySection from '../components/TechnologySection.astro';
 			description="All the benefits of a brick and mortar store, but in the comfort of your own home. This is a demo of how XR can be used to create a personalised shopping experience with fully customisable life size shop items."
 			learnMoreLink="/prototypes/storysight" />
 	</TechnologySection>
-
-	<section class="space-y-16 mt-44 md:mt-96">
-		<div class="flex flex-col md:grid md:grid-cols-2 gap-8">
-			<div>
-				<img src="path/to/your/image.jpg" alt="ML related image" class="w-full h-auto">
-			</div>
-			<div>
-				<h2 class="text-2xl font-bold">Generative Machine Learning</h2>
-				<p class="mt-2">This is some text.</p>
-			</div>
-		</div>
-
-		<div class="flex flex-col-reverse md:grid md:grid-cols-2 gap-8">
-			<div>
-				<h2 class="text-2xl font-bold">Spatial Computing</h2>
-				<p class="mt-2">This is some text.</p>
-			</div>
-			<div>
-				<img src="path/to/your/image.jpg" alt="XR related image" class="w-full h-auto">
-			</div>
-		</div>
-	</section>
 
 </Layout>

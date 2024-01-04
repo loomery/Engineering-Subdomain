@@ -8,16 +8,16 @@ learnMoreLink
 } = Astro.props;
 ---
 
-<div class="flex flex-col text-center items-center space-y-8 md:space-y-16">
+<div class="flex flex-col text-center items-center space-y-8 md:space-y-16 pb-24 md:pb-12">
     <div class="space-y-2 md:space-y-4 max-w-xs md:max-w-4xl">
-        <h2 class="text-3xl md:text-5xl leading-tight">{title}</h2>
-        <h2 class="text-xl md:text-3xl text-gray-400">{platform}</h2>
+        <h2 class="text-3xl md:text-5xl leading-tight" data-aos="fade-right">{title}</h2>
+        <h2 class="text-xl md:text-3xl text-gray-400" data-aos="fade-left">{platform}</h2>
     </div>
     
     <iframe src={videoSrc} class="w-[70vw] h-[30vh] lg:w-[900px] lg:h-[700px]" allow="autoplay; fullscreen"
-        allowfullscreen />
+        allowfullscreen data-aos="fade-in" />
     
-    <p class="max-w-xs md:max-w-3xl text-sm md:text-xl">{description}</p>
+    <p class="max-w-xs md:max-w-3xl text-sm md:text-xl" data-aos="fade-up">{description}</p>
     
-    <a href={learnMoreLink} class="text-xl md:text-2xl text-brand-dark">Learn more</a>
+    <a href={learnMoreLink} class="text-xl md:text-2xl text-brand-dark" data-aos="fade-in">Learn more</a>
 </div>
