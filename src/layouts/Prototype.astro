@@ -104,7 +104,7 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 			}
 
 			// Proceed with the assumption that `images` is a non-empty array of strings
-			const imageContainers: HTMLElement[] = images.slice(0, 2).map((src, index) => {
+			const imageContainers: HTMLElement[] = images.slice(0, images.length).map((src, index) => {
 				const div = document.createElement('div');
 				div.className = 'hero-image';
 				div.style.backgroundImage = `url('${src}')`;
@@ -115,7 +115,7 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 
 			let currentIndex = 0;
 
-			setInterval(() => {
+			function changeImage() {
 				currentIndex = (currentIndex + 1) % images.length;
 				const nextImageIndex = (currentIndex + 1) % images.length;
 				const nextContainerIndex = (currentIndex + 1) % imageContainers.length;
@@ -127,7 +127,13 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 					container.style.opacity = index === nextContainerIndex ? '1' : '0';
 				});
 
-			}, 5000); // Change every 5 seconds to allow for 2s fade effect and 3s display
+			};
+
+			// Call changeImage immediately for the first transition, with a shorter delay
+			// setTimeout(changeImage, 1000); // Adjust this delay for the first image change as needed
+
+			// Then set up the interval for subsequent changes
+			setInterval(changeImage, 4000); // Continue changing images every 4 seconds
 		});
 	</script>
 	
