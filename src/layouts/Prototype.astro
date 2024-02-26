@@ -1,16 +1,16 @@
 ---
 interface Props {
-	filename: string;
-    title: string;
-    subtitle: string;
-    heroSrc: string;
+filename: string;
+title: string;
+subtitle: string;
+heroSrcArray: string[];
 }
 
 const {
-	filename,
-    title,
-    subtitle,
-    heroSrc,
+filename,
+title,
+subtitle,
+heroSrcArray,
 } = Astro.props;
 
 // Convert the filename to snake case
@@ -19,75 +19,133 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={subtitle} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="stylesheet" href="/global.css" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title} - Loomery Lab</title>
-	
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={`https://lab.loomery.com/prototypes/${filenameSnakeCase}`} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={subtitle} />
-		<meta property="og:image" content={heroSrc} />
-	
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={`https://lab.loomery.com/prototypes/${filenameSnakeCase}`} />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={subtitle} />
-		<meta property="twitter:image" content={heroSrc} />
-	</head>
 
-	<body>
-		<div class="bg-cover bg-center md:bg-fixed" style={`background-image: url('${heroSrc}')`}>
-            <header>
-				<div class="p-8 md:px-32 md:py-16">
-				  <nav class="text-brand-light flex md:flex-row justify-between items-center">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="description" content={subtitle} />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="stylesheet" href="/global.css" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{title} - Loomery Lab</title>
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={`https://lab.loomery.com/prototypes/${filenameSnakeCase}`} />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={subtitle} />
+	<meta property="og:image" content={heroSrcArray[0]} />
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content={`https://lab.loomery.com/prototypes/${filenameSnakeCase}`} />
+	<meta property="twitter:title" content={title} />
+	<meta property="twitter:description" content={subtitle} />
+	<meta property="twitter:image" content={heroSrcArray[0]} />
+</head>
+
+<body>
+	<div id="hero" class="hero bg-cover bg-center md:bg-fixed" data-hero-images={JSON.stringify(heroSrcArray)}>
+		<header>
+			<div class="p-8 md:px-32 md:py-16">
+				<nav class="text-brand-light flex md:flex-row justify-between items-center">
 					<a href="https://loomery.com" class="px-4"><img src="/Loomery.svg"></a>
-			  
+
 					<div class="hidden md:block">
-					  <a href="https://loomery.com" class="px-4">Back to Loomery.com</a>
+						<a href="https://loomery.com" class="px-4">Back to Loomery.com</a>
 					</div>
 					<div class="md:hidden">
-					  <a href="https://loomery.com">
-						<!-- Home icon -->
-						<svg class="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 002 0v-6a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 002 0V10m-9 5a1 1 0 11-2 0 1 1 0 012 0z" />
-						</svg>
-					  </a>
+						<a href="https://loomery.com">
+							<!-- Home icon -->
+							<svg class="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+									d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 002 0v-6a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 002 0V10m-9 5a1 1 0 11-2 0 1 1 0 012 0z" />
+							</svg>
+						</a>
 					</div>
-				  </nav>
-				</div>
-			  </header>
+				</nav>
+			</div>
+		</header>
 
-			  <section class="flex flex-col items-center text-center space-y-12 mt-48 p-24 bg-gradient-to-t from-bg-dark">
-				<h1 class="max-w-4xl text-5xl lg:text-7xl">{title}</h1>
-				<h2 class="max-w-4xl text-2xl lg:text-3xl">{subtitle}</h2>
-			</section>
-        </div>
+		<section class="flex flex-col items-center text-center space-y-12 mt-48 p-24 bg-gradient-to-t from-bg-dark">
+			<h1 class="max-w-4xl text-5xl lg:text-7xl">{title}</h1>
+			<h2 class="max-w-4xl text-2xl lg:text-3xl">{subtitle}</h2>
+		</section>
+	</div>
 
-		<main class="p-8 space-y-48 mb-32 md:px-32 md:py-16">
-			<slot />
-		</main>
+	<main class="p-8 space-y-48 mb-32 md:px-32 md:py-16">
+		<slot />
+	</main>
 
-		<script src="../js/main"></script>
-	</body>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const heroSection = document.getElementById('hero');
+			if (!heroSection) {
+				console.error('Hero section not found');
+				return; // Exit if hero section is not found
+			}
+
+			const heroImagesAttribute = heroSection.getAttribute('data-hero-images');
+			if (!heroImagesAttribute) {
+				console.error('data-hero-images attribute is missing');
+				return; // Exit if the attribute is not found
+			}
+
+			let images: string[];
+			try {
+				images = JSON.parse(heroImagesAttribute);
+				if (!Array.isArray(images) || images.length === 0) {
+					throw new Error('Parsed data is not a non-empty array');
+				}
+			} catch (error) {
+				console.error('Error parsing data-hero-images:', error);
+				return; // Exit if parsing fails or data is not as expected
+			}
+
+			// Proceed with the assumption that `images` is a non-empty array of strings
+			const imageContainers: HTMLElement[] = images.slice(0, 2).map((src, index) => {
+				const div = document.createElement('div');
+				div.className = 'hero-image';
+				div.style.backgroundImage = `url('${src}')`;
+				div.style.opacity = index === 0 ? '1' : '0'; // Show the first image immediately
+				heroSection.appendChild(div);
+				return div;
+			});
+
+			let currentIndex = 0;
+
+			setInterval(() => {
+				currentIndex = (currentIndex + 1) % images.length;
+				const nextImageIndex = (currentIndex + 1) % images.length;
+				const nextContainerIndex = (currentIndex + 1) % imageContainers.length;
+				imageContainers[nextContainerIndex].style.backgroundImage =
+				`url('${images[nextImageIndex]}')`;
+
+				// Cross-fade effect
+				imageContainers.forEach((container, index) => {
+					container.style.opacity = index === nextContainerIndex ? '1' : '0';
+				});
+
+			}, 5000); // Change every 5 seconds to allow for 2s fade effect and 3s display
+		});
+	</script>
+	
+	<script src="../js/main"></script>
+</body>
+
 </html>
 
 <style is:global>
 	:root {
 		--accent: #52A894;
 	}
-    
+
 	html {
 		background: #141414;
 		color: #FFFFFF;
 	}
+
 	code {
 		font-family:
 			Menlo,
@@ -98,5 +156,26 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 			Bitstream Vera Sans Mono,
 			Courier New,
 			monospace;
+	}
+
+	.hero {
+		position: relative;
+		/* Adjust based on your needs */
+		overflow: hidden;
+	}
+
+	.hero-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		background-position: center;
+		transition: opacity 2s ease-in-out;
+		/* Smooth transition */
+		opacity: 0;
+		/* Start fully transparent */
+		z-index: -1; /* Ensure it stays in the background */
 	}
 </style>

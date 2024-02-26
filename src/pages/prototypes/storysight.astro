@@ -5,7 +5,7 @@ import Summary from '../../components/Summary.astro';
 
 <Prototype filename="storysight" title="Jump inside the story with Storysight"
     subtitle="Pairing GenML and spatial computing for a truely unique and immersive reading expirience"
-    heroSrc='/storysight/war-storysight.png'>
+    heroSrcArray={['/storysight/war-storysight.png', "/storysight/sci-fi.png"]}>
 
     <Summary icons={["/ML.svg", "/XR.svg"]} technologies={[
         "Generative machine learning",
@@ -25,7 +25,6 @@ import Summary from '../../components/Summary.astro';
                 website: "https://github.com/tommy-holmes"
             },
         ]
-    
     } />
 
     <section class="flex flex-col items-center">
