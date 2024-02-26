@@ -1,6 +1,8 @@
 ---
 import Prototype from '../../layouts/Prototype.astro';
 import Summary from '../../components/Summary.astro';
+import Goals from '../../components/Goals.astro';
+import ActionsSection from '../../components/ActionsSection.astro';
 ---
 
 <Prototype filename="storysight" title="Jump inside the story with Storysight"
@@ -32,23 +34,34 @@ import Summary from '../../components/Summary.astro';
         ]
     } />
 
-    <section class="flex flex-col items-center">
-        <h2 class="text-5xl p-8 text-center" data-aos="fade-in">The inspiration for building Storysight</h2>
-        <div class="flex flex-col-reverse md:grid md:grid-cols-2 gap-8">
-            <div class="space-y-8 text-lg leading-relaxed" data-aos="fade-in" data-aos-delay="0">
-				<p>
-                    Off the back of WWDC23's Apple Vision Pro reveal and the release of GPT-4 along with stable diffusion models eariler in the year, 
-                    we wanted to explore the possibilities for new experiences that would sit at the crossroads of generative machine learning and spatial computing. 
-                </p>
-                <p>
-                    We wanted to see how we could use these technologies to create a new way of consuming content.
-                </p>
-			</div>
-			<div data-aos="fade-in" data-aos-delay="200">
-				<img src="/storysight/sci-fi.png" class="w-full h-auto rounded-lg">
-			</div>
-		</div>
-    </section>
+    <Goals 
+        title='Why did we build Storysight?' 
+        goals={[
+            "Find out what we could build if we married up generative machine learning and spatial computing", 
+            "Toy with the new visionOS and find out what would make a great reading experience on this new platform",
+            "Create a glimpse for what content consumption could look like in the near future with the recent advancements in machine learning and spatial computing",
+    ]} />
+
+    <ActionsSection actions={[
+        {
+            title: 'Dreamweaving AI Worlds',
+            paragraphs: [
+                "Most people know that GenML can be used to generate images, but what about 360 degree panoramas? That's where Blockade Labs' Skybox AI comes in. It's a tool that can generate a 360 degree panorama of a scene from a text description.",
+                "Looking to optimise for the best possible results, we used GPT-4 to condense the text from the chapter into a descriptive summary of the setting. We then fed this summary into Skybox AI to generate a skybox image of the setting.",
+                "We then used visionOS to project the skybox image onto a static sphere programmatically and place it in the scene with the user at the centre.",
+            ],
+            imgSrc: '/storysight/sci-fi.png'
+        },
+        {
+            title: 'Ensuring quality generative content',
+            paragraphs: [
+                "Most people know that GenML can be used to generate images, but what about 360 degree panoramas? That's where Blockade Labs' Skybox AI comes in. It's a tool that can generate a 360 degree panorama of a scene from a text description.",
+                "Looking to optimise for the best possible results, we used GPT-4 to condense the text from the chapter into a descriptive summary of the setting. We then fed this summary into Skybox AI to generate a skybox image of the setting.",
+                "We then used visionOS to project the skybox image onto a static sphere programmatically and place it in the scene with the user at the centre.",
+            ],
+            imgSrc: '/storysight/skybox-empty.gif'
+        },
+    ]} />
 
     <section class="flex flex-col items-center">
         <h1 class="text-5xl p-8" data-aos="fade-in">The stack</h1>
