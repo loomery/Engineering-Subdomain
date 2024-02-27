@@ -45,7 +45,7 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 </head>
 
 <body>
-	<div id="hero" class="hero bg-cover bg-center md:bg-fixed" data-hero-images={JSON.stringify(heroSrcArray)}>
+	<div id="hero" class="hero bg-cover bg-center h-[100vh] md:h-[90vh] md:bg-fixed" data-hero-images={JSON.stringify(heroSrcArray)}>
 		<header>
 			<div class="p-8 md:px-32 md:py-16">
 				<nav class="text-brand-light flex md:flex-row justify-between items-center">
@@ -68,13 +68,13 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 			</div>
 		</header>
 
-		<section class="flex flex-col items-center text-center space-y-12 mt-48 p-24 bg-gradient-to-t from-bg-dark">
+		<section class="flex flex-col items-center text-center space-y-12 p-24 w-full absolute bottom-0 bg-gradient-to-t from-bg-dark">
 			<h1 class="max-w-4xl text-5xl lg:text-7xl">{title}</h1>
 			<h2 class="max-w-4xl text-2xl lg:text-3xl">{subtitle}</h2>
 		</section>
 	</div>
 
-	<main class="p-8 space-y-48 mb-32 md:px-32 md:py-16">
+	<main class="m-8 space-y-48 mb-32 md:px-32 md:py-16">
 		<slot />
 	</main>
 

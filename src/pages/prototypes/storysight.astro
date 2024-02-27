@@ -48,18 +48,32 @@ import ActionsSection from '../../components/ActionsSection.astro';
             paragraphs: [
                 "Most people know that GenML can be used to generate images, but what about 360 degree panoramas? That's where Blockade Labs' Skybox AI comes in. It's a tool that can generate a 360 degree panorama of a scene from a text description.",
                 "Looking to optimise for the best possible results, we used GPT-4 to condense the text from the chapter into a descriptive summary of the setting. We then fed this summary into Skybox AI to generate a skybox image of the setting.",
-                "We then used visionOS to project the skybox image onto a static sphere programmatically and place it in the scene with the user at the centre.",
             ],
             imgSrc: '/storysight/sci-fi.png'
         },
         {
             title: 'Ensuring quality generative content',
             paragraphs: [
-                "Most people know that GenML can be used to generate images, but what about 360 degree panoramas? That's where Blockade Labs' Skybox AI comes in. It's a tool that can generate a 360 degree panorama of a scene from a text description.",
-                "Looking to optimise for the best possible results, we used GPT-4 to condense the text from the chapter into a descriptive summary of the setting. We then fed this summary into Skybox AI to generate a skybox image of the setting.",
-                "We then used visionOS to project the skybox image onto a static sphere programmatically and place it in the scene with the user at the centre.",
+                "As mentioned, we used GPT-4 to provide a descriptive summary of the setting. This allowed us to ensure that the skybox image generated had to most detailed prompt possible minimsing loss of any key details.",
+                "Skybox AI has tricks like placing paraentheses around keywords to emphasis them, so we primed GPT to do this. This allowed us to ensure that the most important details were not lost in the generative process.",
             ],
             imgSrc: '/storysight/skybox-empty.gif'
+        },
+        {
+            title: 'Placing the user in the content',
+            paragraphs: [
+                "In Xcode, we used RealityKit to create a sphere and place the skybox image onto it. We then placed the sphere in the scene with the user at the centre.",
+                "This was done by instantiating a ModelComponent with a sphere mesh with 1000m radius and a Material with the skybox image. We then added the ModelComponent to the scene and set the camera to the user's position. This ends up being what the user sees in app.",
+            ],
+            imgSrc: '/storysight/VP Skybox.gif'
+        },
+        {
+            title: 'AI powered reading assistant',
+            paragraphs: [
+                "In Xcode, we used RealityKit to create a sphere and place the skybox image onto it. We then placed the sphere in the scene with the user at the centre.",
+                "This was done by instantiating a ModelComponent with a sphere mesh with 1000m radius and a Material with the skybox image. We then added the ModelComponent to the scene and set the camera to the user's position. This ends up being what the user sees in app.",
+            ],
+            imgSrc: '/storysight/reading-assistant.png'
         },
     ]} />
 
