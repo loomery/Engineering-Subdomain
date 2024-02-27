@@ -70,8 +70,8 @@ import ActionsSection from '../../components/ActionsSection.astro';
         {
             title: 'AI powered reading assistant',
             paragraphs: [
-                "In Xcode, we used RealityKit to create a sphere and place the skybox image onto it. We then placed the sphere in the scene with the user at the centre.",
-                "This was done by instantiating a ModelComponent with a sphere mesh with 1000m radius and a Material with the skybox image. We then added the ModelComponent to the scene and set the camera to the user's position. This ends up being what the user sees in app.",
+                "To add even more AI to the mix, we used GPT-4 to provide a reading assistant. This was done by feeding the text of the chapter into GPT-4 and allowing the user to ask questions about the book.",
+                "The assistant avoids story spoilers and going off topic with a system prompt via the OpenAI API. This allows the user to ask questions like 'Give my a brief recap of events leading up to this chapter' or 'Provide details for each of the charaters in this chapter' and get a response without revealing too much about the book as to give anything away.",
             ],
             imgSrc: '/storysight/reading-assistant.png'
         },

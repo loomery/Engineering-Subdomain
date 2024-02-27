@@ -45,7 +45,8 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 </head>
 
 <body>
-	<div id="hero" class="hero bg-cover bg-center h-[100vh] md:h-[90vh] md:bg-fixed" data-hero-images={JSON.stringify(heroSrcArray)}>
+	<div id="hero" class="hero bg-cover bg-center h-[100vh] md:h-[90vh] md:bg-fixed"
+		data-hero-images={JSON.stringify(heroSrcArray)}>
 		<header>
 			<div class="p-8 md:px-32 md:py-16">
 				<nav class="text-brand-light flex md:flex-row justify-between items-center">
@@ -68,9 +69,10 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 			</div>
 		</header>
 
-		<section class="flex flex-col items-center text-center space-y-12 p-24 w-full absolute bottom-0 bg-gradient-to-t from-bg-dark">
-			<h1 class="max-w-4xl text-5xl lg:text-7xl">{title}</h1>
-			<h2 class="max-w-4xl text-2xl lg:text-3xl">{subtitle}</h2>
+		<section
+			class="flex flex-col items-center text-center space-y-12 p-24 w-full absolute bottom-0 bg-gradient-to-t from-bg-dark">
+			<h1 class="max-w-4xl text-3xl lg:text-7xl">{title}</h1>
+			<h2 class="max-w-4xl text-xl lg:text-3xl">{subtitle}</h2>
 		</section>
 	</div>
 
@@ -108,6 +110,9 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 				const div = document.createElement('div');
 				div.className = 'hero-image';
 				div.style.backgroundImage = `url('${src}')`;
+				if (window.matchMedia("(min-width: 768px)").matches) {
+					div.style.backgroundAttachment = 'fixed'; // Add this line
+				}
 				div.style.opacity = index === 0 ? '1' : '0'; // Show the first image immediately
 				heroSection.appendChild(div);
 				return div;
@@ -120,7 +125,7 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 				const nextImageIndex = (currentIndex + 1) % images.length;
 				const nextContainerIndex = (currentIndex + 1) % imageContainers.length;
 				imageContainers[nextContainerIndex].style.backgroundImage =
-				`url('${images[nextImageIndex]}')`;
+					`url('${images[nextImageIndex]}')`;
 
 				// Cross-fade effect
 				imageContainers.forEach((container, index) => {
@@ -136,7 +141,7 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 			setInterval(changeImage, 5000); // Continue changing images every 5 seconds
 		});
 	</script>
-	
+
 	<script src="../js/main"></script>
 </body>
 
@@ -182,6 +187,7 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 		/* Smooth transition */
 		opacity: 0;
 		/* Start fully transparent */
-		z-index: -1; /* Ensure it stays in the background */
+		z-index: -1;
+		/* Ensure it stays in the background */
 	}
 </style>
