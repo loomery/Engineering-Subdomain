@@ -3,6 +3,7 @@ import Prototype from '../../layouts/Prototype.astro';
 import Summary from '../../components/Summary.astro';
 import Goals from '../../components/Goals.astro';
 import ActionsSection from '../../components/ActionsSection.astro';
+import LargeCTACard from '../../components/LargeCTACard.astro';
 ---
 
 <Prototype filename="storysight" title="Jump inside the story with Storysight"
@@ -70,7 +71,7 @@ import ActionsSection from '../../components/ActionsSection.astro';
         {
             title: 'AI powered reading assistant',
             paragraphs: [
-                "To add even more AI to the mix, we used GPT-4 to provide a reading assistant. This was done by feeding the text of the chapter into GPT-4 and allowing the user to ask questions about the book.",
+                "To add even more AI to the mix, we are using GPT-4 to provide a reading assistant. This was done by feeding the text of the chapter into GPT-4 and allowing the user to ask questions about the book.",
                 "The assistant avoids story spoilers and going off topic with a system prompt via the OpenAI API. This allows the user to ask questions like 'Give my a brief recap of events leading up to this chapter' or 'Provide details for each of the charaters in this chapter' and get a response without revealing too much about the book as to give anything away.",
             ],
             imgSrc: '/storysight/reading-assistant.png'
@@ -118,4 +119,12 @@ import ActionsSection from '../../components/ActionsSection.astro';
         <iframe src="https://player.vimeo.com/video/844899766?h=ab41a358f5&autoplay=0&loop=0" class="w-[70vw] h-[30vh] lg:w-[900px] lg:h-[700px]" allow="autoplay; fullscreen"
         allowfullscreen data-aos="fade-in" />
     </section>
+
+    <LargeCTACard href='https://apps.apple.com/gb/app/storysight/id6476205286'>
+        <img src="/storysight/icon.png" class="w-52 rounded-full mx-auto m-8">
+        <h1 class="text-4xl transition duration-300 ease-in-out">Try Storysight for yourself!</h1>
+        <p class="text-lg transition duration-300 ease-in-out">
+            We have the full version of Storysight available on the App Store today. Jump into the story and see what it's like to be inside the book.
+        </p>
+    </LargeCTACard>
 </Prototype>

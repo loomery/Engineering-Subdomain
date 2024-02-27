@@ -6,7 +6,7 @@ export default {
 			colors: {
 				brand: {
 					light: '#FFFFFF',
-					dark: '#42B49F',
+					dark: '#04564D',
 				},
 				bg: {
 					light: '#FFFFFF',

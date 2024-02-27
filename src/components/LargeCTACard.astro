@@ -1,0 +1,17 @@
+---
+interface Props {
+    href: string;
+}
+
+const {
+    href
+} = Astro.props;
+---
+
+<section class="flex items-center justify-center" data-aos="fade-up">
+    <div class="bg-brand-dark bg-opacity-30 md:max-w-3xl rounded-xl p-8 transition duration-300 ease-in-out transform hover:bg-opacity-40 hover:scale-105 hover:shadow-xl">
+      <a target="_blank" href={href} class="space-y-4 text-center">
+        <slot />
+      </a>
+    </div>
+</section>
