@@ -78,6 +78,30 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 
 	<main class="m-8 space-y-48 mb-32 md:px-32 md:py-16">
 		<slot />
+
+		<section class="text-center space-y-4 flex flex-col items-center px-4 md:px-0">
+			<h1 class="text-3xl">Follow Loomery</h1>
+			<p class="text-xl max-w-3xl">Stay in the loop by following us on social media, and subscribing to our
+				newsletter:</p>
+
+			<div class="text-accent space-x-4 md:space-x-20 p-8 flex flex-col md:flex-row justify-center items-center">
+				<a target="_blank" href="https://www.linkedin.com/company/loomery"
+					class="text-2xl mb-4 md:mb-0 flex items-center">
+					LinkedIn
+					<img src="/chevron.right.svg" class="h-6 ml-2 inline-block">
+				</a>
+				<a target="_blank" href="https://twitter.com/loomeryteam"
+					class="text-2xl mb-4 md:mb-0 flex items-center">
+					Twitter
+					<img src="/chevron.right.svg" class="h-6 ml-2 inline-block">
+				</a>
+				<a target="_blank" href="https://www.loomery.com/newsletter" 
+					class="text-2xl flex items-center">
+					Newsletter
+					<img src="/chevron.right.svg" class="h-6 ml-2 inline-block">
+				</a>
+			</div>
+		</section>
 	</main>
 
 	<script>

@@ -10,6 +10,7 @@ export default defineConfig({
   output: "static",
   build: {
     format: "directory",
+    // assetsPrefix: ".",
     // assetsPrefix: "Loomery-Lab-Prod/", // for gh-pages
   },
   vite: {
