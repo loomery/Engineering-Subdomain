@@ -2,12 +2,16 @@
 import ActionsSection from "../../components/ActionsSection.astro";
 import Goals from "../../components/Goals.astro";
 import Summary from "../../components/Summary.astro";
+import VimeoView from "../../components/VimeoView.astro";
 import Prototype from "../../layouts/Prototype.astro";
 ---
 
 <Prototype filename="vo-ios" title="Generate narration for any video" 
     subtitle="Take any video and generate a transcription and VoiceOver for it in any voice or style." 
-    heroSrcArray={['/vo-ios/vo-ios-hero.png']}>
+    heroSrcArray={[
+        '/vo-ios/vo-ios-hero.png',
+        '/vo-ios/vo-ios-hero-2.png',
+    ]}>
 
     <Summary 
     icons={["/ML.svg"]} 
@@ -41,11 +45,23 @@ import Prototype from "../../layouts/Prototype.astro";
         paragraphs: [
             "The first step is to upload a video to the app. The video is then transformed into a series of static images and sent to GPT-4 Turbo with Vision for transcription.",
             "This is because, currently, GPT-4 Turbo cannot transcribe videos directly, so we have to break it down into a series of images first, like a slideshow verison of the video.",
-            "The idea is to give GPT-4 enough context, along with any user settings like style, to understand the video and generate detailed a transcription.",
+            "The idea is to give GPT-4 enough context, along with any user settings like style and persona, to understand the video and generate detailed a transcription.",
         ],
-        imgSrc: '/vo-ios/empty-state.png'
+        imgSrc: '/vo-ios/empty-state.gif'
+    },
+    {
+        title: "Generating VoiceOver with Whisper v3",
+        paragraphs: [
+            "Here we are using a stock video of a penalty shootout to generate some VoiceOver commentry for it. The twist being that we can choose from a variety of voices and styles.",
+            "We can choose the style to be a poem, and the persona to be of David Attinborough. The result is what you see here in the gif, a decent attempt at a poetic commentary of the penalty shootout in the video (full video below).",
+            "The commentry is impressively accurate to what is going on in the video - inferring that its of a penalty shootout for starters - and takes into account the sequence of events, like the striker stepping forwad and the keeper subsequently crouching. All these details are picked up and written into the poem.",
+            "This is a testament to GPT-4's inference capabilities",
+        ],
+        imgSrc: '/vo-ios/poem.gif'
     },
 ]} />
+
+<VimeoView src="https://player.vimeo.com/video/930638652" />
 
 </Prototype>
  
