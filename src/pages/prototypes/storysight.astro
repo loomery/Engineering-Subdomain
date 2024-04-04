@@ -3,6 +3,7 @@ import Prototype from '../../layouts/Prototype.astro';
 import Summary from '../../components/Summary.astro';
 import Goals from '../../components/Goals.astro';
 import ActionsSection from '../../components/ActionsSection.astro';
+import ImageAndDetail from '../../components/ImageDetail.astro';
 import LargeCTACard from '../../components/LargeCTACard.astro';
 ---
 
@@ -118,6 +119,39 @@ import LargeCTACard from '../../components/LargeCTACard.astro';
         <h1 class="text-4xl" data-aos="fade-in">The prototype</h1>
         <iframe src="https://player.vimeo.com/video/844899766?h=ab41a358f5&autoplay=0&loop=0" class="w-[70vw] h-[30vh] lg:w-[900px] lg:h-[700px]" allow="autoplay; fullscreen"
         allowfullscreen data-aos="fade-in" />
+    </section>
+
+    <ImageAndDetail title="Beyond books" prototypeName="Storysight" 
+    details={[
+        {
+            imageSrc: "/storysight/Spatial Journalism.webp",
+            title: "Spatial Journalism",
+            paragraphs: [
+                "Imagine being transported to the scene of a news article or blog post. You could be in the middle of a protest or at the scene of a natural disaster. This could be a new way to consume news.",
+            ]
+        },
+        {
+            imageSrc: "/storysight/Spatial documentary.webp",
+            title: "Immersive Documentaries",
+            paragraphs: [
+            "Documentaries could be taken to the next level with a Storysight-like spatial app. Picture being in the middle of a historical event or at the scene of a scientific discovery or standing among pre-historic dinosaurs.",
+            ]
+        },
+    ]} />
+
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+        <div class="space-y-4" data-aos="fade-up" data-aos-delay="0">
+            <p class="text-3xl">"There is a lot of potential for new and exciting products in this space and I think Storysight proves that"</p>
+            <p class="text-lg">- Tom Holmes, Software Engineer @ Loomery</p>
+        </div>
+        <div class="space-y-4" data-aos="fade-up" data-aos-delay="200">
+            <p class="text-3xl">"This is so good"</p>
+            <p class="text-lg">- Brett Thornton, Co-Founder @ Loomery</p>
+        </div>
+        <div class="space-y-4" data-aos="fade-up" data-aos-delay="400">
+            <p class="text-3xl">"I like pretty pictures"</p>
+            <p class="text-lg">- John Doe, Secret Agent @ MI6</p>
+        </div>
     </section>
 
     <LargeCTACard href='https://apps.apple.com/gb/app/storysight/id6476205286'>
