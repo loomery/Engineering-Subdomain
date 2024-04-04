@@ -1,0 +1,15 @@
+---
+interface Props {
+    src: string,
+};
+
+const { src } = Astro.props;
+---
+
+<section class="flex flex-col items-center space-y-8">
+    <h1 class="text-4xl" data-aos="fade-in">The prototype</h1>
+    <iframe src={src} 
+    class="w-[70vw] h-[30vh] lg:w-[900px] lg:h-[700px]" 
+    allow="autoplay; fullscreen"
+    allowfullscreen data-aos="fade-in" />
+</section>

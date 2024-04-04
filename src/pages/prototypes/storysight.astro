@@ -5,6 +5,8 @@ import Goals from '../../components/Goals.astro';
 import ActionsSection from '../../components/ActionsSection.astro';
 import ImageAndDetail from '../../components/ImageDetail.astro';
 import LargeCTACard from '../../components/LargeCTACard.astro';
+import VimeoView from '../../components/VimeoView.astro';
+import Testimonies from '../../components/Testimonies.astro';
 ---
 
 <Prototype filename="storysight" title="Jump inside the story with Storysight"
@@ -115,11 +117,7 @@ import LargeCTACard from '../../components/LargeCTACard.astro';
         </div>
     </section>
 
-    <section class="flex flex-col items-center space-y-8">
-        <h1 class="text-4xl" data-aos="fade-in">The prototype</h1>
-        <iframe src="https://player.vimeo.com/video/844899766?h=ab41a358f5&autoplay=0&loop=0" class="w-[70vw] h-[30vh] lg:w-[900px] lg:h-[700px]" allow="autoplay; fullscreen"
-        allowfullscreen data-aos="fade-in" />
-    </section>
+    <VimeoView src='https://player.vimeo.com/video/844899766?h=ab41a358f5&autoplay=0&loop=0' />
 
     <ImageAndDetail title="Beyond books" prototypeName="Storysight" 
     details={[
@@ -128,31 +126,33 @@ import LargeCTACard from '../../components/LargeCTACard.astro';
             title: "Spatial Journalism",
             paragraphs: [
                 "Imagine being transported to the scene of a news article or blog post. You could be in the middle of a protest or at the scene of a natural disaster. This could be a new way to consume news.",
+                "This can give a new perspective on the news and allow the reader to feel more connected to the story. It could also be used to provide a more immersive experience for readers who are visually impaired.",
             ]
         },
         {
             imageSrc: "/storysight/Spatial documentary.webp",
             title: "Immersive Documentaries",
             paragraphs: [
-            "Documentaries could be taken to the next level with a Storysight-like spatial app. Picture being in the middle of a historical event or at the scene of a scientific discovery or standing among pre-historic dinosaurs.",
+                "Documentaries could be taken to the next level with a Storysight-like spatial app. Picture being in the middle of a historical event or at the scene of a scientific discovery or standing among pre-historic dinosaurs.",
+                "This would offer a new dimension to the learning experience and could help people to better understand the subject matter especially for readers with learning diffculties such as dyslexia.",
             ]
         },
     ]} />
 
-    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
-        <div class="space-y-4" data-aos="fade-up" data-aos-delay="0">
-            <p class="text-3xl">"There is a lot of potential for new and exciting products in this space and I think Storysight proves that"</p>
-            <p class="text-lg">- Tom Holmes, Software Engineer @ Loomery</p>
-        </div>
-        <div class="space-y-4" data-aos="fade-up" data-aos-delay="200">
-            <p class="text-3xl">"This is so good"</p>
-            <p class="text-lg">- Brett Thornton, Co-Founder @ Loomery</p>
-        </div>
-        <div class="space-y-4" data-aos="fade-up" data-aos-delay="400">
-            <p class="text-3xl">"I like pretty pictures"</p>
-            <p class="text-lg">- John Doe, Secret Agent @ MI6</p>
-        </div>
-    </section>
+    <Testimonies testimonies={[
+        {
+            quote: "There is a lot of potential for new and exciting products in this space and I think Storysight proves that",
+            author: "Tom Holmes, Software Engineer @ Loomery"
+        },
+        {
+            quote: "This is so good",
+            author: "Brett Thornton, Co-Founder @ Loomery"
+        },
+        {
+            quote: "I like pretty pictures",
+            author: "John Doe, Secret Agent @ MI6"
+        },
+    ]} />
 
     <LargeCTACard href='https://apps.apple.com/gb/app/storysight/id6476205286'>
         <img src="/storysight/icon.png" class="w-52 rounded-full mx-auto m-8">
