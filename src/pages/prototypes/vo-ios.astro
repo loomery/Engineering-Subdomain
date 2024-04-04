@@ -1,12 +1,14 @@
 ---
 import ActionsSection from "../../components/ActionsSection.astro";
 import Goals from "../../components/Goals.astro";
+import ImageDetail from "../../components/ImageDetail.astro";
 import Summary from "../../components/Summary.astro";
 import VimeoView from "../../components/VimeoView.astro";
 import Prototype from "../../layouts/Prototype.astro";
+import LargeCTACard from "../../components/LargeCTACard.astro";
 ---
 
-<Prototype filename="vo-ios" title="Generate narration for any video" 
+<Prototype filename="vo-ios" title="Generating narration for any video" 
     subtitle="Take any video and generate a transcription and VoiceOver for it in any voice or style." 
     heroSrcArray={[
         '/vo-ios/vo-ios-hero.png',
@@ -54,8 +56,9 @@ import Prototype from "../../layouts/Prototype.astro";
         paragraphs: [
             "Here we are using a stock video of a penalty shootout to generate some VoiceOver commentry for it. The twist being that we can choose from a variety of voices and styles.",
             "We can choose the style to be a poem, and the persona to be of David Attinborough. The result is what you see here in the gif, a decent attempt at a poetic commentary of the penalty shootout in the video (full video below).",
-            "The commentry is impressively accurate to what is going on in the video - inferring that its of a penalty shootout for starters - and takes into account the sequence of events, like the striker stepping forwad and the keeper subsequently crouching. All these details are picked up and written into the poem.",
-            "This is a testament to GPT-4's inference capabilities",
+            "The commentry is impressively accurate to what is going on in the video - inferring that its of an indoor penalty shootout for starters - and takes into account the sequence of events, like the striker stepping forwad and the keeper subsequently crouching. All these details are picked up and written into the poem.",
+            "This is a testament to GPT-4's inference capabilities, and why it is so powerful for many use cases, generating VoiceOver being one of them.",
+            "Of course you don't have to make GPT follow a particular style or persona, you could fine-tune the model however you'd like to get the results you want. The possibilities are endless.",
         ],
         imgSrc: '/vo-ios/poem.gif'
     },
@@ -63,5 +66,34 @@ import Prototype from "../../layouts/Prototype.astro";
 
 <VimeoView src="https://player.vimeo.com/video/930638652" />
 
-</Prototype>
+<ImageDetail title="More than meets the eye" prototypeName="VoiceOver" details={[
+    {
+        imageSrc: "/vo-ios/Visually Impaired Person.webp",
+        title: "Provide accessibility to video content",
+        paragraphs: [
+            "A huge benefit this feature could provide is making video content more accessible to those with visual impairments, such as the blind or partially sighted. ",
+            "If your existing platform relies heavily on video content, this could be a game changer for your users and opens up the opportunity to aquire new users.",
+        ]
+    },
+    {
+        imageSrc: "/vo-ios/workspace data labeling.webp",
+        title: "Data labeling for vast video libraries",
+        paragraphs: [
+            "The transcription feature alone could also be used to label vast video libraries, making them more searchable and discoverable.",
+            "This is a very labouriuous task for a human to do, this could be automated, saving you time and money.",
+        ]
+    },
+    {
+        imageSrc: "/vo-ios/Studio Interface Conversion.webp",
+        title: "Creating new audio content for podcasts from existing video content",
+        paragraphs: [
+            "With mediums like podcasts growing in popularity, this video to VoiceOver feature would make sense to quickly generate a detailed audio description mid-show of what the visual content is portraying.",
+        ]
+    },
+]}/>
+
+<LargeCTACard href="https://www.loomery.com/contact-us">
+    <h1 class="text-3xl">Ready to for a chat?</h1>
+    <p class="text-xl">Loomery can help you build great PC3 products with cutting edge tools and technologies like this!</p>
+</LargeCTACard>
  
