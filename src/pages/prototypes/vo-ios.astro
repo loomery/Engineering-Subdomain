@@ -6,94 +6,62 @@ import Summary from "../../components/Summary.astro";
 import VimeoView from "../../components/VimeoView.astro";
 import Prototype from "../../layouts/Prototype.astro";
 import LargeCTACard from "../../components/LargeCTACard.astro";
+import Testimonies from "../../components/Testimonies.astro";
 ---
 
-<Prototype filename="vo-ios" title="Generating narration for any video" 
-    subtitle="Take any video and generate a transcription and VoiceOver for it in any voice or style." 
-    heroSrcArray={[
-        '/vo-ios/vo-ios-hero.png',
-        '/vo-ios/vo-ios-hero-2.png',
-    ]}>
+<Prototype filename="vo-ios" title="Generating narration for any video"
+    subtitle="Take any video and generate a transcription and VoiceOver for it in any voice or style."
+    heroSrcArray={[ '/vo-ios/vo-ios-hero.png' , '/vo-ios/vo-ios-hero-2.png' , ]}>
 
-    <Summary 
-    icons={["/ML.svg"]} 
-    technologies={[
-        "GPT-4 Turbo with Vision",
-        "Whisper v3",
-    ]} 
-    tools={[
-        "Xcode",
-        "OpenAI API",
-    ]} 
-    features={[
-        "Generate VoiceOver for any video",
-        "Choose from a variety of voices and styles",
-        "Transcribe videos",
-    ]} 
-    developers={[
-        { name: "Tom Holmes", website: "https://github.com/tommy-holmes" },
-    ]}
-    />
+    <Summary icons={["/ML.svg"]} technologies={[ "GPT-4 Turbo with Vision" , "Whisper v3" , ]} tools={[ "Xcode"
+        , "OpenAI API" , ]} features={[ "Generate VoiceOver for any video"
+        , "Choose from a variety of voices and styles" , "Transcribe videos" , ]} developers={[ { name: "Tom Holmes" ,
+        website: "https://github.com/tommy-holmes" }, ]} />
 
-    <Goals title="The why" goals={[
-        "See if we could make video content more accessible to those with visual impairments",
-        "Allow creators to generate VoiceOver for their videos in any voice or style",
-        "Push GPT-4 Turbo with Vision to its limits by combining it with Whisper and see what use cases we could come up with",
-    ]} />
+    <Goals title="The why"
+        goals={[ "See if we could make video content more accessible to those with visual impairments"
+        , "Allow creators to generate VoiceOver for their videos in any voice or style"
+        , "Push GPT-4 Turbo with Vision to its limits by combining it with Whisper and see what use cases we could come up with"
+        , ]} />
 
-<ActionsSection actions={[
-    {
-        title: "Transcribing a video with GPT-4's Vision capabilities",
-        paragraphs: [
-            "The first step is to upload a video to the app. The video is then transformed into a series of static images and sent to GPT-4 Turbo with Vision for transcription.",
-            "This is because, currently, GPT-4 Turbo cannot transcribe videos directly, so we have to break it down into a series of images first, like a slideshow verison of the video.",
-            "The idea is to give GPT-4 enough context, along with any user settings like style and persona, to understand the video and generate detailed a transcription.",
-        ],
-        imgSrc: '/vo-ios/empty-state.gif'
-    },
-    {
-        title: "Generating VoiceOver with Whisper v3",
-        paragraphs: [
-            "Here we are using a stock video of a penalty shootout to generate some VoiceOver commentry for it. The twist being that we can choose from a variety of voices and styles.",
-            "We can choose the style to be a poem, and the persona to be of David Attinborough. The result is what you see here in the gif, a decent attempt at a poetic commentary of the penalty shootout in the video (full video below).",
-            "The commentry is impressively accurate to what is going on in the video - inferring that its of an indoor penalty shootout for starters - and takes into account the sequence of events, like the striker stepping forwad and the keeper subsequently crouching. All these details are picked up and written into the poem.",
-            "This is a testament to GPT-4's inference capabilities, and why it is so powerful for many use cases, generating VoiceOver being one of them.",
-            "Of course you don't have to make GPT follow a particular style or persona, you could fine-tune the model however you'd like to get the results you want. The possibilities are endless.",
-        ],
-        imgSrc: '/vo-ios/poem.gif'
-    },
-]} />
+    <ActionsSection actions={[ { title: "Transcribing a video with GPT-4's Vision capabilities" , paragraphs:
+        [ "The first step is to upload a video to the app. The video is then transformed into a series of static images and sent to GPT-4 Turbo with Vision for transcription."
+        , "This is because, currently, GPT-4 Turbo cannot transcribe videos directly, so we have to break it down into a series of images first, like a slideshow verison of the video."
+        , "The idea is to give GPT-4 enough context, along with any user settings like style and persona, to understand the video and generate detailed a transcription."
+        , ], imgSrc: '/vo-ios/empty-state.gif' }, { title: "Generating VoiceOver with Whisper v3" , paragraphs:
+        [ "Here we are using a stock video of a penalty shootout to generate some VoiceOver commentry for it. The twist being that we can choose from a variety of voices and styles."
+        , "We can choose the style to be a poem, and the persona to be of David Attinborough. The result is what you see here in the gif, a decent attempt at a poetic commentary of the penalty shootout in the video (full video below)."
+        , "The commentry is impressively accurate to what is going on in the video - inferring that its of an indoor penalty shootout for starters - and takes into account the sequence of events, like the striker stepping forwad and the keeper subsequently crouching. All these details are picked up and written into the poem."
+        , "This is a testament to GPT-4's inference capabilities, and why it is so powerful for many use cases, generating VoiceOver being one of them."
+        , "Of course you don't have to make GPT follow a particular style or persona, you could fine-tune the model however you'd like to get the results you want. The possibilities are endless."
+        , ], imgSrc: '/vo-ios/poem.gif' }, ]} />
 
-<VimeoView src="https://player.vimeo.com/video/930638652" />
+    <VimeoView src="https://player.vimeo.com/video/930638652" />
 
-<ImageDetail title="More than meets the eye" prototypeName="VoiceOver" details={[
-    {
-        imageSrc: "/vo-ios/Visually Impaired Person.webp",
-        title: "Provide accessibility to video content",
-        paragraphs: [
-            "A huge benefit this feature could provide is making video content more accessible to those with visual impairments, such as the blind or partially sighted. ",
-            "If your existing platform relies heavily on video content, this could be a game changer for your users and opens up the opportunity to aquire new users.",
-        ]
-    },
-    {
-        imageSrc: "/vo-ios/workspace data labeling.webp",
-        title: "Data labeling for vast video libraries",
-        paragraphs: [
-            "The transcription feature alone could also be used to label vast video libraries, making them more searchable and discoverable.",
-            "This is a very labouriuous task for a human to do, this could be automated, saving you time and money.",
-        ]
-    },
-    {
-        imageSrc: "/vo-ios/Studio Interface Conversion.webp",
-        title: "Creating new audio content for podcasts from existing video content",
-        paragraphs: [
-            "With mediums like podcasts growing in popularity, this video to VoiceOver feature would make sense to quickly generate a detailed audio description mid-show of what the visual content is portraying.",
-        ]
-    },
-]}/>
+    <ImageDetail title="More than meets the eye" prototypeName="VoiceOver" details={[ { "imageSrc"
+        : "/vo-ios/finance.jpg" , "title"
+        : "Enhancing Financial Services Accessibility through Video Content" , "paragraphs" :
+        [ "Enhancing accessibility for visually impaired clients, our feature significantly broadens the reach of your financial advisories and market analysis videos. This inclusivity not only aligns with compliance standards but also taps into a wider audience, fostering greater client trust and loyalty."
+        , "Incorporating this feature into your platform can revolutionise user experience for those with visual impairments, potentially expanding your client base by making financial insights more accessible."
+        ] }, { "imageSrc" : "/vo-ios/ecommerce.jpg" , "title"
+        : "Streamlining Product Discovery with Automated Video Labeling" , "paragraphs" :
+        [ "Automate the labeling of your product video library to make your offerings more searchable and discoverable. This technology can dramatically enhance user experience, making it easier for customers to find exactly what they're looking for."
+        , "This process not only saves time but also optimizes your inventory management and improves SEO, driving more traffic to your site."
+        ] }, { "imageSrc" : "/vo-ios/education.jpg" , "title"
+        : "Enriching Educational Materials with Audio Content" , "paragraphs" :
+        [ "Adapting video lectures and educational materials into audio content through our video to VoiceOver feature opens up new avenues for learning. It caters to auditory learners and provides flexibility for students to learn on-the-go, enhancing the educational offering."
+        ] } ]} />
 
-<LargeCTACard href="https://www.loomery.com/contact-us">
-    <h1 class="text-3xl">Ready to for a chat?</h1>
-    <p class="text-xl">Loomery can help you build great PC3 products with cutting edge tools and technologies like this!</p>
-</LargeCTACard>
- 
+    <Testimonies testimonies={[ {
+        quote: "I think this is a powerful new tool that could be used in a varierty of ways and is fairly simple to implement."
+        , author: "Tom Holmes, Software Engineer @ Loomery" , }, {
+        quote: "I think this is a powerful new tool that could be used in a varierty of ways and is fairly simple to implement."
+        , author: "Tim Checkley, Co-Founder @ Loomery" , }, { quote: "I think" ,
+        author: "Tom Holmes, Software Engineer @ Loomery" , }, ]} />
+
+    <LargeCTACard href="https://www.loomery.com/contact-us">
+        <h1 class="text-3xl">Ready for a chat?</h1>
+        <p class="text-xl">Loomery can help you build great PC3 products with cutting edge tools and technologies like
+            this!</p>
+    </LargeCTACard>
+</Prototype>
