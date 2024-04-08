@@ -1,4 +1,6 @@
 ---
+import LargeCTACard from '../components/LargeCTACard.astro';
+
 interface Props {
 filename: string;
 title: string;
@@ -78,6 +80,12 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 
 	<main class="m-8 space-y-48 mb-32 md:px-32 md:py-16">
 		<slot />
+
+		<LargeCTACard href="https://www.loomery.com/contact-us" bgColor="bg-brand-dark">
+			<h1 class="text-3xl">Ready for a chat?</h1>
+			<p class="text-xl">Loomery can help you build great PC3 products with cutting edge tools and technologies like
+				this!</p>
+		</LargeCTACard>
 
 		<section class="text-center space-y-4 flex flex-col items-center px-4 md:px-0">
 			<h1 class="text-3xl">Follow Loomery</h1>
