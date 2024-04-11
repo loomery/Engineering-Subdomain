@@ -1,19 +1,18 @@
 import {defineConfig, isDev} from 'sanity'
-import {visionTool} from '@sanity/vision'
 import {structureTool} from 'sanity/structure'
-import {schemaTypes} from './schemaTypes'
-import {getStartedPlugin} from './plugins/sanity-plugin-tutorial'
+import {schemaTypes} from './loomery-lab/schemaTypes'
+import {getStartedPlugin} from './loomery-lab/plugins/sanity-plugin-tutorial'
 
 const devOnlyPlugins = [getStartedPlugin()]
 
 export default defineConfig({
-  name: 'default',
+  name: 'loomery-lab',
   title: 'Loomery LAB',
 
   projectId: '84596ftn',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool(), ...(isDev ? devOnlyPlugins : [])],
+  plugins: [structureTool(), ...(isDev ? devOnlyPlugins : [])],
 
   schema: {
     types: schemaTypes,
