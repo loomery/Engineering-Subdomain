@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
-
 import tailwind from "@astrojs/tailwind";
+
+import sanity from "@sanity/astro";
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
@@ -9,7 +11,7 @@ export default defineConfig({
   // trailingSlash: "always",
   output: "static",
   build: {
-    format: "directory",
+    format: "directory"
     // assetsPrefix: ".",
     // assetsPrefix: "Loomery-Lab-Prod/", // for gh-pages
   },
@@ -17,13 +19,21 @@ export default defineConfig({
     build: {
       rollupOptions: {
         output: {
-          assetFileNames: "assets/asset.[hash][extname]",
+          assetFileNames: "assets/asset.[hash][extname]"
         }
       }
     }
   },
   server: {
-    tailwindConfig: './tailwind.config.js',
+    tailwindConfig: './tailwind.config.js'
   },
-  integrations: [tailwind()]
+  integrations: [
+    tailwind(), 
+    sanity({
+      projectId: "q7j3q9j1",
+      dataset: "production",
+      useCdn: false
+    }), 
+    react(),
+  ]
 });
