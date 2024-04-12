@@ -1,35 +1,35 @@
 ---
 import { sanityClient } from "sanity:client";
-import { type Slug } from "@sanity/types";
+import { type Slug, type ImageAsset } from "@sanity/types";
 import Prototype from "../../layouts/Prototype.astro";
+import { urlForImage } from "../../sanity/urlForImage";
 
 export async function getStaticPaths() {
   const posts = await sanityClient.fetch(`*[_type == "labReport"]`);
 
   return posts.map(({ 
-    slug, title, subtitle 
+    slug, title, subtitle, headerImageAssets
   }: { 
     slug: Slug, 
     title: string,
-    subtitle: string
+    subtitle: string,
+    headerImageAssets: ImageAsset[]
   }) => {
+    const headerImageUrls = headerImageAssets
+        .map((asset: ImageAsset) => urlForImage(asset).url);
+        
     return {
       params: { slug: slug.current },
-      props: { title, subtitle },
+      props: { title, subtitle, headerImageUrls },
     };
   });
 }
 
 const { slug  } = Astro.params;
-const { title, subtitle } = Astro.props;
+const { title, subtitle, headerImageUrls } = Astro.props;
 ---
 
-<Prototype 
+<Prototype
   title={title} slug={slug} subtitle={subtitle}
-  heroSrcArray={[
-    '/storysight/war-storysight.png', 
-    "/storysight/wizOz.png", 
-    "/storysight/greatGaz.png",
-    "/storysight/warNPeace.png",
-  ]}>
+  heroSrcArray={headerImageUrls}>
 </Prototype>
