@@ -1,0 +1,35 @@
+---
+import { sanityClient } from "sanity:client";
+import { type Slug } from "@sanity/types";
+import Prototype from "../../layouts/Prototype.astro";
+
+export async function getStaticPaths() {
+  const posts = await sanityClient.fetch(`*[_type == "labReport"]`);
+
+  return posts.map(({ 
+    slug, title, subtitle 
+  }: { 
+    slug: Slug, 
+    title: string,
+    subtitle: string
+  }) => {
+    return {
+      params: { slug: slug.current },
+      props: { title, subtitle },
+    };
+  });
+}
+
+const { slug  } = Astro.params;
+const { title, subtitle } = Astro.props;
+---
+
+<Prototype 
+  title={title} slug={slug} subtitle={subtitle}
+  heroSrcArray={[
+    '/storysight/war-storysight.png', 
+    "/storysight/wizOz.png", 
+    "/storysight/greatGaz.png",
+    "/storysight/warNPeace.png",
+  ]}>
+</Prototype>

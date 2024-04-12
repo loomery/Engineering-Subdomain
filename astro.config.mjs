@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
 
+import tailwind from "@astrojs/tailwind";
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
 
@@ -36,5 +36,5 @@ export default defineConfig({
       studioBasePath: "/studio"
     }), 
     react(),
-  ]
+  ],
 });

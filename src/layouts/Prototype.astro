@@ -2,21 +2,18 @@
 import LargeCTACard from '../components/LargeCTACard.astro';
 
 interface Props {
-filename: string;
+slug: string;
 title: string;
 subtitle: string;
 heroSrcArray: string[];
 }
 
 const {
-filename,
+slug,
 title,
 subtitle,
 heroSrcArray,
 } = Astro.props;
-
-// Convert the filename to snake case
-const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 ---
 
 <!doctype html>
@@ -33,14 +30,14 @@ const filenameSnakeCase = filename.toLowerCase().replace(/ /g, '_');
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content={`https://lab.loomery.com/prototypes/${filenameSnakeCase}`} />
+	<meta property="og:url" content={`https://lab.loomery.com/prototypes/${slug}`} />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={subtitle} />
 	<meta property="og:image" content={heroSrcArray[0]} />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content={`https://lab.loomery.com/prototypes/${filenameSnakeCase}`} />
+	<meta property="twitter:url" content={`https://lab.loomery.com/prototypes/${slug}`} />
 	<meta property="twitter:title" content={title} />
 	<meta property="twitter:description" content={subtitle} />
 	<meta property="twitter:image" content={heroSrcArray[0]} />
