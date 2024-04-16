@@ -1,6 +1,6 @@
 ---
 import { sanityClient } from "sanity:client";
-import { type Slug, type ImageAsset } from "@sanity/types";
+import { type Slug, type Image } from "@sanity/types";
 import Prototype from "../../layouts/Prototype.astro";
 import { urlForImage } from "../../sanity/urlForImage";
 
@@ -9,14 +9,13 @@ export async function getStaticPaths() {
 
   return posts.map(({ 
     slug, title, subtitle, headerImageAssets
-  }: { 
+  }: {
     slug: Slug, 
     title: string,
     subtitle: string,
-    headerImageAssets: ImageAsset[]
+    headerImageAssets: Image[]
   }) => {
-    const headerImageUrls = headerImageAssets
-        .map((asset: ImageAsset) => urlForImage(asset).url);
+    const headerImageUrls = headerImageAssets.map((asset: Image) => urlForImage(asset).url())
         
     return {
       params: { slug: slug.current },

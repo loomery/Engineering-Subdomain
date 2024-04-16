@@ -25,5 +25,12 @@ export const labReportType = defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'headerImageAssets',
+      title: 'Hero Images',
+      type: 'array',
+      of: [{ type: 'image' }],
+      validation: (Rule) => Rule.required().min(1),
+    }),
   ],
 })
