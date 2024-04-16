@@ -134,6 +134,12 @@ heroSrcArray,
 				return; // Exit if parsing fails or data is not as expected
 			}
 
+			if (!(images.length >= 1)) {
+				// If there is only one image, set it as the background image
+				heroSection.style.backgroundImage = `url('${images[0]}')`;
+				return; // Exit early if there is only one image
+			}
+
 			// Proceed with the assumption that `images` is a non-empty array of strings
 			const imageContainers: HTMLElement[] = images.slice(0, images.length).map((src, index) => {
 				const div = document.createElement('div');
