@@ -31,7 +31,7 @@ export const prototypeType = defineType({
       type: 'array',
       of: [{
         type: 'reference',
-        to: [{ type: 'tagsType' }],
+        to: [{ type: 'tagType' }],
       }],
       validation: (Rule) => Rule.required().min(1),
     }),
