@@ -36,7 +36,7 @@ export async function fetchDeveloper(ref: string): Promise<Developer> {
 
 export async function fetchTags(): Promise<Tag[]> {
     return await client.fetch(
-        groq`*[_type == "tagType"]`
+        `*[_type == "tagType"]`
     );
 }
 

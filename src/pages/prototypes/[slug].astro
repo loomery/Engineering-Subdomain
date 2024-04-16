@@ -3,33 +3,33 @@ import { sanityClient } from "sanity:client";
 import { type Slug, type Image } from "@sanity/types";
 import Prototype from "../../layouts/Prototype.astro";
 import { urlForImage } from "../../sanity/urlForImage";
-import { fetchTag, type PrototypeSchema, type Tag } from "../../utils/sanity";
+import { fetchTag, fetchTags, type Developer, type PrototypeSchema, type Tag } from "../../utils/sanity";
 import Summary from "../../components/Summary.astro";
 import { prefetch } from "astro:prefetch";
 
 export async function getStaticPaths() {
-  const prototypes = await sanityClient.fetch(`*[_type == "prototype"]`);
+  const prototypes = await sanityClient.fetch(`*[_type == "prototype"]{..., tags[]->, developers[]->}`);
 
   return prototypes.map((prototype: PrototypeSchema) => {
     const heroImageUrls = prototype.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
+    const tagImgs = prototype.tags.map((tag: Tag) => tag.icon);
+    const tagIcons = tagImgs.map((icon: Image) => urlForImage(icon).url());
     
     return {
       params: { slug: prototype.slug.current },
-      props: { prototype, heroImageUrls },
+      props: { prototype, heroImageUrls, tagIcons },
     };
   });
 }
 
 const { slug } = Astro.params;
-const { prototype, heroImageUrls  }: {
+const { prototype, heroImageUrls, tagIcons  }: {
   prototype: PrototypeSchema, 
-  heroImageUrls: string[]
+  heroImageUrls: string[],
+  tagIcons: string[]
   } = Astro.props;
 
-// fetchTag(prototype.tags[0]._id).then((tag: Tag) => {
-//   console.log(tag);
-// });
-const tagIcons = ["/XR.svg"]
+console.log(prototype);
 ---
 
 <Prototype
