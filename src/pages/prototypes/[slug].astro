@@ -3,32 +3,36 @@ import { sanityClient } from "sanity:client";
 import { type Slug, type Image } from "@sanity/types";
 import Prototype from "../../layouts/Prototype.astro";
 import { urlForImage } from "../../sanity/urlForImage";
+import { fetchTag, type PrototypeSchema, type Tag } from "../../utils/sanity";
+import Summary from "../../components/Summary.astro";
+import { prefetch } from "astro:prefetch";
 
 export async function getStaticPaths() {
-  const posts = await sanityClient.fetch(`*[_type == "labReport"]`);
+  const posts = await sanityClient.fetch(`*[_type == "prototype"]`);
 
-  return posts.map(({ 
-    slug, title, subtitle, headerImageAssets
-  }: {
-    slug: Slug, 
-    title: string,
-    subtitle: string,
-    headerImageAssets: Image[]
-  }) => {
-    const headerImageUrls = headerImageAssets.map((asset: Image) => urlForImage(asset).url())
-        
+  return posts.map((prototype: PrototypeSchema) => {
+    const heroImageUrls = prototype.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
+    const tagIcons = ["XR.png"]
+    
     return {
-      params: { slug: slug.current },
-      props: { title, subtitle, headerImageUrls },
+      params: { slug: prototype.slug.current },
+      props: { prototype, heroImageUrls, tagIcons },
     };
   });
 }
 
-const { slug  } = Astro.params;
-const { title, subtitle, headerImageUrls } = Astro.props;
+const { slug } = Astro.params;
+const { prototype, heroImageUrls, tagIcons  }: {
+  prototype: PrototypeSchema, 
+  heroImageUrls: string[],
+  tagIcons: string[]
+  } = Astro.props;
 ---
 
 <Prototype
-  title={title} slug={slug} subtitle={subtitle}
-  heroSrcArray={headerImageUrls}>
+  title={prototype.title} slug={slug} subtitle={prototype.subtitle}
+  heroSrcArray={heroImageUrls}>
+
+  <Summary icons={tagIcons} technologies={prototype.technologies} 
+  tools={prototype.tools} features={prototype.keyFeatures} developers={prototype.developers} />
 </Prototype>
