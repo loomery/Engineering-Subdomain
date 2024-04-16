@@ -5,6 +5,7 @@ interface Props {
 slug: string;
 title: string;
 subtitle: string;
+keywords: string;
 heroSrcArray: string[];
 }
 
@@ -12,6 +13,7 @@ const {
 slug,
 title,
 subtitle,
+keywords,
 heroSrcArray,
 } = Astro.props;
 ---
@@ -32,6 +34,10 @@ heroSrcArray,
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={`https://lab.loomery.com/prototypes/${slug}`} />
 	<meta property="og:title" content={title} />
+	<meta
+      name="keywords"
+	content={keywords + ", Loomery, Loomery Lab, Loomery Prototypes, Loomery Technologies, Loomery Experimentation, Emerging Technologies, Loomery Innovation"}
+    />
 	<meta property="og:description" content={subtitle} />
 	<meta property="og:image" content={heroSrcArray[0]} />
 

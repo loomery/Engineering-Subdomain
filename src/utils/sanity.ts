@@ -56,6 +56,7 @@ export interface PrototypeSchema {
     title: string;
     slug: Slug;
     subtitle: string;
+    keywords: string;
     tags: Tag[];
     heroImageAssets: Image[];
     technologies: string[];

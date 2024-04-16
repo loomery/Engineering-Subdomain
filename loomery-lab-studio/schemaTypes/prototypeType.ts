@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 
 export const prototypeType = defineType({
   name: 'prototype',
-  title: 'Prototype',
+  title: 'Prototypes',
   type: 'document',
   fields: [
     defineField({
@@ -26,6 +26,13 @@ export const prototypeType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'keywords',
+      title: 'Keywords',
+      type: 'string',
+      description: 'Specific to this prototype, choose about 5. EXCLUDE: Loomery, Loomery Lab, Loomery Prototypes, Loomery Technologies, Loomery Experimentation, Emerging Technologies, Loomery Innovation',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',
@@ -37,7 +44,7 @@ export const prototypeType = defineType({
     }),
     defineField({
       name: 'heroImageAssets',
-      description: 'Images for the hero, the first image will be the main image',
+      description: "Images for the hero, the first image will be the main image used in the site's meta tags.",
       title: 'Hero Images',
       type: 'array',
       of: [{ type: 'image' }],
@@ -75,4 +82,11 @@ export const prototypeType = defineType({
       validation: (Rule) => Rule.required().min(1),
     })
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'subtitle',
+      image: 'heroImageAssets.0',
+    }
+  }
 })
