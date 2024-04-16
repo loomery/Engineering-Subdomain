@@ -74,7 +74,6 @@ export interface Developer {
 
 export interface Tag {
     _type: "tagType";
-    _ref: string;
     _id: string;
     title: string;
     icon: Image;

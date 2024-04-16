@@ -8,25 +8,28 @@ import Summary from "../../components/Summary.astro";
 import { prefetch } from "astro:prefetch";
 
 export async function getStaticPaths() {
-  const posts = await sanityClient.fetch(`*[_type == "prototype"]`);
+  const prototypes = await sanityClient.fetch(`*[_type == "prototype"]`);
 
-  return posts.map((prototype: PrototypeSchema) => {
+  return prototypes.map((prototype: PrototypeSchema) => {
     const heroImageUrls = prototype.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
-    const tagIcons = ["XR.png"]
     
     return {
       params: { slug: prototype.slug.current },
-      props: { prototype, heroImageUrls, tagIcons },
+      props: { prototype, heroImageUrls },
     };
   });
 }
 
 const { slug } = Astro.params;
-const { prototype, heroImageUrls, tagIcons  }: {
+const { prototype, heroImageUrls  }: {
   prototype: PrototypeSchema, 
-  heroImageUrls: string[],
-  tagIcons: string[]
+  heroImageUrls: string[]
   } = Astro.props;
+
+// fetchTag(prototype.tags[0]._id).then((tag: Tag) => {
+//   console.log(tag);
+// });
+const tagIcons = ["/XR.svg"]
 ---
 
 <Prototype

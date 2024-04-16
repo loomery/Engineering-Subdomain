@@ -7,6 +7,20 @@ import ImageAndDetail from '../../components/ImageDetail.astro';
 import LargeCTACard from '../../components/LargeCTACard.astro';
 import VimeoView from '../../components/VimeoView.astro';
 import Testimonies from '../../components/Testimonies.astro';
+import type { Developer } from '../../utils/sanity';
+
+const developers: Developer[] = [
+    {
+    name: "Tom Holmes",
+    website: "",
+    _type: 'developerType',
+    _id: '',
+    image: {
+        src: '',
+        alt: ''
+    }
+},
+]
 ---
 
 <Prototype slug="storysight" title="Jump inside the story with Storysight"
@@ -29,14 +43,7 @@ import Testimonies from '../../components/Testimonies.astro';
         "Fully immersive books",
         "A new dimension for content consuption",
         "AI assistance with understanding writing techniques and the story"
-    ]} developers={
-        [
-            {
-                name: "Tom Holmes",
-                website: "https://github.com/tommy-holmes"
-            },
-        ]
-    } />
+    ]} developers={developers} />
 
     <Goals 
         title='Why did we build Storysight?' 
