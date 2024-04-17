@@ -59,10 +59,15 @@ export interface PrototypeSchema {
     keywords: string;
     tags: Tag[];
     heroImageAssets: Image[];
-    technologies: string[];
-    tools: string[];
-    keyFeatures: string[];
-    contributors: Contributor[];
+    summary: Summary;
+}
+
+export interface Summary {
+  _type: "summaryObject";
+  technologies: string[];
+  tools: string[];
+  keyFeatures: string[];
+  contributors: Contributor[];
 }
 
 export interface Contributor {
