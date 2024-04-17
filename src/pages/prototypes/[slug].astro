@@ -8,7 +8,18 @@ import Summary from "../../components/Summary.astro";
 import Goals from "../../components/Goals.astro";
 
 export async function getStaticPaths() {
-  const prototypes = await sanityClient.fetch(`*[_type == "prototype"]{..., tags[]->, contributors[]->}`);
+  const groq = `
+  *[_type == "prototype"]{
+    ..., 
+    summary{
+      ...,
+      contributors[]->,
+    },
+    tags[]->
+  }
+`;
+
+  const prototypes = await sanityClient.fetch(groq);
 
   return prototypes.map((prototype: PrototypeSchema) => {
     const heroImageUrls = prototype.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
