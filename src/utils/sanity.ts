@@ -60,6 +60,7 @@ export interface PrototypeSchema {
     tags: Tag[];
     heroImageAssets: Image[];
     summary: Summary;
+    goals: Goals;
 }
 
 export interface Summary {
@@ -68,6 +69,12 @@ export interface Summary {
   tools: string[];
   keyFeatures: string[];
   contributors: Contributor[];
+}
+
+export interface Goals {
+  _type: "goalsObject";
+  heading: string;
+  goals: string[];
 }
 
 export interface Contributor {

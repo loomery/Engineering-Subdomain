@@ -9,7 +9,7 @@ export const summaryObject = defineType({
           name: 'summary',
           title: 'Summary',
         },
-      ],
+    ],
     fields: [
         defineField({
             name: 'technologies',
@@ -42,5 +42,8 @@ export const summaryObject = defineType({
             }],
             validation: (Rule) => Rule.required().min(1),
           })
-    ]
+    ],
+    options: {
+        collapsible: true,
+    },
 })

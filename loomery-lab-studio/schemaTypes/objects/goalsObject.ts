@@ -1,13 +1,19 @@
 import {defineField, defineType} from 'sanity'
 
 export const goalsObject = defineType({
-    name: 'goals',
+    name: 'goalsObject',
     title: 'Goals',
     type: 'object',
+    fieldsets: [
+        {
+          name: 'goals',
+          title: 'Goals',
+        },
+    ],
     fields: [
         defineField({
             name: 'heading',
-            title: 'Goals heading',
+            title: 'Heading',
             type: 'string',
             validation: (Rule) => Rule.required(),
         }),
@@ -16,7 +22,10 @@ export const goalsObject = defineType({
             title: 'Goals',
             type: 'array',
             of: [{ type: 'string' }],
-            validation: (Rule) => Rule.required(),
-          }),
-    ]
+            validation: (Rule) => Rule.required().min(1),
+        }),
+    ],
+    options: {
+        collapsible: true,
+    },
 })

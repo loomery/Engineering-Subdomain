@@ -55,6 +55,11 @@ export const prototypeType = defineType({
       title: 'Summary',
       type: 'summaryObject'
     },
+    {
+      name: 'goals',
+      title: 'Goals',
+      type: 'goalsObject'
+    },
   ],
   preview: {
     select: {
