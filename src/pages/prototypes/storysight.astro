@@ -7,13 +7,13 @@ import ImageAndDetail from '../../components/ImageDetail.astro';
 import LargeCTACard from '../../components/LargeCTACard.astro';
 import VimeoView from '../../components/VimeoView.astro';
 import Testimonies from '../../components/Testimonies.astro';
-import type { Developer } from '../../utils/sanity';
+import type { Contributor } from '../../utils/sanity';
 
-const developers: Developer[] = [
+const contributors: Contributor[] = [
     {
     name: "Tom Holmes",
-    website: "",
-    _type: 'developerType',
+    url: "",
+    _type: 'contributorType',
     _id: '',
     image: {
         src: '',
@@ -25,6 +25,7 @@ const developers: Developer[] = [
 
 <Prototype slug="storysight" title="Jump inside the story with Storysight"
     subtitle="Pairing GenML and spatial computing for a truely unique and immersive reading expirience"
+    keywords=''
     heroSrcArray={[
         '/storysight/war-storysight.png', 
         "/storysight/wizOz.png", 
@@ -43,7 +44,7 @@ const developers: Developer[] = [
         "Fully immersive books",
         "A new dimension for content consuption",
         "AI assistance with understanding writing techniques and the story"
-    ]} developers={developers} />
+    ]} contributors={contributors} />
 
     <Goals 
         title='Why did we build Storysight?' 

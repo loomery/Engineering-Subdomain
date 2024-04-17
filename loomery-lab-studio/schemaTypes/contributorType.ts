@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
-export const developerType = defineType({
-    name: 'developerType',
-    title: 'Developer',
+export const contributorType = defineType({
+    name: 'contributorType',
+    title: 'Contributor',
     type: 'document',
     fields: [
         defineField({

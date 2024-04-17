@@ -3,12 +3,11 @@ import { sanityClient } from "sanity:client";
 import { type Slug, type Image } from "@sanity/types";
 import Prototype from "../../layouts/Prototype.astro";
 import { urlForImage } from "../../sanity/urlForImage";
-import { fetchTag, fetchTags, type Developer, type PrototypeSchema, type Tag } from "../../utils/sanity";
+import { type PrototypeSchema, type Tag } from "../../utils/sanity";
 import Summary from "../../components/Summary.astro";
-import { prefetch } from "astro:prefetch";
 
 export async function getStaticPaths() {
-  const prototypes = await sanityClient.fetch(`*[_type == "prototype"]{..., tags[]->, developers[]->}`);
+  const prototypes = await sanityClient.fetch(`*[_type == "prototype"]{..., tags[]->, contributors[]->}`);
 
   return prototypes.map((prototype: PrototypeSchema) => {
     const heroImageUrls = prototype.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
@@ -35,5 +34,5 @@ const { prototype, heroImageUrls, tagIcons  }: {
   heroSrcArray={heroImageUrls}>
 
   <Summary icons={tagIcons} technologies={prototype.technologies} 
-  tools={prototype.tools} features={prototype.keyFeatures} developers={prototype.developers} />
+  tools={prototype.tools} features={prototype.keyFeatures} contributors={prototype.contributors} />
 </Prototype>

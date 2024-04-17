@@ -72,12 +72,12 @@ export const prototypeType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'developers',
-      title: 'Developers',
+      name: 'contributors',
+      title: 'Contributors',
       type: 'array',
       of: [{
         type: 'reference',
-        to: [{ type: 'developerType' }],
+        to: [{ type: 'contributorType' }],
       }],
       validation: (Rule) => Rule.required().min(1),
     })

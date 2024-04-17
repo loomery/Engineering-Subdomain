@@ -1,5 +1,5 @@
 import { prototypeType } from "./prototypeType";
-import { developerType } from "./developerType";
+import { contributorType } from "./contributorType";
 import { tagType } from "./tagType";
 
-export const schemaTypes = [prototypeType, developerType, tagType];
+export const schemaTypes = [prototypeType, contributorType, tagType];

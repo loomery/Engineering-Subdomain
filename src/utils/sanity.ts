@@ -25,9 +25,9 @@ export async function fetchPrototype(slug: string): Promise<PrototypeSchema> {
     );
 }
 
-export async function fetchDeveloper(ref: string): Promise<Developer> {
+export async function fetchContributor(ref: string): Promise<Contributor> {
     return await client.fetch(
-      groq`*[_type == "developerType" && _id == $ref][0]`,
+      groq`*[_type == "contributorType" && _id == $ref][0]`,
       {
         ref,
       }
@@ -62,14 +62,14 @@ export interface PrototypeSchema {
     technologies: string[];
     tools: string[];
     keyFeatures: string[];
-    developers: Developer[];
+    contributors: Contributor[];
 }
 
-export interface Developer {
-    _type: "developerType";
+export interface Contributor {
+    _type: "contributorType";
     _id: string;
     name: string;
-    website: url;
+    url: url;
     image: Image;
 }
 
