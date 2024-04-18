@@ -1,10 +1,12 @@
 ---
+import type { Contributor as Contributor } from '../utils/sanity';
+
 interface Props {
 icons: string[];
 technologies: string[];
 tools: string[];
 features: string[];
-developers: { name: string, website: string }[];
+contributors: Contributor[];
 }
 
 const {
@@ -12,7 +14,7 @@ icons,
 technologies,
 tools,
 features,
-developers
+contributors
 } = Astro.props;
 ---
 
@@ -52,13 +54,13 @@ developers
         </div>
 
         <div data-aos="fade-up" data-aos-delay="600">
-            <h1 class="text-3xl">Developers</h1>
+            <h1 class="text-3xl">Contributors</h1>
             <ul class="text-lg space-y-2 py-4">
-                {developers.map((developer: {name: string, website: string}) => (
-                <li><a href={developer.website}
+                {contributors.map((contributor: Contributor) => (
+                <li><a href={contributor.url}
                         class="transition-colors duration-200 hover:text-accent"
                         target="_blank"
-                    >{developer.name}
+                    >{contributor.name}
                 </a></li>
                 ))}
             </ul>

@@ -7,10 +7,25 @@ import ImageAndDetail from '../../components/ImageDetail.astro';
 import LargeCTACard from '../../components/LargeCTACard.astro';
 import VimeoView from '../../components/VimeoView.astro';
 import Testimonies from '../../components/Testimonies.astro';
+import type { Contributor } from '../../utils/sanity';
+
+const contributors: Contributor[] = [
+    {
+    name: "Tom Holmes",
+    url: "",
+    _type: 'contributorType',
+    _id: '',
+    image: {
+        src: '',
+        alt: ''
+    }
+},
+]
 ---
 
-<Prototype filename="storysight" title="Jump inside the story with Storysight"
+<Prototype name='Storysight' slug="storysight" title="Jump inside the story with Storysight"
     subtitle="Pairing GenML and spatial computing for a truely unique and immersive reading expirience"
+    keywords=''
     heroSrcArray={[
         '/storysight/war-storysight.png', 
         "/storysight/wizOz.png", 
@@ -29,14 +44,7 @@ import Testimonies from '../../components/Testimonies.astro';
         "Fully immersive books",
         "A new dimension for content consuption",
         "AI assistance with understanding writing techniques and the story"
-    ]} developers={
-        [
-            {
-                name: "Tom Holmes",
-                website: "https://github.com/tommy-holmes"
-            },
-        ]
-    } />
+    ]} contributors={contributors} />
 
     <Goals 
         title='Why did we build Storysight?' 
@@ -48,35 +56,27 @@ import Testimonies from '../../components/Testimonies.astro';
 
     <ActionsSection actions={[
         {
-            title: 'Dreamweaving AI Worlds',
-            paragraphs: [
-                "Most people know that GenML can be used to generate images, but what about 360 degree panoramas? That's where Blockade Labs' Skybox AI comes in. It's a tool that can generate a 360 degree panorama of a scene from a text description.",
-                "Looking to optimise for the best possible results, we used GPT-4 to condense the text from the chapter into a descriptive summary of the setting. We then fed this summary into Skybox AI to generate a skybox image of the setting.",
-            ],
+            heading: 'Dreamweaving AI Worlds',
+            content: `Most people know that GenML can be used to generate images, but what about 360 degree panoramas? That's where Blockade Labs' Skybox AI comes in. 
+            It's a tool that can generate a 360 degree panorama of a scene from a text description. Looking to optimise for the best possible results, we used GPT-4 to condense the text from the chapter into a descriptive summary of the setting. We then fed this summary into Skybox AI to generate a skybox image of the setting.`,
             imgSrc: '/storysight/sci-fi.png'
         },
         {
-            title: 'Ensuring quality generative content',
-            paragraphs: [
-                "As mentioned, we used GPT-4 to provide a descriptive summary of the setting. This allowed us to ensure that the skybox image generated had to most detailed prompt possible minimsing loss of any key details.",
-                "Skybox AI has tricks like placing paraentheses around keywords to emphasis them, so we primed GPT to do this. This allowed us to ensure that the most important details were not lost in the generative process.",
-            ],
+            heading: 'Ensuring quality generative content',
+            content: `As mentioned, we used GPT-4 to provide a descriptive summary of the setting. This allowed us to ensure that the skybox image generated had to most detailed prompt possible minimsing loss of any key details. 
+                Skybox AI has tricks like placing paraentheses around keywords to emphasis them, so we primed GPT to do this. This allowed us to ensure that the most important details were not lost in the generative process.`,
             imgSrc: '/storysight/skybox-empty.gif'
         },
         {
-            title: 'Placing the user in the content',
-            paragraphs: [
-                "In Xcode, we used RealityKit to create a sphere and place the skybox image onto it. We then placed the sphere in the scene with the user at the centre.",
-                "This was done by instantiating a ModelComponent with a sphere mesh with 1000m radius and a Material with the skybox image. We then added the ModelComponent to the scene and set the camera to the user's position. This ends up being what the user sees in app.",
-            ],
+            heading: 'Placing the user in the content',
+            content: `In Xcode, we used RealityKit to create a sphere and place the skybox image onto it. We then placed the sphere in the scene with the user at the centre.
+            This was done by instantiating a ModelComponent with a sphere mesh with 1000m radius and a Material with the skybox image. We then added the ModelComponent to the scene and set the camera to the user's position. This ends up being what the user sees in app.`,
             imgSrc: '/storysight/VP Skybox.gif'
         },
         {
-            title: 'AI powered reading assistant',
-            paragraphs: [
-                "To add even more AI to the mix, we are using GPT-4 to provide a reading assistant. This was done by feeding the text of the chapter into GPT-4 and allowing the user to ask questions about the book.",
-                "The assistant avoids story spoilers and going off topic with a system prompt via the OpenAI API. This allows the user to ask questions like 'Give my a brief recap of events leading up to this chapter' or 'Provide details for each of the charaters in this chapter' and get a response without revealing too much about the book as to give anything away.",
-            ],
+            heading: 'AI powered reading assistant',
+            content: `To add even more AI to the mix, we are using GPT-4 to provide a reading assistant. This was done by feeding the text of the chapter into GPT-4 and allowing the user to ask questions about the book.
+            The assistant avoids story spoilers and going off topic with a system prompt via the OpenAI API. This allows the user to ask questions like 'Give my a brief recap of events leading up to this chapter' or 'Provide details for each of the charaters in this chapter' and get a response without revealing too much about the book as to give anything away.`,
             imgSrc: '/storysight/reading-assistant.png'
         },
     ]} />

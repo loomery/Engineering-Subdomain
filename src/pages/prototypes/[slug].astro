@@ -1,0 +1,56 @@
+---
+import { sanityClient } from "sanity:client";
+import { type Slug, type Image } from "@sanity/types";
+import Prototype from "../../layouts/Prototype.astro";
+import { urlForImage } from "../../sanity/urlForImage";
+import { type PrototypeSchema, type Tag } from "../../utils/sanity";
+import Summary from "../../components/Summary.astro";
+import Goals from "../../components/Goals.astro";
+import ActionsSection from "../../components/ActionsSection.astro";
+
+export async function getStaticPaths() {
+  const groq = `
+  *[_type == "prototype"]{
+    ..., 
+    summary {
+      ...,
+      contributors[]->,
+    },
+    tags[]->
+  }
+`;
+
+  const prototypes = await sanityClient.fetch(groq);
+
+  return prototypes.map((prototype: PrototypeSchema) => {
+    const heroImageUrls = prototype.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
+    const tagImgs = prototype.tags.map((tag: Tag) => tag.icon);
+    const tagIcons = tagImgs.map((icon: Image) => urlForImage(icon).url());
+    
+    return {
+      params: { slug: prototype.slug.current },
+      props: { prototype, heroImageUrls, tagIcons },
+    };
+  });
+}
+
+const { slug } = Astro.params;
+const { prototype, heroImageUrls, tagIcons  }: {
+  prototype: PrototypeSchema, 
+  heroImageUrls: string[],
+  tagIcons: string[]
+  } = Astro.props;
+---
+
+<Prototype
+  name={prototype.prototypeName}
+  title={prototype.title} slug={slug} subtitle={prototype.subtitle} keywords={prototype.keywords}
+  heroSrcArray={heroImageUrls}>
+
+  <Summary icons={tagIcons} technologies={prototype.summary.technologies} 
+  tools={prototype.summary.tools} features={prototype.summary.keyFeatures} contributors={prototype.summary.contributors} />
+
+  <Goals title={prototype.goals.heading} goals={prototype.goals.goals} />
+
+  <ActionsSection actions={prototype.actions} />
+</Prototype>

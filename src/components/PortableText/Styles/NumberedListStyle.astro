@@ -1,0 +1,18 @@
+---
+import type { Props as $, ListItem } from "astro-portabletext/types";
+
+export type Props = $<ListItem>;
+
+const { node, index, isInline, ...attrs } = Astro.props;
+---
+
+<ol {...attrs} data-listitem><slot /></ol>
+
+<style>
+  ol {
+    list-style: decimal;
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    padding-left: 1.625em
+  }
+</style>
