@@ -1,5 +1,5 @@
 import { createClient } from "@sanity/client";
-// import type { PortableTextBlock } from "@portabletext/types";
+import type { PortableTextBlock } from "@portabletext/types";
 import type { Image, Slug } from "@sanity/types";
 import groq from "groq";
 
@@ -88,7 +88,7 @@ export interface Action {
   _type: "actionObject";
   image: Image
   heading: string;
-  content: string[];
+  content: PortableTextBlock;
 }
 
 export interface Contributor {

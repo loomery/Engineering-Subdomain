@@ -1,0 +1,21 @@
+---
+import { PortableText as PortableTextInternal } from 'astro-portabletext'
+import { mergeComponents } from 'astro-portabletext/utils';
+import BulletListStyle from './Styles/BulletListStyle.astro';
+import NumberedListStyle from './Styles/NumberedListStyle.astro';
+
+const { portableText } = Astro.props;
+
+// Define custom components for bullet and numbered lists
+const customComponents = {
+    list: {
+        bullet: BulletListStyle,
+        number: NumberedListStyle,
+    }
+};
+
+// Merge custom components with any default or previously defined components
+const components = mergeComponents(customComponents, {});
+---
+
+<PortableTextInternal value={portableText} components={components} />
