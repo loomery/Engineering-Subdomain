@@ -53,6 +53,7 @@ export interface PrototypeSchema {
     _type: "prototypeType";
     _id: string;
     _createdAt: string;
+    prototypeName: string;
     title: string;
     slug: Slug;
     subtitle: string;

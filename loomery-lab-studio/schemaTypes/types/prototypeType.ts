@@ -6,7 +6,7 @@ export const prototypeType = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
+      name: 'prototypeName',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
@@ -15,9 +15,14 @@ export const prototypeType = defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'title',
+        source: 'prototypeName',
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'title',
+      type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({

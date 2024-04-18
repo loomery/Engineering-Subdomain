@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   const groq = `
   *[_type == "prototype"]{
     ..., 
-    summary{
+    summary {
       ...,
       contributors[]->,
     },
@@ -39,11 +39,10 @@ const { prototype, heroImageUrls, tagIcons  }: {
   heroImageUrls: string[],
   tagIcons: string[]
   } = Astro.props;
-
-  console.log(prototype);
 ---
 
 <Prototype
+  name={prototype.prototypeName}
   title={prototype.title} slug={slug} subtitle={prototype.subtitle} keywords={prototype.keywords}
   heroSrcArray={heroImageUrls}>
 

@@ -3,6 +3,7 @@ import LargeCTACard from '../components/LargeCTACard.astro';
 
 interface Props {
 slug: string;
+name: string;
 title: string;
 subtitle: string;
 keywords: string;
@@ -11,6 +12,7 @@ heroSrcArray: string[];
 
 const {
 slug,
+name,
 title,
 subtitle,
 keywords,
@@ -28,12 +30,12 @@ heroSrcArray,
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	<link rel="stylesheet" href="/global.css" />
 	<meta name="generator" content={Astro.generator} />
-	<title>{title} - Loomery Lab</title>
+	<title>{name} | Loomery Lab</title>
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={`https://lab.loomery.com/prototypes/${slug}`} />
-	<meta property="og:title" content={title} />
+	<meta property="og:title" content={name + " | Loomery Lab"} />
 	<meta
       name="keywords"
 	content={keywords + ", Loomery, Loomery Lab, Loomery Prototypes, Loomery Technologies, Loomery Experimentation, Emerging Technologies, Loomery Innovation"}
@@ -44,7 +46,7 @@ heroSrcArray,
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content={`https://lab.loomery.com/prototypes/${slug}`} />
-	<meta property="twitter:title" content={title} />
+	<meta property="twitter:title" content={name + " | Loomery Lab"} />
 	<meta property="twitter:description" content={subtitle} />
 	<meta property="twitter:image" content={heroSrcArray[0]} />
 </head>
