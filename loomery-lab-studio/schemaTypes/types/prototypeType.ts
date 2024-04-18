@@ -65,6 +65,11 @@ export const prototypeType = defineType({
       title: 'Goals',
       type: 'goalsObject'
     },
+    {
+      name: 'actions',
+      title: 'Actions',
+      type: 'actionsObject'
+    },
   ],
   preview: {
     select: {

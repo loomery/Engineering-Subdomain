@@ -6,6 +6,7 @@ import { urlForImage } from "../../sanity/urlForImage";
 import { type PrototypeSchema, type Tag } from "../../utils/sanity";
 import Summary from "../../components/Summary.astro";
 import Goals from "../../components/Goals.astro";
+import ActionsSection from "../../components/ActionsSection.astro";
 
 export async function getStaticPaths() {
   const groq = `
@@ -39,6 +40,8 @@ const { prototype, heroImageUrls, tagIcons  }: {
   heroImageUrls: string[],
   tagIcons: string[]
   } = Astro.props;
+
+  console.log(prototype)
 ---
 
 <Prototype
@@ -50,4 +53,6 @@ const { prototype, heroImageUrls, tagIcons  }: {
   tools={prototype.summary.tools} features={prototype.summary.keyFeatures} contributors={prototype.summary.contributors} />
 
   <Goals title={prototype.goals.heading} goals={prototype.goals.goals} />
+
+  <ActionsSection actions={prototype.actions} />
 </Prototype>

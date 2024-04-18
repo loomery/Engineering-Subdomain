@@ -62,6 +62,7 @@ export interface PrototypeSchema {
     heroImageAssets: Image[];
     summary: Summary;
     goals: Goals;
+    actions: Actions;
 }
 
 export interface Summary {
@@ -76,6 +77,18 @@ export interface Goals {
   _type: "goalsObject";
   heading: string;
   goals: string[];
+}
+
+export interface Actions {
+  _type: "actionsObject";
+  actions: Action[];
+}
+
+export interface Action {
+  _type: "actionObject";
+  image: Image
+  heading: string;
+  content: string[];
 }
 
 export interface Contributor {
