@@ -12,16 +12,16 @@ export const tryItOutObject = defineType({
             type: 'url',
         }),
         defineField({
-            name: 'icon',
-            title: 'Icon',
-            type: 'image',
-            hidden: ({ parent }) => !parent?.link,
-        }),
-        defineField({
             name: 'heading',
             title: 'Heading',
             description: 'If you are going to include this CTA, if nothing else include this heading.',
             type: 'string',
+            hidden: ({ parent }) => !parent?.link,
+        }),
+        defineField({
+            name: 'icon',
+            title: 'Icon',
+            type: 'image',
             hidden: ({ parent }) => !parent?.link,
         }),
         defineField({
