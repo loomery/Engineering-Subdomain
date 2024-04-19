@@ -8,6 +8,7 @@ export const tryItOutObject = defineType({
         defineField({
             name: 'link',
             title: 'Link',
+            description: 'A link to were the reader can try the prototype out for themselves.',
             type: 'url',
         }),
         defineField({
@@ -39,7 +40,7 @@ export const tryItOutObject = defineType({
              hidden: ({ parent }) => !parent?.link,
         }),
         defineField({
-            name: 'appStoreBagde',
+            name: 'includeAppStoreBadge',
             title: 'Include App Store Badge',
             type: 'boolean',
             hidden: ({ parent }) => !parent?.link,

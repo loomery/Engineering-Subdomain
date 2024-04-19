@@ -5,8 +5,8 @@ import { tagType } from "./types/tagType";
 import { summaryObject } from "./objects/summaryObject";
 import { goalsObject } from "./objects/goalsObject";
 import { actionObject, actionsObject } from "./objects/actionsObject";
-import { useCasesObject, useCaseObject } from "./objects/UseCasesObject";
-import { testimonyObject } from "./objects/TestimonyObject";
+import { useCasesObject, useCaseObject } from "./objects/useCasesObject";
+import { testimonyObject } from "./objects/testimonyObject";
 import { tryItOutObject } from "./objects/tryItOutObject";
 
 export const schemaTypes = [
