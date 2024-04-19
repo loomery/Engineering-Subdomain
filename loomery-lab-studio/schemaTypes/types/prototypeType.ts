@@ -85,6 +85,11 @@ export const prototypeType = defineType({
       title: 'Testimonies',
       type: 'testimonyObject'
     },
+    {
+      name: 'tryItOut',
+      title: 'Try it out CTA',
+      type: 'tryItOutObject'
+    },
   ],
   preview: {
     select: {

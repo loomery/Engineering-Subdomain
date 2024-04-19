@@ -7,9 +7,10 @@ import { goalsObject } from "./objects/goalsObject";
 import { actionObject, actionsObject } from "./objects/actionsObject";
 import { useCasesObject, useCaseObject } from "./objects/UseCasesObject";
 import { testimonyObject } from "./objects/TestimonyObject";
+import { tryItOutObject } from "./objects/tryItOutObject";
 
 export const schemaTypes = [
     prototypeType, contributorType, tagType, summaryObject,
     goalsObject, actionObject, actionsObject, useCasesObject, 
-    useCaseObject, testimonyObject
+    useCaseObject, testimonyObject, tryItOutObject
 ];

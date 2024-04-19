@@ -67,6 +67,7 @@ export interface PrototypeSchema {
     actions: Actions;
     useCases: UseCases;
     testimonies: Testimonies;
+    tryItOut: TryItOutCTA;
 }
 
 export interface Summary {
@@ -111,6 +112,15 @@ export interface UseCase {
 export interface Testimonies {
   _type: "testimonyObject";
   testimonies: { quote: string, author: string }[];
+}
+
+export interface TryItOutCTA {
+  _type: "tryItOutObject";
+  link: url;
+  icon: Image
+  heading: string;
+  content: PortableTextBlock;
+  includeAppStoreBadge: boolean;
 }
 
 export interface Contributor {
