@@ -7,6 +7,9 @@ import { type PrototypeSchema, type Tag } from "../../utils/sanity";
 import Summary from "../../components/Summary.astro";
 import Goals from "../../components/Goals.astro";
 import ActionsSection from "../../components/ActionsSection.astro";
+import VideoView from "../../components/VideoView.astro";
+import ImageAndDetail from "../../components/ImageDetail.astro";
+import { prefetch } from "astro:prefetch";
 
 export async function getStaticPaths() {
   const groq = `
@@ -53,4 +56,9 @@ const { prototype, heroImageUrls, tagIcons  }: {
   <Goals title={prototype.goals.heading} goals={prototype.goals.goals} />
 
   <ActionsSection actions={prototype.actions} />
+
+  {prototype.videoUrl ? <VideoView src={prototype.videoUrl} /> : null}
+
+  <ImageAndDetail title={prototype.useCases.title} prototypeName={prototype.prototypeName} 
+    useCases={prototype.useCases.useCases} />
 </Prototype>

@@ -1,37 +1,42 @@
 import {defineField, defineType} from 'sanity'
 
-export const actionsObject = defineType({
-    name: 'actionsObject',
-    title: 'Actions',
+export const useCasesObject = defineType({
+    name: 'useCasesObject',
+    title: 'Use Cases',
     type: 'object',
     fieldsets: [
         {
-          name: 'actions',
-          title: 'Actions',
+          name: 'useCases',
+          title: 'Use Cases',
         },
     ],
     fields: [
         defineField({
-            name: 'actions',
-            title: 'Actions',
-            type: 'array',
-            of: [{ type: 'actionObject' }],
-            validation: (Rule) => Rule.required().min(1),
+            name: 'title',
+            title: 'Title',
+            type: 'string',
         }),
+        defineField({
+            name: 'useCases',
+            title: 'Use Cases',
+            type: 'array',
+            of: [{ type: 'useCaseObject' }],
+          }),
     ],
     options: {
         collapsible: true,
     },
 })
 
-export const actionObject = defineType({
-    name: 'actionObject',
-    title: 'Action',
+export const useCaseObject = defineType({
+    name: 'useCaseObject',
+    title: 'Use Case',
     type: 'object',
     fields: [
         defineField({
             name: 'image',
             title: 'Image',
+            description: 'Best to use a 16:9 image',
             type: 'image',
             validation: (Rule) => Rule.required(),
         }),
@@ -44,7 +49,7 @@ export const actionObject = defineType({
         defineField({
             name: 'content',
             type: 'array',
-            description: 'The body text for the step we took to build the prototype. Make sure to prefix "https://" for any links.',
+            description: 'The body text describing the use case. Make sure to prefix "https://" for any links.',
             title: 'Content',
             of: [{ 
                 type: 'block',

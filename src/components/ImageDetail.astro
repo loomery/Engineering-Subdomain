@@ -1,20 +1,18 @@
 ---
-interface ImageAndDetail {
-    imageSrc: string,
-    title: string,
-    paragraphs: string[];
-};
+import { urlForImage } from '../sanity/urlForImage';
+import type { UseCase } from '../utils/sanity';
+import PortableText from './PortableText/PortableText.astro';
 
 interface Props {
     title: string,
     prototypeName: string,
-    details: ImageAndDetail[];
+    useCases: UseCase[],
 };
 
 const {
     title,
     prototypeName,
-    details
+    useCases
 } = Astro.props;
 ---
 
@@ -25,18 +23,16 @@ const {
     </div>
 
     <div class="space-y-28">
-    {details.map(detail => (
+    {useCases.map(useCase => (
         <div class="space-y-8">
-            <img src={detail.imageSrc} data-aos="fade-in">
+            <img src={urlForImage(useCase.image).url()} data-aos="fade-in">
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
                 <div class="col-span-1 space-y-4" data-aos="fade-in" data-aos-delay="0">
-                    <h1 class="text-2xl">{detail.title}</h1>
+                    <h1 class="text-2xl">{useCase.heading}</h1>
                 </div>
-                <div class="col-span-2 space-y-4" data-aos="fade-in" data-aos-delay="200">
-                    {detail.paragraphs.map(paragraph => (
-                        <p class="text-xl">{paragraph}</p>
-                    ))}
+                <div class="col-span-2 space-y-4 text-xl" data-aos="fade-in" data-aos-delay="200">
+                    <PortableText portableText={useCase.content} />
                 </div>
             </div>
         </div>

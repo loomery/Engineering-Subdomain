@@ -38,6 +38,11 @@ export const prototypeType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'videoUrl',
+      title: 'Demo Video URL',
+      type: 'url',
+    }),
+    defineField({
       name: 'tags',
       title: 'Tags',
       type: 'array',
@@ -69,6 +74,11 @@ export const prototypeType = defineType({
       name: 'actions',
       title: 'Actions',
       type: 'actionsObject'
+    },
+    {
+      name: 'useCases',
+      title: 'Use cases',
+      type: 'useCasesObject'
     },
   ],
   preview: {

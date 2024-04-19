@@ -3,7 +3,7 @@ import ActionsSection from "../../components/ActionsSection.astro";
 import Goals from "../../components/Goals.astro";
 import ImageDetail from "../../components/ImageDetail.astro";
 import Summary from "../../components/Summary.astro";
-import VimeoView from "../../components/VimeoView.astro";
+import VideoView from "../../components/VideoView.astro";
 import Prototype from "../../layouts/Prototype.astro";
 import Testimonies from "../../components/Testimonies.astro";
 import type { Contributor } from "../../utils/sanity";
@@ -49,7 +49,7 @@ const contributors: Contributor[] = [
         , "Of course you don't have to make GPT follow a particular style or persona, you could fine-tune the model however you'd like to get the results you want. The possibilities are endless."
         , ], imgSrc: '/vo-ios/poem.gif' }, ]} />
 
-    <VimeoView src="https://player.vimeo.com/video/930638652" />
+    <VideoView src="https://player.vimeo.com/video/930638652" />
 
     <ImageDetail title="More than meets the eye" prototypeName="VoiceOver" details={[ { "imageSrc"
         : "/vo-ios/finance.jpg" , "title"

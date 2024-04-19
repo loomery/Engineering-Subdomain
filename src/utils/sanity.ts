@@ -58,11 +58,13 @@ export interface PrototypeSchema {
     slug: Slug;
     subtitle: string;
     keywords: string;
+    videoUrl: url;
     tags: Tag[];
     heroImageAssets: Image[];
     summary: Summary;
     goals: Goals;
     actions: Actions;
+    useCases: UseCases;
 }
 
 export interface Summary {
@@ -86,6 +88,19 @@ export interface Actions {
 
 export interface Action {
   _type: "actionObject";
+  image: Image
+  heading: string;
+  content: PortableTextBlock;
+}
+
+export interface UseCases {
+  _type: "useCasesObject";
+  title: string;
+  useCases: UseCase[];
+}
+
+export interface UseCase {
+  _type: "useCaseObject";
   image: Image
   heading: string;
   content: PortableTextBlock;
