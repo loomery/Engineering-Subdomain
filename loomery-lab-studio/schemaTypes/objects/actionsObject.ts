@@ -44,6 +44,7 @@ export const actionObject = defineType({
         defineField({
             name: 'content',
             type: 'array',
+            description: 'The body text for the step we took to build the prototype. Make sure to prefix "https://" in any links.',
             title: 'Content',
             of: [{ 
                 type: 'block',

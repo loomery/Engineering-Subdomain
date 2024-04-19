@@ -34,7 +34,7 @@ export default defineConfig({
       dataset: "production",
       useCdn: false,
       studioBasePath: "/studio"
-    }), 
+    }),
     react(),
   ],
 });

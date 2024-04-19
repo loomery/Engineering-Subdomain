@@ -3,6 +3,7 @@ import { PortableText as PortableTextInternal } from 'astro-portabletext'
 import { mergeComponents } from 'astro-portabletext/utils';
 import BulletListStyle from './Styles/BulletListStyle.astro';
 import NumberedListStyle from './Styles/NumberedListStyle.astro';
+import LinkStyle from './Styles/LinkStyle.astro';
 
 const { portableText } = Astro.props;
 
@@ -11,6 +12,9 @@ const customComponents = {
     list: {
         bullet: BulletListStyle,
         number: NumberedListStyle,
+    },
+    mark: {
+        link: LinkStyle,
     }
 };
 
