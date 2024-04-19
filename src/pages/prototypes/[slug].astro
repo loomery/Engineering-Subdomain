@@ -9,7 +9,7 @@ import Goals from "../../components/Goals.astro";
 import ActionsSection from "../../components/ActionsSection.astro";
 import VideoView from "../../components/VideoView.astro";
 import ImageAndDetail from "../../components/ImageDetail.astro";
-import { prefetch } from "astro:prefetch";
+import Testimonies from "../../components/Testimonies.astro";
 
 export async function getStaticPaths() {
   const groq = `
@@ -61,4 +61,6 @@ const { prototype, heroImageUrls, tagIcons  }: {
 
   <ImageAndDetail title={prototype.useCases.title} prototypeName={prototype.prototypeName} 
     useCases={prototype.useCases.useCases} />
+
+  {prototype.testimonies ? <Testimonies testimonies={prototype.testimonies} /> : null}
 </Prototype>

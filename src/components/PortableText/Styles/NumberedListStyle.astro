@@ -6,7 +6,7 @@ export type Props = $<ListItem>;
 const { node, index, isInline, ...attrs } = Astro.props;
 ---
 
-<ol {...attrs} data-listitem><slot /></ol>
+<ol {...attrs} class="space-y-2" data-listitem><slot /></ol>
 
 <style>
   ol {

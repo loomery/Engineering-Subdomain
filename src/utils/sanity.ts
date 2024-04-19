@@ -2,6 +2,7 @@ import { createClient } from "@sanity/client";
 import type { PortableTextBlock } from "@portabletext/types";
 import type { Image, Slug } from "@sanity/types";
 import groq from "groq";
+import { string } from "astro/zod";
 
 export const client = createClient({
     projectId: '84596ftn',
@@ -65,6 +66,7 @@ export interface PrototypeSchema {
     goals: Goals;
     actions: Actions;
     useCases: UseCases;
+    testimonies: Testimonies;
 }
 
 export interface Summary {
@@ -104,6 +106,11 @@ export interface UseCase {
   image: Image
   heading: string;
   content: PortableTextBlock;
+}
+
+export interface Testimonies {
+  _type: "testimonyObject";
+  testimonies: { quote: string, author: string }[];
 }
 
 export interface Contributor {

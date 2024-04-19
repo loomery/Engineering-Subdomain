@@ -1,18 +1,15 @@
 ---
-interface Testimonial {
-    quote: string,
-    author: string
-}
+import type { Testimonies } from '../utils/sanity';
 
 interface Props {
-    testimonies: Testimonial[];
+    testimonies: Testimonies;
 };
 
 const { testimonies } = Astro.props;
 ---
 
-<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
-    {testimonies.map((testimony, index) => (
+<section class={`grid grid-cols-1 ${testimonies.testimonies.length > 1 ? 'md:grid-cols-2' : ''} ${testimonies.testimonies.length > 2 ? 'xl:grid-cols-3' : ''} gap-16`}>
+    {testimonies.testimonies.map((testimony, index) => (
         <div class="space-y-4" data-aos="fade-up" data-aos-delay={index % 3 * 200}>
             <p class="text-3xl">"{testimony.quote}"</p>
             <p class="text-lg">- {testimony.author}</p>

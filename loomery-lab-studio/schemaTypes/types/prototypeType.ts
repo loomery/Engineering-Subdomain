@@ -80,6 +80,11 @@ export const prototypeType = defineType({
       title: 'Use cases',
       type: 'useCasesObject'
     },
+    {
+      name: 'testimonies',
+      title: 'Testimonies',
+      type: 'testimonyObject'
+    },
   ],
   preview: {
     select: {
