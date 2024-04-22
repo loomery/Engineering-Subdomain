@@ -19,9 +19,14 @@ export const techStackObject = defineType({
             of: [{
                 type: 'object',
                 fields: [
-                    { name: 'icon', type: 'image', title: 'Icon' },
-                    { name: 'name', type: 'string', title: 'Name' },
                     { 
+                        name: 'icon', 
+                        description: 'Ideally choose an image as close to 1:1 as possible', 
+                        type: 'image', 
+                        title: 'Icon' 
+                    },
+                    { name: 'name', type: 'string', title: 'Name' },
+                    {
                         name: 'detail', 
                         type: 'array', 
                         title: 'Detail',
