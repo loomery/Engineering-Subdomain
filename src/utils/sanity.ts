@@ -65,6 +65,7 @@ export interface PrototypeSchema {
     summary: Summary;
     goals: Goals;
     actions: Actions;
+    techStack: TechStack;
     useCases: UseCases;
     testimonies: Testimonies;
     tryItOut: TryItOutCTA;
@@ -112,6 +113,11 @@ export interface UseCase {
 export interface Testimonies {
   _type: "testimonyObject";
   testimonies: { quote: string, author: string }[];
+}
+
+export interface TechStack {
+  _type: "techStackObject";
+  tools: { icon: Image, name: string, detail: PortableTextBlock }[];
 }
 
 export interface TryItOutCTA {

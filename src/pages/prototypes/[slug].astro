@@ -12,6 +12,7 @@ import ImageAndDetail from "../../components/ImageDetail.astro";
 import Testimonies from "../../components/Testimonies.astro";
 import LargeCTACard from "../../components/LargeCTACard.astro";
 import PortableText from "../../components/PortableText/PortableText.astro";
+import TechStack from "../../components/TechStack.astro";
 
 export async function getStaticPaths() {
   const groq = `
@@ -58,6 +59,8 @@ const { prototype, heroImageUrls, tagIcons  }: {
   <Goals title={prototype.goals.heading} goals={prototype.goals.goals} />
 
   <ActionsSection actions={prototype.actions} />
+
+  {prototype.techStack ? <TechStack stack={prototype.techStack} /> : null}
 
   {prototype.videoUrl ? <VideoView src={prototype.videoUrl} /> : null}
 

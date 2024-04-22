@@ -76,6 +76,11 @@ export const prototypeType = defineType({
       type: 'actionsObject'
     },
     {
+      name: 'techStack',
+      title: 'Tech stack',
+      type: 'techStackObject'
+    },
+    {
       name: 'useCases',
       title: 'Use cases',
       type: 'useCasesObject'
