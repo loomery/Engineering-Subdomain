@@ -4,6 +4,7 @@ export const testimonyObject = defineType({
     name: 'testimonyObject',
     title: 'Testimonies',
     type: 'object',
+    description: 'The testimonies given to the project. (Optional)',
     fieldsets: [
         {
           name: 'testimonies',
@@ -22,10 +23,10 @@ export const testimonyObject = defineType({
                   { name: 'author', type: 'string', title: 'Author' },
                 ],
             }],
-            validation: (Rule) => Rule.required(),
           })
     ],
     options: {
         collapsible: true,
+        collapsed: true,
     },
 })

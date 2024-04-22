@@ -4,6 +4,7 @@ export const goalsObject = defineType({
     name: 'goalsObject',
     title: 'Goals',
     type: 'object',
+    description: 'The goals of the prototype, what we wanted to discover.',
     fieldsets: [
         {
           name: 'goals',
@@ -27,5 +28,6 @@ export const goalsObject = defineType({
     ],
     options: {
         collapsible: true,
+        collapsed: true,
     },
 })

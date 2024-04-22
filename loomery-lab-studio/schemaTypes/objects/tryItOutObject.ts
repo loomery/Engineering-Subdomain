@@ -4,6 +4,7 @@ export const tryItOutObject = defineType({
     name: 'tryItOutObject',
     title: 'Try It Out CTA',
     type: 'object',
+    description: 'A call to action to try out the prototype. (Optional)',
     fields: [
         defineField({
             name: 'link',
@@ -48,5 +49,6 @@ export const tryItOutObject = defineType({
     ],
     options: {
         collapsible: true,
+        collapsed: true,
     },
 })

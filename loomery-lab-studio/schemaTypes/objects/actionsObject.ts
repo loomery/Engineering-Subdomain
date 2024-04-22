@@ -4,6 +4,7 @@ export const actionsObject = defineType({
     name: 'actionsObject',
     title: 'Actions',
     type: 'object',
+    description: 'The actions/steps taken to build the prototype.',
     fieldsets: [
         {
           name: 'actions',
@@ -21,6 +22,7 @@ export const actionsObject = defineType({
     ],
     options: {
         collapsible: true,
+        collapsed: true,
     },
 })
 

@@ -4,6 +4,7 @@ export const useCasesObject = defineType({
     name: 'useCasesObject',
     title: 'Use Cases',
     type: 'object',
+    description: 'The industry use cases for the technology powering this prototype.',
     fieldsets: [
         {
           name: 'useCases',
@@ -25,6 +26,7 @@ export const useCasesObject = defineType({
     ],
     options: {
         collapsible: true,
+        collapsed: true,
     },
 })
 

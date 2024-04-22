@@ -4,6 +4,7 @@ export const summaryObject = defineType({
     name: 'summaryObject',
     title: 'Summary',
     type: 'object',
+    description: 'The high level summary of the project; tools, technologies, key features, and contributors.',
     fieldsets: [
         {
           name: 'summary',
@@ -45,5 +46,6 @@ export const summaryObject = defineType({
     ],
     options: {
         collapsible: true,
+        collapsed: true,
     },
 })

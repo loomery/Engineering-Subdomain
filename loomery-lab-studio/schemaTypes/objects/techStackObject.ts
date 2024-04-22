@@ -4,6 +4,7 @@ export const techStackObject = defineType({
     name: 'techStackObject',
     title: 'Tech stack',
     type: 'object',
+    description: 'The tech stack used in the project. (Optional)',
     fieldsets: [
         {
           name: 'techStack',
@@ -38,5 +39,6 @@ export const techStackObject = defineType({
     ],
     options: {
         collapsible: true,
+        collapsed: true,
     },
 })
