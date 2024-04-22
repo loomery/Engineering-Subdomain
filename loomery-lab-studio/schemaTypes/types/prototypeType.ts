@@ -100,7 +100,7 @@ export const prototypeType = defineType({
     select: {
       title: 'title',
       subtitle: 'subtitle',
-      image: 'heroImageAssets',
-    }
-  }
+      media: 'heroImageAssets.0.asset',
+    },
+  },
 })
