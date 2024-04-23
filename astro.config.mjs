@@ -6,7 +6,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://tommy-holmes.github.io",
+  site: "https://lab.loomery.com",
   // base: "/Loomery-Lab-Prod", // for gh-pages
   // trailingSlash: "always",
   output: "static",
