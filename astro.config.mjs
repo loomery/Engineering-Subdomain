@@ -33,7 +33,7 @@ export default defineConfig({
       projectId: "84596ftn",
       dataset: "production",
       useCdn: false,
-      studioBasePath: "/studio"
+      studioBasePath: "/admin"
     }),
     react(),
   ],
