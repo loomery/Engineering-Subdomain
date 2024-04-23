@@ -63,17 +63,20 @@ export const prototypeType = defineType({
     {
       name: 'summary',
       title: 'Summary',
-      type: 'summaryObject'
+      type: 'summaryObject',
+      validation: (Rule) => Rule.required()
     },
     {
       name: 'goals',
       title: 'Goals',
-      type: 'goalsObject'
+      type: 'goalsObject',
+      validation: (Rule) => Rule.required()
     },
     {
       name: 'actions',
       title: 'Actions',
-      type: 'actionsObject'
+      type: 'actionsObject',
+      validation: (Rule) => Rule.required()
     },
     {
       name: 'techStack',
@@ -83,7 +86,8 @@ export const prototypeType = defineType({
     {
       name: 'useCases',
       title: 'Use cases',
-      type: 'useCasesObject'
+      type: 'useCasesObject',
+      validation: (Rule) => Rule.required()
     },
     {
       name: 'testimonies',

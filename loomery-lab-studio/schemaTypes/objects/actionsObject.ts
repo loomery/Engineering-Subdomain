@@ -57,7 +57,8 @@ export const actionObject = defineType({
                     {title: 'Bullet', value: 'bullet'},
                     {title: 'Numbered', value: 'number'},
                 ]
-             }]
+             }],
+             validation: (Rule) => Rule.required()
         }),
     ]
 })

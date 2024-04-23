@@ -22,6 +22,7 @@ export const useCasesObject = defineType({
             title: 'Use Cases',
             type: 'array',
             of: [{ type: 'useCaseObject' }],
+            validation: (Rule) => Rule.required().min(1),
           }),
     ],
     options: {
@@ -62,7 +63,8 @@ export const useCaseObject = defineType({
                     {title: 'Bullet', value: 'bullet'},
                     {title: 'Numbered', value: 'number'},
                 ]
-             }]
+             }],
+             validation: (Rule) => Rule.required()
         }),
     ]
 })

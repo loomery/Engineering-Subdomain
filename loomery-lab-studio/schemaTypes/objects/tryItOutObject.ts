@@ -11,13 +11,14 @@ export const tryItOutObject = defineType({
             title: 'Link',
             description: 'A link to were the reader can try the prototype out for themselves.',
             type: 'url',
+            validation: (Rule) => Rule.required()
         }),
         defineField({
             name: 'heading',
             title: 'Heading',
-            description: 'If you are going to include this CTA, if nothing else include this heading.',
             type: 'string',
             hidden: ({ parent }) => !parent?.link,
+            validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'icon',

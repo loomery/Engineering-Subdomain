@@ -40,6 +40,7 @@ export const techStackObject = defineType({
                     },
                 ],
             }],
+            validation: (Rule) => Rule.required().min(1),
           })
     ],
     options: {

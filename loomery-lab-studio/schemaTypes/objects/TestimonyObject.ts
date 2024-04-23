@@ -23,6 +23,7 @@ export const testimonyObject = defineType({
                   { name: 'author', type: 'string', title: 'Author' },
                 ],
             }],
+            validation: (Rule) => Rule.required().min(1),
           })
     ],
     options: {
