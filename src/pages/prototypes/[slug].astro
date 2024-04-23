@@ -62,7 +62,7 @@ const { prototype, heroImageUrls, tagIcons  }: {
 
   {prototype.techStack ? <TechStack stack={prototype.techStack} /> : null}
 
-  {prototype.videoUrl ? <VideoView src={prototype.videoUrl} /> : null}
+  {prototype.videoUrl ? <VideoView src={prototype.videoUrl.toString()} /> : null}
 
   <ImageAndDetail title={prototype.useCases.title} prototypeName={prototype.prototypeName} 
     useCases={prototype.useCases.useCases} />
@@ -70,7 +70,7 @@ const { prototype, heroImageUrls, tagIcons  }: {
   {prototype.testimonies ? <Testimonies testimonies={prototype.testimonies} /> : null}
 
   {prototype.tryItOut ? 
-  <LargeCTACard href={prototype.tryItOut.link} bgColor='bg-slate-700'>
+  <LargeCTACard href={prototype.tryItOut.link.toString()} bgColor='bg-slate-700'>
         {prototype.tryItOut.icon ? <img src={urlForImage(prototype.tryItOut.icon).url()} class="w-52 rounded-full mx-auto m-8"> : null}
         <h1 class="text-4xl transition duration-300 ease-in-out">{prototype.tryItOut.heading}</h1>
         <PortableText portableText={prototype.tryItOut.content} />
