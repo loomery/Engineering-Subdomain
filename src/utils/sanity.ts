@@ -59,7 +59,7 @@ export interface PrototypeSchema {
     slug: Slug;
     subtitle: string;
     keywords: string;
-    videoUrl: url;
+    videoUrl: URL;
     tags: Tag[];
     heroImageAssets: Image[];
     summary: Summary;
@@ -122,7 +122,7 @@ export interface TechStack {
 
 export interface TryItOutCTA {
   _type: "tryItOutObject";
-  link: url;
+  link: URL;
   icon: Image
   heading: string;
   content: PortableTextBlock;
@@ -133,7 +133,7 @@ export interface Contributor {
     _type: "contributorType";
     _id: string;
     name: string;
-    url: url;
+    url: URL;
     image: Image;
 }
 
