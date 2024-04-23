@@ -12,7 +12,10 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "baseUrl": ".",
+    "baseUrl": "..",
+    "paths": {
+        "*": ["loomery-lab-studio/*"]
+    },
     "jsx": "preserve",
     "incremental": true
   },
