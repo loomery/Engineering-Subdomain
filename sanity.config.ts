@@ -11,9 +11,6 @@ export default defineConfig({
 
   projectId: '84596ftn',
   dataset: 'production',
-  build: {
-    basePath: '/loomery-lab-studio',
-  },
 
   plugins: [structureTool(), ...(isDev ? devOnlyPlugins : [])],
 
