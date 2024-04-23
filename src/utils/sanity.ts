@@ -2,7 +2,6 @@ import { createClient } from "@sanity/client";
 import type { PortableTextBlock } from "@portabletext/types";
 import type { Image, Slug } from "@sanity/types";
 import groq from "groq";
-import { string } from "astro/zod";
 
 export const client = createClient({
     projectId: '84596ftn',
