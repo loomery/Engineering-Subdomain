@@ -19,8 +19,8 @@ export const testimonyObject = defineType({
             of: [{
                 type: 'object',
                 fields: [
-                  { name: 'quote', type: 'string', title: 'Quote' },
-                  { name: 'author', type: 'string', title: 'Author' },
+                  { name: 'quote', type: 'string', title: 'Quote', validation: (Rule) => Rule.required() },
+                  { name: 'author', type: 'string', title: 'Author', validation: (Rule) => Rule.required() },
                 ],
             }],
             validation: (Rule) => Rule.required().min(1),
