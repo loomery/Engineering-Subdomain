@@ -11,7 +11,7 @@ export default defineConfig({
   // trailingSlash: "always",
   output: "static",
   build: {
-    format: "directory"
+    format: "file"
     // assetsPrefix: ".",
     // assetsPrefix: "Loomery-Lab-Prod/", // for gh-pages
   },
