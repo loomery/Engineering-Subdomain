@@ -21,6 +21,20 @@ export const prototypeType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'excerpt',
+      type: 'array',
+      description: 'A short description of the prototype.',
+      title: 'Excerpt',
+      of: [{ 
+          type: 'block',
+          styles: [
+              {title: 'Normal', value: 'normal'},
+          ],
+          lists: []
+       }],
+       validation: (Rule) => Rule.required()
+    }),
+    defineField({
       name: 'title',
       type: 'string',
       validation: (Rule) => Rule.required(),
