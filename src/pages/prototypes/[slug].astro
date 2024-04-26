@@ -4,15 +4,15 @@ import { type Image } from "@sanity/types";
 import Prototype from "../../layouts/Prototype.astro";
 import { urlForImage } from "../../sanity/urlForImage";
 import { type PrototypeSchema, type Tag } from "../../utils/sanity";
-import Summary from "../../components/Summary.astro";
-import Goals from "../../components/Goals.astro";
-import ActionsSection from "../../components/ActionsSection.astro";
+import Summary from "../../components/Prototype/Summary.astro";
+import Goals from "../../components/Prototype/Goals.astro";
+import ActionsSection from "../../components/Prototype/ActionsSection.astro";
 import VideoView from "../../components/VideoView.astro";
 import ImageAndDetail from "../../components/ImageDetail.astro";
-import Testimonies from "../../components/Testimonies.astro";
+import Testimonies from "../../components/Prototype/Testimonies.astro";
 import LargeCTACard from "../../components/LargeCTACard.astro";
 import PortableText from "../../components/PortableText/PortableText.astro";
-import TechStack from "../../components/TechStack.astro";
+import TechStack from "../../components/Prototype/TechStack.astro";
 
 export async function getStaticPaths() {
   const groq = `

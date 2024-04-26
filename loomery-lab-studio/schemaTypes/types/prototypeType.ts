@@ -21,6 +21,11 @@ export const prototypeType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'shortVideo',
+      type: 'file',
+      description: 'A short video of the prototype, keep under 30 seconds, 720p, 16:9, with no sound. (Optional)',
+    }),
+    defineField({
       name: 'excerpt',
       type: 'array',
       description: 'A short description of the prototype.',
