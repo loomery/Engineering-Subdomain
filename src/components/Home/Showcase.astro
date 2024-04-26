@@ -25,9 +25,9 @@ link
         <div class="space-y-28">
                 <div class="space-y-8">
                     {videoSrc ? 
-                    <video src={videoSrc.toString()} class="aspect-video" autoplay muted loop data-aos="fade-in" />
+                    <video src={videoSrc.toString()} class="aspect-video bg-gray-800" autoplay muted loop data-aos="fade-in" />
                     :
-                    <img src={urlForImage(heroImage).url()} data-aos="fade-in">}
+                    <img src={urlForImage(heroImage).url()} class="aspect-video bg-gray-800" data-aos="fade-in">}
         
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
                         <div class="col-span-1 space-y-4" data-aos="fade-in" data-aos-delay="0">
