@@ -25,7 +25,7 @@ link
         <div class="space-y-28">
                 <div class="space-y-8">
                     {videoSrc ? 
-                    <video src={videoSrc.toString()} class="aspect-video" autoplay loop data-aos="fade-in" />
+                    <video src={videoSrc.toString()} class="aspect-video" autoplay muted loop data-aos="fade-in" />
                     :
                     <img src={urlForImage(heroImage).url()} data-aos="fade-in">}
         
