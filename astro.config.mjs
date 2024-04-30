@@ -1,8 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 import tailwind from "@astrojs/tailwind";
-import sanity from "@sanity/astro";
-import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
@@ -29,12 +27,5 @@ export default defineConfig({
   },
   integrations: [
     tailwind(), 
-    sanity({
-      projectId: "84596ftn",
-      dataset: "production",
-      useCdn: false,
-      studioBasePath: "/admin"
-    }),
-    react(),
   ],
 });
