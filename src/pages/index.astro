@@ -27,8 +27,8 @@ const { prototypes = await sanityClient.fetch(
 		</div>
 	</section>
 
-	<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-		<div class="col-span-3">
+	<section class="gap-8">
+		<div>
 			<Showcase title={prototypes[0].title}
 			videoSrc={prototypes[0].shortVideo}
 			heroImage={prototypes[0].heroImageAssets[0]}
@@ -36,14 +36,16 @@ const { prototypes = await sanityClient.fetch(
 			link={`/prototypes/${prototypes[0].slug.current}`} />
 		</div>
 
-		{// @ts-ignore
-		prototypes.slice(1, 3).map((prototype, idx) => (
-			<div class="flex justify-center text-center md:text-left md:w-72" data-aos="fade-in" data-aos-delay={idx % 3 * 200}>
-				<VerticalImageDetail title={prototype.title} 
-				heroImage={prototype.heroImageAssets[0]} 
-				link={`prototypes/${prototype.slug.current}`} />
-			</div>
-		))}
+		<div class="flex overflow-x-auto whitespace-nowrap lg:overflow-visible lg:whitespace-normal space-x-8 justify-between">
+			{// @ts-ignore
+			prototypes.slice(1, 3).map((prototype, idx) => (
+				<div class="flex-shrink-0 justify-center text-center md:text-left md:w-72" data-aos="fade-in" data-aos-delay={idx % 3 * 200}>
+					<VerticalImageDetail title={prototype.title} 
+					heroImage={prototype.heroImageAssets[0]} 
+					link={`prototypes/${prototype.slug.current}`} />
+				</div>
+			))}
+		</div>
 	</section>
 
 	{prototypes.length > 3 && (
