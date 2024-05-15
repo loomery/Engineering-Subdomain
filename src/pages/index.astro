@@ -38,7 +38,7 @@ const { prototypes = await sanityClient.fetch(
 
 		<div class="flex overflow-x-auto whitespace-nowrap lg:overflow-visible lg:whitespace-normal space-x-8 justify-between">
 			{// @ts-ignore
-			prototypes.slice(1, 3).map((prototype, idx) => (
+			prototypes.slice(1, 4).map((prototype, idx) => (
 				<div class="flex-shrink-0 justify-center text-center md:text-left md:w-72" data-aos="fade-in" data-aos-delay={idx % 3 * 200}>
 					<VerticalImageDetail title={prototype.title} 
 					heroImage={prototype.heroImageAssets[0]} 
@@ -48,14 +48,14 @@ const { prototypes = await sanityClient.fetch(
 		</div>
 	</section>
 
-	{prototypes.length > 3 && (
+	{prototypes.length > 4 && (
 		<section class="my-48 space-y-8">
 		<div class="flex text-center justify-center">
 			<h1 class="text-3xl text-gray-400" data-aos="zoom-in">More prototypes</h1>
 		</div>
 		<div class="space-y-8">
 			{// @ts-ignore
-			prototypes.slice(3).map((prototype) => (
+			prototypes.slice(4).map((prototype) => (
 				<ImageDetailListCell title={prototype.title}
 				excerpt={prototype.excerpt}
 				heroImage={prototype.heroImageAssets[0]}
