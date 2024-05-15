@@ -56,6 +56,7 @@ export interface PrototypeSchema {
     prototypeName: string;
     title: string;
     slug: Slug;
+    publishedAt: string;
     shortVideo: URL;
     excerpt: PortableTextBlock;
     subtitle: string;
