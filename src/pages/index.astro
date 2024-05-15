@@ -10,12 +10,15 @@ const { prototypes = await sanityClient.fetch(
         title,
         excerpt,
 		heroImageAssets,
+		_createdAt,
 		tags[]->,
 		slug,
         "shortVideo": shortVideo.asset->url,
       }
-      | order(publishedAt desc)`
+      | order(_createdAt desc)`
 ) } = Astro.props;
+
+console.log(prototypes);
 ---
 
 <Layout 
