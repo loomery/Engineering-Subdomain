@@ -16,7 +16,7 @@ const { actions } = Astro.props;
             {/* Image Block */}
             <div data-aos="fade-in" data-aos-delay={`${index % 2 === 0 ? '0' : '200'}`}
                  class={`${index % 2 === 0 ? 'md:order-first' : 'md:order-last'}`}>
-                <img src={urlForImage(action.image).url()} alt="" class="w-full h-auto rounded-lg mb-8 md:mb-0" />
+                <img src={urlForImage(action.image).url()} class="w-full md:max-h-96 object-contain bg-gray-800 rounded-lg mb-8 md:mb-0" />
             </div>
 
             {/* Text Block */}
