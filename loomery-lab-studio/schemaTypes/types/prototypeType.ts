@@ -55,6 +55,14 @@ export const prototypeType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'heroImageAssets',
+      description: "Images for the hero, the first image will be the main image used in the site's meta tags.",
+      title: 'Hero Images',
+      type: 'array',
+      of: [{ type: 'image' }],
+      validation: (Rule) => Rule.required().min(1),
+    }),
+    defineField({
       name: 'keywords',
       title: 'Keywords',
       type: 'string',
@@ -74,14 +82,6 @@ export const prototypeType = defineType({
         type: 'reference',
         to: [{ type: 'tagType' }],
       }],
-      validation: (Rule) => Rule.required().min(1),
-    }),
-    defineField({
-      name: 'heroImageAssets',
-      description: "Images for the hero, the first image will be the main image used in the site's meta tags.",
-      title: 'Hero Images',
-      type: 'array',
-      of: [{ type: 'image' }],
       validation: (Rule) => Rule.required().min(1),
     }),
     {
