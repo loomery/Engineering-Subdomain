@@ -7,13 +7,9 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: "https://lab.loomery.com",
-  // base: "/Loomery-Lab-Prod", // for gh-pages
-  // trailingSlash: "always",
   output: "static",
   build: {
     format: "directory"
-    // assetsPrefix: ".",
-    // assetsPrefix: "Loomery-Lab-Prod/", // for gh-pages
   },
   vite: {
     build: {
@@ -32,7 +28,7 @@ export default defineConfig({
     sanity({
       projectId: "84596ftn",
       dataset: "production",
-      useCdn: false,
+      useCdn: true,
       studioBasePath: "/admin"
     }),
     react(),

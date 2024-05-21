@@ -11,8 +11,33 @@ export default defineConfig({
 
   projectId: '84596ftn',
   dataset: 'production',
+  document: {
+    productionUrl: async (prev, context) => {
+      // context includes the client and other details
+      const {getClient, dataset, document} = context
+      const client = getClient({apiVersion: '2024-05-21'})
 
-  plugins: [structureTool(), ...(isDev ? devOnlyPlugins : [])],
+      if (document._type === 'post') {
+        const slug = await client.fetch(
+          `*[_type == 'routeInfo' && post._ref == $postId][0].slug.current`,
+          {postId: document._id}
+        )
+
+        const params = new URLSearchParams()
+        params.set('preview', 'true')
+        params.set('dataset', dataset)
+
+        return `https://lab.loomery.com/prototypes/${slug}?${params}`
+      }
+
+      return prev
+    }
+  },
+
+  plugins: [
+    structureTool(),
+    ...(isDev ? devOnlyPlugins : [])
+  ],
 
   schema: {
     types: schemaTypes,
