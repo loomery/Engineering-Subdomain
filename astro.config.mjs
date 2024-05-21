@@ -28,7 +28,8 @@ export default defineConfig({
     sanity({
       projectId: "84596ftn",
       dataset: "production",
-      useCdn: true,
+      useCdn: false,
+      perspective: "previewDrafts",
       studioBasePath: "/admin"
     }),
     react(),
