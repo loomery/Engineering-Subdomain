@@ -31,7 +31,7 @@ export default defineConfig({
       dataset: "production",
       perspective: isPreviewMode ? "previewDrafts" : "published",
       useCdn: !isPreviewMode,
-      token: process.env.SANITY_STUDIO_TOKEN,
+      token: isPreviewMode ? process.env.SANITY_STUDIO_TOKEN : undefined,
       studioBasePath: "/admin"
     }),
     react(),
