@@ -8,7 +8,7 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: "https://lab.loomery.com",
-  output: isPreviewMode ? "server" : "static",
+  output: isPreviewMode ? "hybrid" : "static",
   build: {
     format: "directory"
   },
