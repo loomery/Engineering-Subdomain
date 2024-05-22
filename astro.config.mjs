@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import { isPreviewMode } from './src/utils/isPreviewMode';
 
 import tailwind from "@astrojs/tailwind";
 import sanity from "@sanity/astro";
@@ -7,7 +8,7 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: "https://lab.loomery.com",
-  output: "static",
+  output: isPreviewMode ? "server" : "static",
   build: {
     format: "directory"
   },
@@ -28,7 +29,9 @@ export default defineConfig({
     sanity({
       projectId: "84596ftn",
       dataset: "production",
-      useCdn: true,
+      perspective: isPreviewMode ? "previewDrafts" : "published",
+      useCdn: !isPreviewMode,
+      token: process.env.SANITY_STUDIO_TOKEN,
       studioBasePath: "/admin"
     }),
     react(),
