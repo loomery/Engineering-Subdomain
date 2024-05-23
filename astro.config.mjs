@@ -34,5 +34,5 @@ export default defineConfig({
     studioBasePath: "/admin",
     ignoreBrowserTokenWarning: isPreviewMode
   }), react()],
-  adapter: cloudflare()
+  ...(isPreviewMode ? { adapter: cloudflare() } : {})
 });
