@@ -1,4 +1,5 @@
 ---
+import type { GetStaticPaths } from "astro";
 import { sanityClient } from "sanity:client";
 import { urlForImage } from "../../sanity/urlForImage";
 import { type Image } from "@sanity/types";
@@ -29,6 +30,12 @@ const groq = `*[_type == "prototype" && slug.current == $slug] {
     },
     tags[]->
 }[0]`;
+
+export const getStaticPaths = (() => {
+    return {
+        params: { slug: prototype.slug.current }
+    };
+});
 
 const prototype: PrototypeSchema = await sanityClient.fetch(groq, { slug: slug });
 const heroImageUrls = prototype.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
