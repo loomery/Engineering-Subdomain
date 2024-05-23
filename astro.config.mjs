@@ -4,7 +4,7 @@ import { isPreviewMode } from './src/utils/isPreviewMode';
 import tailwind from "@astrojs/tailwind";
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
-import cloudflare from "@astrojs/cloudflare";
+import awsAmplify from 'astro-aws-amplify';
 
 // https://astro.build/config
 export default defineConfig({
@@ -34,5 +34,5 @@ export default defineConfig({
     studioBasePath: "/admin",
     ignoreBrowserTokenWarning: isPreviewMode
   }), react()],
-  ...(isPreviewMode ? { adapter: cloudflare() } : {})
+  ...(isPreviewMode ? { adapter: awsAmplify() } : {})
 });
