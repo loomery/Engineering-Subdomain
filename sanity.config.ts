@@ -23,11 +23,11 @@ export default defineConfig({
           {postId: document._id}
         )
 
-        const params = new URLSearchParams()
-        params.set('preview', 'true')
-        params.set('dataset', dataset)
+        // const params = new URLSearchParams()
+        // params.set('preview', 'true')
+        // params.set('dataset', dataset)
 
-        return `http://localhost:4321/drafts/${slug}?${params}`
+        return `http://localhost:4321/drafts/${slug}`
       }
 
       return prev
