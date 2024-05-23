@@ -50,7 +50,7 @@ export async function fetchTag(ref: string): Promise<Tag> {
 }
 
 export interface PrototypeSchema {
-    _type: "prototypeType";
+    _type: "prototype";
     _id: string;
     _createdAt: string;
     prototypeName: string;

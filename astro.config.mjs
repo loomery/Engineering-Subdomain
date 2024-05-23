@@ -4,6 +4,7 @@ import { isPreviewMode } from './src/utils/isPreviewMode';
 import tailwind from "@astrojs/tailwind";
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,16 +25,14 @@ export default defineConfig({
   server: {
     tailwindConfig: './tailwind.config.js'
   },
-  integrations: [
-    tailwind(), 
-    sanity({
-      projectId: "84596ftn",
-      dataset: "production",
-      perspective: isPreviewMode ? "previewDrafts" : "published",
-      useCdn: !isPreviewMode,
-      token: isPreviewMode ? process.env.SANITY_STUDIO_TOKEN : undefined,
-      studioBasePath: "/admin"
-    }),
-    react(),
-  ],
+  integrations: [tailwind(), sanity({
+    projectId: "84596ftn",
+    dataset: "production",
+    perspective: isPreviewMode ? "previewDrafts" : "published",
+    useCdn: !isPreviewMode,
+    token: isPreviewMode ? process.env.SANITY_STUDIO_TOKEN : undefined,
+    studioBasePath: "/admin",
+    ignoreBrowserTokenWarning: isPreviewMode
+  }), react()],
+  adapter: cloudflare()
 });

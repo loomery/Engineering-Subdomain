@@ -1,57 +1,44 @@
 ---
 import { sanityClient } from "sanity:client";
-import { type Image } from "@sanity/types";
 import { urlForImage } from "../../sanity/urlForImage";
-import { type PrototypeSchema, type Tag } from "../../utils/sanity";
+import { type Image } from "@sanity/types";
+import type { PrototypeSchema, Tag } from "../../utils/sanity";
 
-import Prototype from "../../layouts/Prototype.astro";
-import Summary from "../../components/Prototype/Summary.astro";
-import Goals from "../../components/Prototype/Goals.astro";
+import LargeCTACard from "../../components/LargeCTACard.astro";
 import ActionsSection from "../../components/Prototype/ActionsSection.astro";
-import VideoView from "../../components/VideoView.astro";
+import Goals from "../../components/Prototype/Goals.astro";
+import Summary from "../../components/Prototype/Summary.astro";
+import TechStack from "../../components/Prototype/TechStack.astro";
 import ImageAndDetail from "../../components/ImageDetail.astro";
 import Testimonies from "../../components/Prototype/Testimonies.astro";
-import LargeCTACard from "../../components/LargeCTACard.astro";
+import VideoView from "../../components/VideoView.astro";
 import PortableText from "../../components/PortableText/PortableText.astro";
-import TechStack from "../../components/Prototype/TechStack.astro";
+import Prototype from "../../layouts/Prototype.astro";
 
-export async function getStaticPaths() {
-  const groq = `
-  *[_type == "prototype"]{
+export const prerender = false;
+
+Astro.response.headers.set('Cache-Control', 'public, max-age=0');
+
+const { slug } = Astro.params;
+
+const groq = `*[_type == "prototype" && slug.current == $slug] {
     ..., 
     summary {
       ...,
       contributors[]->,
     },
     tags[]->
-  }
-`;
+}[0]`;
 
-  const prototypes = await sanityClient.fetch(groq);
-
-  return prototypes.map((prototype: PrototypeSchema) => {
-    const heroImageUrls = prototype.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
-    const tagImgs = prototype.tags.map((tag: Tag) => tag.icon);
-    const tagIcons = tagImgs.map((icon: Image) => urlForImage(icon).url());
-    
-    return {
-      params: { slug: prototype.slug.current },
-      props: { prototype, heroImageUrls, tagIcons },
-    };
-  });
-}
-
-const { slug } = Astro.params;
-const { prototype, heroImageUrls, tagIcons  }: {
-  prototype: PrototypeSchema, 
-  heroImageUrls: string[],
-  tagIcons: string[]
-  } = Astro.props;
+const prototype: PrototypeSchema = await sanityClient.fetch(groq, { slug: slug });
+const heroImageUrls = prototype.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
+const tagImgs = prototype.tags.map((tag: Tag) => tag.icon);
+const tagIcons = tagImgs.map((icon: Image) => urlForImage(icon).url());
 ---
 
 <Prototype
   name={prototype.prototypeName}
-  title={prototype.title} slug={slug} subtitle={prototype.subtitle} keywords={prototype.keywords}
+  title={prototype.title} slug={prototype.slug.current} subtitle={prototype.subtitle} keywords={prototype.keywords}
   heroSrcArray={heroImageUrls}>
 
   <Summary icons={tagIcons} technologies={prototype.summary.technologies} 
