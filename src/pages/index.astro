@@ -45,7 +45,7 @@ const { prototypes = await sanityClient.fetch(
 			{// @ts-ignore
 			prototypes.slice(1, 4).map((prototype, idx) => (
 				<div class="flex-shrink-0 justify-center text-center md:text-left md:w-72" data-aos="fade-in" data-aos-delay={idx % 3 * 200}>
-					<VerticalImageDetail title={prototype.title} tags={prototype.tags.map((tag: Tag) => tag.title).join(", ")}
+					<VerticalImageDetail title={prototype.title} tags={prototype.tags.map((tag: Tag) => tag.title).join(" / ")}
 					heroImage={prototype.heroImageAssets[0]} 
 					link={`prototypes/${prototype.slug.current}`} />
 				</div>
@@ -61,7 +61,7 @@ const { prototypes = await sanityClient.fetch(
 		<div class="space-y-8">
 			{// @ts-ignore
 			prototypes.slice(4).map((prototype) => (
-				<ImageDetailListCell title={prototype.title} tags={prototype.tags.map((tag: Tag) => tag.title).join(", ")}
+				<ImageDetailListCell title={prototype.title} tags={prototype.tags.map((tag: Tag) => tag.title).join(" / ")}
 				excerpt={prototype.excerpt}
 				heroImage={prototype.heroImageAssets[0]}
 				link={`prototypes/${prototype.slug.current}`} />
