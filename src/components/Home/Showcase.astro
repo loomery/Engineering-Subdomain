@@ -4,7 +4,7 @@ import type { Image, PortableTextBlock } from "sanity";
 import PortableText from "../PortableText/PortableText.astro";
 
 interface Props {
-  title: string;
+  tags: string;
   videoSrc: URL;
   heroImage: Image;
   excerpt: PortableTextBlock;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const {
-title,
+tags,
 videoSrc,
 heroImage,
 excerpt,
@@ -31,7 +31,7 @@ link
         
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
                         <div class="col-span-1 space-y-4" data-aos="fade-in" data-aos-delay="0">
-                            <h1 class="text-2xl text-gray-400">{title}</h1>
+                            <h1 class="text-2xl text-gray-400">{tags}</h1>
                         </div>
                         <div class="col-span-2 space-y-4 text-xl" data-aos="fade-in" data-aos-delay="200">
                             <PortableText portableText={excerpt} />

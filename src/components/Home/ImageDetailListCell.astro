@@ -6,6 +6,7 @@ import { urlForImage } from '../../sanity/urlForImage';
 
 interface Props {
   title: string;
+  tags: string;
   heroImage: Image;
   excerpt: PortableTextBlock;
   link: string;
@@ -13,6 +14,7 @@ interface Props {
 
 const {
 title,
+tags,
 heroImage,
 excerpt,
 link
@@ -27,6 +29,7 @@ link
         <div class="col-span-2 space-y-4">
             <h2 class="text-2xl">{title}</h2>
             <PortableText portableText={excerpt} />
+            <h4 class="text-accent text-sm">{tags}</h4>
         </div>
     </div>
 </a>
