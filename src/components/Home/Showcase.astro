@@ -29,10 +29,10 @@ link
         {/* Video/Image Block */}
         <div class="col-span-3 lg:order-last">
             {videoSrc ?
-            <video src={videoSrc.toString()} class="aspect-video bg-gray-800 w-full" autoplay muted loop
+            <video src={videoSrc.toString()} class="aspect-video rounded-lg bg-gray-800 w-full" autoplay muted loop
                 data-aos="fade-in" />
             :
-            <img src={urlForImage(heroImage).url()} class="aspect-video bg-gray-800 w-full" data-aos="fade-in">}
+            <img src={urlForImage(heroImage).url()} class="aspect-video rounded-lg bg-gray-800 w-full" data-aos="fade-in">}
         </div>
 
         {/* Text Block */}
