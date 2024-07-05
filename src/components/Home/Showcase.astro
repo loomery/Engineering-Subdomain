@@ -4,14 +4,18 @@ import type { Image, PortableTextBlock } from "sanity";
 import PortableText from "../PortableText/PortableText.astro";
 
 interface Props {
-  tags: string;
-  videoSrc: URL;
-  heroImage: Image;
-  excerpt: PortableTextBlock;
-  link: string;
+    number: number;
+    title: string;
+    tags: string;
+    videoSrc: URL;
+    heroImage: Image;
+    excerpt: PortableTextBlock;
+    link: string;
 }
 
 const {
+    number,
+    title,
 tags,
 videoSrc,
 heroImage,
@@ -21,23 +25,25 @@ link
 ---
 
 <a href={link}>
-    <div class="flex flex-col items-center space-y-8 md:space-y-16 pb-24 md:pb-12">
-        <div class="space-y-28">
-                <div class="space-y-8">
-                    {videoSrc ? 
-                    <video src={videoSrc.toString()} class="aspect-video bg-gray-800 w-full" autoplay muted loop data-aos="fade-in" />
-                    :
-                    <img src={urlForImage(heroImage).url()} class="aspect-video bg-gray-800 w-full" data-aos="fade-in">}
-        
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
-                        <div class="col-span-1 space-y-4" data-aos="fade-in" data-aos-delay="0">
-                            <h1 class="text-2xl text-gray-400">{tags}</h1>
-                        </div>
-                        <div class="col-span-2 space-y-4 text-xl" data-aos="fade-in" data-aos-delay="200">
-                            <PortableText portableText={excerpt} />
-                        </div>
-                    </div>
-                </div>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-20">
+        {/* Video/Image Block */}
+        <div class="col-span-3 lg:order-last">
+            {videoSrc ?
+            <video src={videoSrc.toString()} class="aspect-video bg-gray-800 w-full" autoplay muted loop
+                data-aos="fade-in" />
+            :
+            <img src={urlForImage(heroImage).url()} class="aspect-video bg-gray-800 w-full" data-aos="fade-in">}
+        </div>
+
+        {/* Text Block */}
+        <div class="col-span-1 space-y-4 lg:order-first">
+            <div class="col-span-1 space-y-1" data-aos="fade-in" data-aos-delay="0">
+                <h1 class="text-md text-gray-400">Experiment {number}</h1>
+                <h1 class="text-xl">{title}</h1>
             </div>
+            <div class="col-span-2 space-y-4" data-aos="fade-in" data-aos-delay="200">
+                <PortableText portableText={excerpt} />
+            </div>
+        </div>
     </div>
 </a>

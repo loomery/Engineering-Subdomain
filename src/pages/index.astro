@@ -9,6 +9,7 @@ import Break from "../components/Break.astro";
 
 const { prototypes = await sanityClient.fetch(
       `*[_type == "prototype"] {
+	  	prototypeName,		
         title,
         excerpt,
 		heroImageAssets,
@@ -41,24 +42,14 @@ const { prototypes = await sanityClient.fetch(
 	<Break />
 
 	<section class="gap-8">
-		<div>
-			<Showcase tags={prototypes[0].tags.map((tag: Tag) => tag.title).join(", ")}
+			<Showcase 
+			title={prototypes[0].prototypeName}
+			number={1}
+			tags={prototypes[0].tags.map((tag: Tag) => tag.title).join(", ")}
 			videoSrc={prototypes[0].shortVideo}
 			heroImage={prototypes[0].heroImageAssets[0]}
 			excerpt={prototypes[0].excerpt}
 			link={`/prototypes/${prototypes[0].slug.current}`} />
-		</div>
-
-		<div class="flex overflow-x-auto whitespace-nowrap lg:overflow-visible lg:whitespace-normal space-x-8 justify-between">
-			{// @ts-ignore
-			prototypes.slice(1, 4).map((prototype, idx) => (
-				<div class="flex-shrink-0 justify-center text-center md:text-left md:w-72" data-aos="fade-in" data-aos-delay={idx % 3 * 200}>
-					<VerticalImageDetail title={prototype.title} tags={prototype.tags.map((tag: Tag) => tag.title).join(" / ")}
-					heroImage={prototype.heroImageAssets[0]} 
-					link={`prototypes/${prototype.slug.current}`} />
-				</div>
-			))}
-		</div>
 	</section>
 
 	<Break />
