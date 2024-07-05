@@ -1,17 +1,16 @@
-<header class="xl:max-w-7xl xl:mx-auto">
-    <div class="p-8 md:px-32 md:py-16">
+<header>
+    <div class="xl:max-w-7xl mx-4 xl:mx-auto md:py-6">
         <nav class="text-brand-light flex md:flex-row justify-between items-center">
-            <a href="https://loomery.com" class="px-4 w-36"><img src="/Loomery.svg"></a>
+            <a href="https://loomery.com" class="text-xl">Loomery Lab</a>
 
-            <div class="hidden lg:block">
-                <a href="https://loomery.com/team" class="px-4 hover:text-accent">Team</a>
-                <a href="https://loomery.com/services" class="px-4 hover:text-accent">Services</a>
-                <a href="https://www.loomery.com/case-studies" class="px-4 hover:text-accent">Work</a>
-                <a href="https://loomery.com/insights" class="px-4 hover:text-accent">Insights</a>
-                <a href="https://lab.loomery.com" class="px-4 text-accent">LAB</a>
-                <a href="https://loomery.com/join-us" class="px-4 hover:text-accent">Join us</a>
+            <div class="hidden space-x-2 lg:block">
+                <a href="https://loomery.com/team" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Team</a>
+                <a href="https://loomery.com/services" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Services</a>
+                <a href="https://www.loomery.com/case-studies" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Work</a>
+                <a href="https://loomery.com/insights" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Insights</a>
+                <a href="https://loomery.com/join-us" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Join us</a>
 
-                <a href="https://loomery.com/contact-us" class="p-4 bg-accent rounded-full font-semibold text-black">
+                <a href="https://loomery.com/contact-us" class="px-4 py-2 rounded-full ring-1 ring-white">
                     Get in touch
                 </a>
             </div>
@@ -27,4 +26,33 @@
             </div>
         </nav>
     </div>
+    <hr class="h-px border-0 bg-gray-500">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const links = document.querySelectorAll('nav a'); // Select all <a> tags within the navbar
+      
+          links.forEach((link) => { // Iterate over each <a> tag
+            let originalText = link.textContent; // Get original text from the link
+            let isRotating = false; // Flag to indicate if rotation is in progress for this link
+      
+            link.addEventListener('mouseenter', () => {
+              if (isRotating) return; // If already rotating, do nothing
+              isRotating = true; // Set flag to indicate rotation has started
+              originalText = link.textContent; // Update original text in case it has changed
+              const rotateText = (text: string) => text.substring(1) + text.charAt(0); // Rotate function
+      
+              const intervalId = setInterval(() => {
+                link.textContent = rotateText(link.textContent || '');
+              }, 100); // Rotate text every 100 milliseconds
+      
+              setTimeout(() => {
+                clearInterval(intervalId); // Stop rotating
+                link.textContent = originalText; // Revert to original text
+                isRotating = false; // Reset flag as rotation is complete
+              }, 2000); // After 2 seconds
+            });
+          });
+        });
+      </script>
 </header>

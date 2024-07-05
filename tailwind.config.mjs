@@ -9,7 +9,7 @@ export default {
 					dark: '#04564D',
 				},
 				bg: {
-					light: '#FFFFFF',
+					light: '#383838',
 					dark: '#141414',
 				},
 				accent: '#42B49F',

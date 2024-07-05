@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
-    "@astrojs/react": "^3.4.0",
+    "@astrojs/react": "^3.6.0",
     "@astrojs/tailwind": "^5.1.0",
     "@portabletext/types": "^2.0.13",
     "@sanity/astro": "^3.0.0",
@@ -21,7 +21,7 @@
     "@types/react": "^18.2.75",
     "@types/react-dom": "^18.2.24",
     "aos": "^2.3.4",
-    "astro": "^4.9.0",
+    "astro": "^4.11.5",
     "astro-aws-amplify": "^0.1.0",
     "astro-portabletext": "^0.9.7",
     "aws-amplify": "^6.0.30",
