@@ -5,6 +5,7 @@ import Showcase from '../components/Home/Showcase.astro';
 import VerticalImageDetail from "../components/Home/VerticalImageDetail.astro";
 import ImageDetailListCell from "../components/Home/ImageDetailListCell.astro";
 import type { Tag } from "../utils/sanity";
+import Break from "../components/Break.astro";
 
 const { prototypes = await sanityClient.fetch(
       `*[_type == "prototype"] {
@@ -25,13 +26,19 @@ const { prototypes = await sanityClient.fetch(
 	imageSrc="/main.png" 
 	description="Step insde the Lab and see what technologies we have been experimenting with.">
 
-	<section>
-		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:mb-48">
+	<section class="space-y-24">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 			<h1 class="lg:col-span-2 text-3xl md:text-6xl leading-loose">
 				Welcome to Loomery Lab, where ideas and experiments are made possible
 			</h1>
 		</div>
+
+		<div>
+			<img src="" class="aspect-video bg-gray-800 w-full">
+		</div>
 	</section>
+
+	<Break />
 
 	<section class="gap-8">
 		<div>
@@ -53,6 +60,8 @@ const { prototypes = await sanityClient.fetch(
 			))}
 		</div>
 	</section>
+
+	<Break />
 
 	{prototypes.length > 4 && (
 		<section class="my-48 space-y-8">

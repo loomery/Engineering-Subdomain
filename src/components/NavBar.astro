@@ -4,12 +4,13 @@
             <a href="https://loomery.com" class="text-xl">Loomery Lab</a>
 
             <div class="hidden space-x-2 lg:block">
-                <a href="https://loomery.com/team" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Team</a>
-                <a href="https://loomery.com/services" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Services</a>
-                <a href="https://www.loomery.com/case-studies" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Work</a>
-                <a href="https://loomery.com/insights" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Insights</a>
-                <a href="https://loomery.com/join-us" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Join us</a>
-
+                <span class="space-x-2">
+                    <a href="https://loomery.com/team" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Team</a>
+                    <a href="https://loomery.com/services" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Services</a>
+                    <a href="https://www.loomery.com/case-studies" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Work</a>
+                    <a href="https://loomery.com/insights" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Insights</a>
+                    <a href="https://loomery.com/join-us" id="scrambleText" class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out">Join us</a>
+                </span>
                 <a href="https://loomery.com/contact-us" class="px-4 py-2 rounded-full ring-1 ring-white">
                     Get in touch
                 </a>
@@ -30,7 +31,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-          const links = document.querySelectorAll('nav a'); // Select all <a> tags within the navbar
+          const links = document.querySelectorAll('nav span a'); // Select all <a> tags within the navbar
       
           links.forEach((link) => { // Iterate over each <a> tag
             let originalText = link.textContent; // Get original text from the link
