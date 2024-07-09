@@ -51,7 +51,7 @@ const { title, imageSrc, description } = Astro.props;
 	</head>
 
 	<body class="space-y-16">
-		<NavBar />
+		<NavBar includeLogo={false} />
 
 		<main class="mx-4 max-w-7xl space-y-16 xl:mx-auto">
 			<slot />
@@ -62,24 +62,3 @@ const { title, imageSrc, description } = Astro.props;
 		<script src="../js/main" />
 	</body>
 </html>
-
-<style is:global>
-	:root {
-		--accent: #52A894;
-	}
-	html {
-		background: #141414;
-		color: #FFFFFF;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>

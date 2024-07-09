@@ -1,4 +1,4 @@
-import {defineConfig, isDev} from 'sanity'
+import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {schemaTypes} from './loomery-lab-studio/schemaTypes'
 

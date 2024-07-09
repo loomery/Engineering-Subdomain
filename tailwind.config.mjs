@@ -5,14 +5,14 @@ export default {
 		extend: {
 			colors: {
 				brand: {
-					light: '#FFFFFF',
+					light: 'rgba(255, 255, 255, 1)',
 					dark: '#04564D',
 				},
 				bg: {
-					light: '#383838',
-					dark: '#141414',
+					light: 'rgba(78, 78, 78, 1)',
+					dark: 'rgba(26, 26, 26, 1)',
 				},
-				accent: '#42B49F',
+				accent: 'rgba(50, 255, 181, 1)',
 			},
 		},
 	},

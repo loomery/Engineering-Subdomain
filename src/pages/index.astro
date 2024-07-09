@@ -2,7 +2,6 @@
 import { sanityClient } from "sanity:client";
 import Layout from '../layouts/Layout.astro';
 import Showcase from '../components/Home/Showcase.astro';
-import VerticalImageDetail from "../components/Home/VerticalImageDetail.astro";
 import ImageDetailListCell from "../components/Home/ImageDetailListCell.astro";
 import type { Tag } from "../utils/sanity";
 import Break from "../components/Break.astro";
@@ -27,11 +26,14 @@ const { prototypes = await sanityClient.fetch(
 	imageSrc="/main.png" 
 	description="Step insde the Lab and see what technologies we have been experimenting with.">
 
-	<section class="space-y-24">
-		<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-			<h1 class="lg:col-span-2 text-3xl md:text-6xl leading-loose">
-				Welcome to Loomery Lab, where ideas and experiments are made possible
-			</h1>
+	<section class="space-y-12 mt-24">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+			<div class="lg:col-span-2 space-y-4">
+				<h1 class="text-5xl font-light">Loomery<span class="text-accent">Lab</span></h1>
+				<h1 class="text-2xl font-thin">
+					A space dedicated to exploring new technologies and creating innovative solutions.
+				</h1>
+			</div>
 		</div>
 
 		<div>
