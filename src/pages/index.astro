@@ -2,14 +2,15 @@
 import { sanityClient } from "sanity:client";
 import Layout from '../layouts/Layout.astro';
 import Showcase from '../components/Home/Showcase.astro';
-import ImageDetailListCell from "../components/Home/ImageDetailListCell.astro";
-import type { Tag } from "../utils/sanity";
 import Break from "../components/Break.astro";
 
 const { prototypes = await sanityClient.fetch(
       `*[_type == "prototype"] {
 	  	prototypeName,		
         title,
+		summary {
+      		...,
+		},
         excerpt,
 		heroImageAssets,
 		publishedAt,
@@ -43,33 +44,22 @@ const { prototypes = await sanityClient.fetch(
 
 	<Break />
 
-	<section class="gap-8">
+	<section class="flex flex-col gap-16">
+		{// @ts-ignore
+		prototypes.map((prototype, index) => (
+		  <div>
 			<Showcase 
-			title={prototypes[0].prototypeName}
-			number={1}
-			tags={prototypes[0].tags.map((tag: Tag) => tag.title).join(", ")}
-			videoSrc={prototypes[0].shortVideo}
-			heroImage={prototypes[0].heroImageAssets[0]}
-			excerpt={prototypes[0].excerpt}
-			link={`/prototypes/${prototypes[0].slug.current}`} />
-	</section>
+			  title={prototype.prototypeName}
+			  number={index + 1}
+			  tags={prototype.tags}
+			  tools={prototype.summary.tools}
+			  videoSrc={prototype.shortVideo}
+			  heroImage={prototype.heroImageAssets[0]}
+			  excerpt={prototype.excerpt}
+			  link={`/prototypes/${prototype.slug.current}`} />
+		  </div>
 
-	<Break />
-
-	{prototypes.length > 4 && (
-		<section class="my-48 space-y-8">
-		<div class="flex text-center justify-center">
-			<h1 class="text-3xl text-gray-400" data-aos="zoom-in">More prototypes</h1>
-		</div>
-		<div class="space-y-8">
-			{// @ts-ignore
-			prototypes.slice(4).map((prototype) => (
-				<ImageDetailListCell title={prototype.title} tags={prototype.tags.map((tag: Tag) => tag.title).join(" / ")}
-				excerpt={prototype.excerpt}
-				heroImage={prototype.heroImageAssets[0]}
-				link={`prototypes/${prototype.slug.current}`} />
-			))}
-		</div>
-		</section>
-	)}
+		  <Break />
+		))}
+	  </section>
 </Layout>
