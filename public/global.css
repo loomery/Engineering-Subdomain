@@ -22,6 +22,6 @@ code {
 * {
     font-family: 'IBM Plex Mono', monospace;
 }
-p {
+p, ul, ol, li {
     font-family: "IBM Plex Sans", sans-serif;
 }

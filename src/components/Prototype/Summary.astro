@@ -18,47 +18,45 @@ contributors
 } = Astro.props;
 ---
 
-<section class="flex flex-col items-center">
-    <div class="flex flex-row space-x-4 p-12" data-aos="zoom-in">
-        {icons.map((icon: string) => (
-        <img class="h-16" src={icon} />
-        ))}
+<section class="grid md:grid-cols-2 lg:grid-cols-4">
+    <div class="" data-aos="fade-in">
+        <h1 class="text-3xl">Project overview</h1>
     </div>
 
-    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
-        <div data-aos="fade-up" data-aos-delay="0">
-            <h1 class="text-3xl">Technologies</h1>
-            <ul class="text-lg space-y-2 py-4">
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 col-span-3">
+        <div data-aos="fade-in">
+            <h1 class="text-xl">Technologies</h1>
+            <ul class="space-y-1 py-4 font-thin">
                 {technologies.map((technology: string) => (
                 <li>{technology}</li>
                 ))}
             </ul>
         </div>
 
-        <div data-aos="fade-up" data-aos-delay="200">
-            <h1 class="text-3xl">Tools</h1>
-            <ul class="text-lg space-y-2 py-4">
+        <div data-aos="fade-in">
+            <h1 class="text-xl">Tools</h1>
+            <ul class="space-y-1 py-4 font-thin">
                 {tools.map((tool: string) => (
                 <li>{tool}</li>
                 ))}
             </ul>
         </div>
 
-        <div data-aos="fade-up" data-aos-delay="400">
-            <h1 class="text-3xl">Key features</h1>
-            <ul class="text-lg space-y-2 py-4">
+        <div data-aos="fade-in">
+            <h1 class="text-xl">Key features</h1>
+            <ul class="space-y-1 py-4 font-thin">
                 {features.map((feature: string) => (
                 <li>{feature}</li>
                 ))}
             </ul>
         </div>
 
-        <div data-aos="fade-up" data-aos-delay="600">
-            <h1 class="text-3xl">Contributors</h1>
-            <ul class="text-lg space-y-2 py-4">
+        <div data-aos="fade-in">
+            <h1 class="text-xl">Contributors</h1>
+            <ul class="space-y-1 py-4 font-thin">
                 {contributors.map((contributor: Contributor) => (
                 <li><a href={contributor.url}
-                        class="transition-colors duration-200 hover:text-accent"
+                        class="transition-colors duration-200 hover:text-accent font-sans"
                         target="_blank"
                     >{contributor.name}
                 </a></li>

@@ -42,7 +42,8 @@ const { imageUrls, prototypeUrls } = Astro.props;
         img.onload = (ev: Event) => {
           const aspectRatio = img.naturalWidth / img.naturalHeight;
           if (Math.abs(aspectRatio - 16/9) > 0.01) {
-            img.classList.add('object-contain');
+            // img.classList.add('object-contain');
+            img.classList.add('object-cover');
           } else {
             img.classList.add('object-cover');
           }
