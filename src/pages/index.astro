@@ -3,6 +3,9 @@ import { sanityClient } from "sanity:client";
 import Layout from '../layouts/Layout.astro';
 import Showcase from '../components/Home/Showcase.astro';
 import Break from "../components/Break.astro";
+import Slideshow from "../components/Slideshow.astro";
+import { urlForImage } from "../sanity/urlForImage";
+import { type PrototypeSchema } from "../utils/sanity";
 
 const { prototypes = await sanityClient.fetch(
       `*[_type == "prototype"] {
@@ -20,6 +23,17 @@ const { prototypes = await sanityClient.fetch(
       }
       | order(publishedAt desc)`
 ) } = Astro.props;
+
+const firstHeroImageUrls = prototypes.map((prototype: PrototypeSchema) => {
+  if (prototype.heroImageAssets.length > 0) {
+    return urlForImage(prototype.heroImageAssets[0]).url();
+  }
+  return null; // or a default image URL or any other fallback
+});
+
+const prototypeUrls = prototypes.map((prototype: PrototypeSchema) => {
+  return `/prototypes/${prototype.slug.current}`; // Assuming 'prototypeUrl' is the property name
+});
 ---
 
 <Layout 
@@ -38,7 +52,7 @@ const { prototypes = await sanityClient.fetch(
 		</div>
 
 		<div>
-			<img src="" class="aspect-video bg-gray-800 w-full">
+			<Slideshow imageUrls={firstHeroImageUrls} prototypeUrls={prototypeUrls} />
 		</div>
 	</section>
 
