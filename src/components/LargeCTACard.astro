@@ -25,7 +25,8 @@ const {
         </div>
       </div>
 
-      {tryItOutObject.icon ? <img src={urlForImage(tryItOutObject.icon).url()}
-          class="w-52 col-span-2 rounded-[2rem] mx-auto"> : null}
+      {tryItOutObject.icon ? <a href={tryItOutObject.link.toString()} class="col-span-2 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
+      <img src={urlForImage(tryItOutObject.icon).url()}
+          class="w-52 col-span-2 rounded-[2rem] mx-auto"></a> : null}
     </section>
 </TitleDetail>
