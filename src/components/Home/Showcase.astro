@@ -51,7 +51,7 @@ link
             <div>
                 {[...tags, ...tools].map((item, index) => (
                 <div>
-                    <h2 class="text-xs font-thin px-2 rounded-full ring-1 ring-bg-light inline-block my-1" data-aos="fade-in">
+                    <h2 class="text-xs font-light px-2 rounded-full ring-1 ring-bg-light inline-block my-1" data-aos="fade-in">
                         # {typeof item === 'string' ? `tool-${item.toLocaleLowerCase()}` :
                         item.title.toLocaleLowerCase().replace(/\s/g, "-")}
                     </h2>
