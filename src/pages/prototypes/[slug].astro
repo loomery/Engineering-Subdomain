@@ -99,18 +99,11 @@ heroImageUrls: string[],
   <ImageAndDetail title={prototype.useCases.title}
     useCases={prototype.useCases.useCases} />
 
-  <Break />
+  {prototype.testimonies ? <Break />
+  <Testimonies testimonies={prototype.testimonies} /> : null}
 
-  {prototype.testimonies ?
-  <Testimonies testimonies={prototype.testimonies} /> <Break /> : null}
-
-  {prototype.tryItOut ?
-  <LargeCTACard href={prototype.tryItOut.link.toString()} bgColor='bg-slate-700'>
-    {prototype.tryItOut.icon ? <img src={urlForImage(prototype.tryItOut.icon).url()}
-      class="w-52 rounded-full mx-auto m-8"> : null}
-    <h1 class="text-4xl transition duration-300 ease-in-out">{prototype.tryItOut.heading}</h1>
-    <PortableText portableText={prototype.tryItOut.content} />
-    {prototype.tryItOut.includeAppStoreBadge ? <img src="/AppStoreBadge.svg" class="mx-auto w-40"> : null}
-  </LargeCTACard> : null
+  {prototype.tryItOut ? <Break />
+  <LargeCTACard tryItOutObject={prototype.tryItOut} /> 
+  : null
   }
 </Prototype>
