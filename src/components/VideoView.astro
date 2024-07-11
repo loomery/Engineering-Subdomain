@@ -1,4 +1,6 @@
 ---
+import TitleDetail from '../layouts/TitleDetail.astro';
+
 interface Props {
     src: string,
 };
@@ -6,10 +8,9 @@ interface Props {
 const { src } = Astro.props;
 ---
 
-<section class="flex flex-col items-center space-y-8">
-    <h1 class="text-4xl" data-aos="fade-in">The prototype</h1>
+<TitleDetail title='The prototype'>
     <iframe src={src} 
     class="aspect-video w-full" 
     allow="autoplay; fullscreen"
     allowfullscreen data-aos="fade-in" />
-</section>
+</TitleDetail>

@@ -1,19 +1,31 @@
 ---
+import TitleDetail from '../layouts/TitleDetail.astro';
+import { urlForImage } from '../sanity/urlForImage';
+import type { TryItOutCTA } from '../utils/sanity';
+import PortableText from './PortableText/PortableText.astro';
+
 interface Props {
-    href: string;
-    bgColor: string;
+    tryItOutObject: TryItOutCTA,
 }
 
 const {
-    href,
-    bgColor,
+    tryItOutObject,
 } = Astro.props;
 ---
 
-<section class="flex items-center justify-center" data-aos="fade-up">
-    <div class={`${bgColor} bg-opacity-30 md:max-w-3xl rounded-xl p-8 transition duration-300 ease-in-out transform hover:bg-opacity-40 hover:scale-105 hover:shadow-xl`}>
-      <a target="_blank" href={href} class="space-y-4 text-center">
-        <slot />
-      </a>
-    </div>
-</section>
+<TitleDetail title={tryItOutObject.heading} sectionClass='col-span-3 mb-8'>
+    <section class="grid space-y-12 md:space-y-0 justify-start md:grid-cols-3">
+      <div class="space-y-4">
+        <PortableText portableText={tryItOutObject.content} />
+
+        <div class="flex items-start">
+          <a target="_blank" href={tryItOutObject.link.toString()}>
+          {tryItOutObject.includeAppStoreBadge ? <img src="/AppStoreBadge.svg" class="mx-auto w-40"> : null}
+        </a>
+        </div>
+      </div>
+
+      {tryItOutObject.icon ? <img src={urlForImage(tryItOutObject.icon).url()}
+          class="w-52 col-span-2 rounded-[2rem] mx-auto"> : null}
+    </section>
+</TitleDetail>

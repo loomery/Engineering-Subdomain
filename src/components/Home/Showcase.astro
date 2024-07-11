@@ -2,17 +2,24 @@
 import { urlForImage } from "../../sanity/urlForImage";
 import type { Image, PortableTextBlock } from "sanity";
 import PortableText from "../PortableText/PortableText.astro";
+import type { Tag } from "../../utils/sanity";
 
 interface Props {
-  tags: string;
-  videoSrc: URL;
-  heroImage: Image;
-  excerpt: PortableTextBlock;
-  link: string;
+number: number;
+title: string;
+tags: Tag[];
+tools: string[];
+videoSrc: URL;
+heroImage: Image;
+excerpt: PortableTextBlock;
+link: string;
 }
 
 const {
+number,
+title,
 tags,
+tools,
 videoSrc,
 heroImage,
 excerpt,
@@ -21,23 +28,37 @@ link
 ---
 
 <a href={link}>
-    <div class="flex flex-col items-center space-y-8 md:space-y-16 pb-24 md:pb-12">
-        <div class="space-y-28">
-                <div class="space-y-8">
-                    {videoSrc ? 
-                    <video src={videoSrc.toString()} class="aspect-video bg-gray-800 w-full" autoplay muted loop data-aos="fade-in" />
-                    :
-                    <img src={urlForImage(heroImage).url()} class="aspect-video bg-gray-800 w-full" data-aos="fade-in">}
-        
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
-                        <div class="col-span-1 space-y-4" data-aos="fade-in" data-aos-delay="0">
-                            <h1 class="text-2xl text-gray-400">{tags}</h1>
-                        </div>
-                        <div class="col-span-2 space-y-4 text-xl" data-aos="fade-in" data-aos-delay="200">
-                            <PortableText portableText={excerpt} />
-                        </div>
-                    </div>
-                </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-12 lg:gap-20">
+        {/* Video/Image Block */}
+        <div class="col-span-2 lg:order-last">
+            {videoSrc ?
+            <video src={videoSrc.toString()} class="aspect-video rounded-lg bg-gray-800 w-full" autoplay muted loop
+                data-aos="fade-in" />
+            :
+            <img src={urlForImage(heroImage).url()} class="aspect-video object-contain rounded-lg bg-gray-800 w-full"
+                data-aos="fade-in">}
+        </div>
+
+        {/* Text Block */}
+        <div class="col-span-1 space-y-8 lg:order-first">
+            <div class="col-span-1 space-y-4" data-aos="fade-in">
+                <h2>Prototype #{number}</h2>
+                <h1 class="text-3xl">{title}</h1>
             </div>
-    </div>
+            <div class="col-span-2 space-y-4" data-aos="fade-in">
+                <PortableText portableText={excerpt} />
+            </div>
+            <div>
+                {[...tags, ...tools].map((item, index) => (
+                <div>
+                    <h2 class="text-xs font-thin px-2 rounded-full ring-1 ring-bg-light inline-block my-1" data-aos="fade-in">
+                        # {typeof item === 'string' ? `tool-${item.toLocaleLowerCase()}` :
+                        item.title.toLocaleLowerCase().replace(/\s/g, "-")}
+                    </h2>
+                </div>
+                ))}
+            </div>
+
+            <h1 class="text-lg text-accent underline" data-aos="fade-in">View prototype</h1>
+        </div>
 </a>

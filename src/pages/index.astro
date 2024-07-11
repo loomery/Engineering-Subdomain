@@ -2,13 +2,18 @@
 import { sanityClient } from "sanity:client";
 import Layout from '../layouts/Layout.astro';
 import Showcase from '../components/Home/Showcase.astro';
-import VerticalImageDetail from "../components/Home/VerticalImageDetail.astro";
-import ImageDetailListCell from "../components/Home/ImageDetailListCell.astro";
-import type { Tag } from "../utils/sanity";
+import Break from "../components/Break.astro";
+import Slideshow from "../components/Slideshow.astro";
+import { urlForImage } from "../sanity/urlForImage";
+import { type PrototypeSchema } from "../utils/sanity";
 
 const { prototypes = await sanityClient.fetch(
       `*[_type == "prototype"] {
+	  	prototypeName,		
         title,
+		summary {
+      		...,
+		},
         excerpt,
 		heroImageAssets,
 		publishedAt,
@@ -18,6 +23,17 @@ const { prototypes = await sanityClient.fetch(
       }
       | order(publishedAt desc)`
 ) } = Astro.props;
+
+const firstHeroImageUrls = prototypes.map((prototype: PrototypeSchema) => {
+  if (prototype.heroImageAssets.length > 0) {
+    return urlForImage(prototype.heroImageAssets[0]).url();
+  }
+  return null; // or a default image URL or any other fallback
+});
+
+const prototypeUrls = prototypes.map((prototype: PrototypeSchema) => {
+  return `/prototypes/${prototype.slug.current}`; // Assuming 'prototypeUrl' is the property name
+});
 ---
 
 <Layout 
@@ -25,48 +41,38 @@ const { prototypes = await sanityClient.fetch(
 	imageSrc="/main.png" 
 	description="Step insde the Lab and see what technologies we have been experimenting with.">
 
-	<section class="text-center h-screen">
-		<div class="flex flex-col justify-center items-center space-y-8 md:mb-48 h-[50vh]">
-			<h1 class="text-3xl md:text-6xl font-bold">Welcome to the <b class="text-accent">Loomery LAB</b></h1>
-			<h3 class="text-xl md:text-4xl">See what we are experimenting with</h3>
+	<section class="space-y-12 mt-24">
+		<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+			<div class="lg:col-span-2 space-y-4">
+				<h1 class="text-5xl font-light">Loomery<span class="text-accent">Lab</span></h1>
+				<h1 class="text-2xl font-thin">
+					A space dedicated to exploring new technologies and creating innovative solutions.
+				</h1>
+			</div>
 		</div>
-	</section>
 
-	<section class="gap-8">
 		<div>
-			<Showcase tags={prototypes[0].tags.map((tag: Tag) => tag.title).join(", ")}
-			videoSrc={prototypes[0].shortVideo}
-			heroImage={prototypes[0].heroImageAssets[0]}
-			excerpt={prototypes[0].excerpt}
-			link={`/prototypes/${prototypes[0].slug.current}`} />
-		</div>
-
-		<div class="flex overflow-x-auto whitespace-nowrap lg:overflow-visible lg:whitespace-normal space-x-8 justify-between">
-			{// @ts-ignore
-			prototypes.slice(1, 4).map((prototype, idx) => (
-				<div class="flex-shrink-0 justify-center text-center md:text-left md:w-72" data-aos="fade-in" data-aos-delay={idx % 3 * 200}>
-					<VerticalImageDetail title={prototype.title} tags={prototype.tags.map((tag: Tag) => tag.title).join(" / ")}
-					heroImage={prototype.heroImageAssets[0]} 
-					link={`prototypes/${prototype.slug.current}`} />
-				</div>
-			))}
+			<Slideshow imageUrls={firstHeroImageUrls} prototypeUrls={prototypeUrls} />
 		</div>
 	</section>
 
-	{prototypes.length > 4 && (
-		<section class="my-48 space-y-8">
-		<div class="flex text-center justify-center">
-			<h1 class="text-3xl text-gray-400" data-aos="zoom-in">More prototypes</h1>
-		</div>
-		<div class="space-y-8">
-			{// @ts-ignore
-			prototypes.slice(4).map((prototype) => (
-				<ImageDetailListCell title={prototype.title} tags={prototype.tags.map((tag: Tag) => tag.title).join(" / ")}
-				excerpt={prototype.excerpt}
+	<Break />
+
+	<section class="flex flex-col gap-16">
+		{// @ts-ignore
+		prototypes.map((prototype, index) => (
+			<div>
+			  <Showcase 
+				title={prototype.prototypeName}
+				number={index + 1}
+				tags={prototype.tags}
+				tools={prototype.summary.tools}
+				videoSrc={prototype.shortVideo}
 				heroImage={prototype.heroImageAssets[0]}
-				link={`prototypes/${prototype.slug.current}`} />
-			))}
-		</div>
-		</section>
-	)}
+				excerpt={prototype.excerpt}
+				link={`/prototypes/${prototype.slug.current}`} />
+			  {index !== prototypes.length - 1 && <Break />}
+			</div>
+		  ))}
+	  </section>
 </Layout>

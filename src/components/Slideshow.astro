@@ -1,0 +1,80 @@
+---
+interface Props {
+  imageUrls: string[];
+  prototypeUrls?: string[];
+}
+
+const { imageUrls, prototypeUrls } = Astro.props;
+---
+
+<div id="slideshow-container" class="aspect-video bg-gray-800 rounded-md overflow-hidden relative">
+  {imageUrls.map((url, index) => (
+    <a href={prototypeUrls?.[index] ?? '#'} class={`slide-link absolute inset-0 transition-opacity duration-1000 ${index === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
+      <img
+        src={url}
+        class="w-full h-full"
+        alt={`Slide ${index + 1}`}
+        onload="this.onload=null; this.sizes=Math.ceil(this.getBoundingClientRect().width/window.innerWidth*100)+'vw';"
+        sizes="1px"
+      />
+    </a>
+  ))}
+</div>
+
+<script>
+  class Slideshow {
+    private slides: HTMLAnchorElement[];
+    private images: HTMLImageElement[];
+    private currentIndex: number;
+    private container: HTMLElement;
+
+    constructor(containerId: string) {
+      this.container = document.getElementById(containerId)!;
+      this.slides = Array.from(this.container.getElementsByClassName('slide-link')) as HTMLAnchorElement[];
+      this.images = Array.from(this.container.getElementsByTagName('img'));
+      this.currentIndex = 0;
+      this.setupImages();
+      this.startSlideshow();
+    }
+
+    private setupImages(): void {
+      this.images.forEach(img => {
+        img.onload = (ev: Event) => {
+          const aspectRatio = img.naturalWidth / img.naturalHeight;
+          if (Math.abs(aspectRatio - 16/9) > 0.01) {
+            // img.classList.add('object-contain');
+            img.classList.add('object-cover');
+          } else {
+            img.classList.add('object-cover');
+          }
+        };
+        // Trigger onload for cached images
+        if (img.complete) {
+            // @ts-ignore
+          img.onload!();
+        }
+      });
+    }
+
+    private startSlideshow(): void {
+      setInterval(() => this.transition(), 5000);
+    }
+
+    private transition(): void {
+      const currentSlide = this.slides[this.currentIndex];
+      this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+      const nextSlide = this.slides[this.currentIndex];
+
+      currentSlide.classList.remove('opacity-100', 'z-10');
+      currentSlide.classList.add('opacity-0', 'z-0');
+
+      nextSlide.classList.remove('opacity-0', 'z-0');
+      nextSlide.classList.add('opacity-100', 'z-10');
+    }
+  }
+
+  // Initialize the slideshow when the DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    new Slideshow('slideshow-container');
+  });
+</script>

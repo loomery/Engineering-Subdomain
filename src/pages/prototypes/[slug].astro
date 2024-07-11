@@ -14,70 +14,96 @@ import Testimonies from "../../components/Prototype/Testimonies.astro";
 import LargeCTACard from "../../components/LargeCTACard.astro";
 import PortableText from "../../components/PortableText/PortableText.astro";
 import TechStack from "../../components/Prototype/TechStack.astro";
+import { toPlainText } from "astro-portabletext/utils";
+import Slideshow from "../../components/Slideshow.astro";
+import Break from "../../components/Break.astro";
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const groq = `
-  *[_type == "prototype"]{
-    ..., 
-    summary {
-      ...,
-      contributors[]->,
-    },
-    tags[]->
-  }
+const groq = `
+*[_type == "prototype"]{
+...,
+summary {
+...,
+contributors[]->,
+},
+tags[]->
+}
 `;
 
-  const prototypes = await sanityClient.fetch(groq);
+const prototypes = await sanityClient.fetch(groq);
 
-  return prototypes.map((prototype: PrototypeSchema) => {
-    const heroImageUrls = prototype.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
-    const tagImgs = prototype.tags.map((tag: Tag) => tag.icon);
-    const tagIcons = tagImgs.map((icon: Image) => urlForImage(icon).url());
-    
-    return {
-      params: { slug: prototype.slug.current },
-      props: { prototype, heroImageUrls, tagIcons },
-    };
-  });
+return prototypes.map((prototype: PrototypeSchema) => {
+const heroImageUrls = prototype.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
+// const tagImgs = prototype.tags.map((tag: Tag) => tag.icon);
+// const tagIcons = tagImgs.map((icon: Image) => urlForImage(icon).url());
+
+return {
+params: { slug: prototype.slug.current },
+props: { prototype, heroImageUrls },
+};
+});
 }
 
 const { slug } = Astro.params;
-const { prototype, heroImageUrls, tagIcons  }: {
-  prototype: PrototypeSchema, 
-  heroImageUrls: string[],
-  tagIcons: string[]
-  } = Astro.props;
+const { prototype, heroImageUrls }: {
+prototype: PrototypeSchema,
+heroImageUrls: string[],
+} = Astro.props;
 ---
 
-<Prototype
-  name={prototype.prototypeName}
-  title={prototype.title} slug={slug} subtitle={prototype.subtitle} keywords={prototype.keywords}
-  heroSrcArray={heroImageUrls}>
+<Prototype name={prototype.prototypeName} slug={slug} excerpt={toPlainText(prototype.excerpt)}
+  keywords={prototype.keywords} heroSrcArray={heroImageUrls}>
 
-  <Summary icons={tagIcons} technologies={prototype.summary.technologies} 
-  tools={prototype.summary.tools} features={prototype.summary.keyFeatures} contributors={prototype.summary.contributors} />
+  <section class="space-y-12 mt-24">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div class="lg:col-span-2 space-y-4">
+        <h1 class="text-5xl font-light leading-normal">{prototype.title}</span></h1>
+        <h1 class="text-2xl font-thin">{prototype.subtitle}</h1>
+
+        <div class="space-x-2 font-thin">
+          {prototype.tags.map((tag) => (
+          <span class="text-xs px-2 rounded-full ring-1 ring-bg-light inline-block my-1">
+            {"# " + tag.title.toLocaleLowerCase().replace(/\s/g, "-")}
+          </span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <Slideshow imageUrls={heroImageUrls} />
+  </section>
+
+  <Break />
+
+  <Summary technologies={prototype.summary.technologies} tools={prototype.summary.tools}
+    features={prototype.summary.keyFeatures} contributors={prototype.summary.contributors} />
+
+  <Break />
 
   <Goals title={prototype.goals.heading} goals={prototype.goals.goals} />
 
+  <Break />
+
   <ActionsSection actions={prototype.actions} />
 
-  {prototype.techStack ? <TechStack stack={prototype.techStack} /> : null}
+  <Break />
 
-  {prototype.videoUrl ? <VideoView src={prototype.videoUrl.toString()} /> : null}
+  {prototype.techStack ?
+  <TechStack stack={prototype.techStack} /> <Break />: null}
 
-  <ImageAndDetail title={prototype.useCases.title} prototypeName={prototype.prototypeName} 
+  {prototype.videoUrl ?
+  <VideoView src={prototype.videoUrl.toString()} /> <Break /> : null}
+
+  <ImageAndDetail title={prototype.useCases.title}
     useCases={prototype.useCases.useCases} />
 
-  {prototype.testimonies ? <Testimonies testimonies={prototype.testimonies} /> : null}
+  {prototype.testimonies ? <Break />
+  <Testimonies testimonies={prototype.testimonies} /> : null}
 
-  {prototype.tryItOut ? 
-  <LargeCTACard href={prototype.tryItOut.link.toString()} bgColor='bg-slate-700'>
-        {prototype.tryItOut.icon ? <img src={urlForImage(prototype.tryItOut.icon).url()} class="w-52 rounded-full mx-auto m-8"> : null}
-        <h1 class="text-4xl transition duration-300 ease-in-out">{prototype.tryItOut.heading}</h1>
-        <PortableText portableText={prototype.tryItOut.content} />
-        {prototype.tryItOut.includeAppStoreBadge ? <img src="/AppStoreBadge.svg" class="mx-auto w-40"> : null}
-  </LargeCTACard> : null
+  {prototype.tryItOut ? <Break />
+  <LargeCTACard tryItOutObject={prototype.tryItOut} /> 
+  : null
   }
 </Prototype>

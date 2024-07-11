@@ -1,41 +1,31 @@
 ---
+import TitleDetail from '../layouts/TitleDetail.astro';
 import { urlForImage } from '../sanity/urlForImage';
 import type { UseCase } from '../utils/sanity';
 import PortableText from './PortableText/PortableText.astro';
 
 interface Props {
-    title: string,
-    prototypeName: string,
-    useCases: UseCase[],
+title: string,
+useCases: UseCase[],
 };
 
 const {
-    title,
-    prototypeName,
-    useCases
+title,
+useCases
 } = Astro.props;
 ---
 
-<section class="space-y-16">
-    <div class="flex flex-col items-center text-center space-y-2">
-        <h1 class="text-4xl" data-aos="fade-in">{title}</h1>
-        <p class="text-xl" data-aos="fade-in">Could an app like {prototypeName} be useful for <a target="_blank" href="https://www.loomery.com/contact-us" class="text-accent">your business</a>?</p>
-    </div>
-
-    <div class="space-y-28">
-    {useCases.map(useCase => (
+<TitleDetail title={title}>
+    <section class="grid gap-12 md:grid-cols-2">
+        {useCases.map(useCase => (
         <div class="space-y-8">
-            <img src={urlForImage(useCase.image).url()} data-aos="fade-in">
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
-                <div class="col-span-1 space-y-4" data-aos="fade-in" data-aos-delay="0">
-                    <h1 class="text-2xl">{useCase.heading}</h1>
-                </div>
-                <div class="col-span-2 space-y-4 text-xl" data-aos="fade-in" data-aos-delay="200">
-                    <PortableText portableText={useCase.content} />
-                </div>
+            <div class="space-y-4" data-aos="fade-in" data-aos-delay="200">
+                <h1 class="text-xl">{useCase.heading}</h1>
+                <PortableText portableText={useCase.content} class:list={'text-lg font-light'} />
             </div>
+
+            <img src={urlForImage(useCase.image).url()} class="rounded-lg" data-aos="fade-in">
         </div>
-    ))}
-    </div>
-</section>
+        ))}
+    </section>
+</TitleDetail>
