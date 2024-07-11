@@ -61,19 +61,18 @@ const prototypeUrls = prototypes.map((prototype: PrototypeSchema) => {
 	<section class="flex flex-col gap-16">
 		{// @ts-ignore
 		prototypes.map((prototype, index) => (
-		  <div>
-			<Showcase 
-			  title={prototype.prototypeName}
-			  number={index + 1}
-			  tags={prototype.tags}
-			  tools={prototype.summary.tools}
-			  videoSrc={prototype.shortVideo}
-			  heroImage={prototype.heroImageAssets[0]}
-			  excerpt={prototype.excerpt}
-			  link={`/prototypes/${prototype.slug.current}`} />
-		  </div>
-
-		  <Break />
-		))}
+			<div>
+			  <Showcase 
+				title={prototype.prototypeName}
+				number={index + 1}
+				tags={prototype.tags}
+				tools={prototype.summary.tools}
+				videoSrc={prototype.shortVideo}
+				heroImage={prototype.heroImageAssets[0]}
+				excerpt={prototype.excerpt}
+				link={`/prototypes/${prototype.slug.current}`} />
+			  {index !== prototypes.length - 1 && <Break />}
+			</div>
+		  ))}
 	  </section>
 </Layout>

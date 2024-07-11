@@ -28,7 +28,7 @@ link
 ---
 
 <a href={link}>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-20">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-12 lg:gap-20">
         {/* Video/Image Block */}
         <div class="col-span-2 lg:order-last">
             {videoSrc ?
@@ -51,9 +51,9 @@ link
             <div>
                 {[...tags, ...tools].map((item, index) => (
                 <div>
-                    <h2 class="text-xs px-2 rounded-full ring-1 ring-bg-light inline-block my-1" data-aos="fade-in">
+                    <h2 class="text-xs font-thin px-2 rounded-full ring-1 ring-bg-light inline-block my-1" data-aos="fade-in">
                         # {typeof item === 'string' ? `tool-${item.toLocaleLowerCase()}` :
-                        item.title.toLocaleLowerCase()}
+                        item.title.toLocaleLowerCase().replace(/\s/g, "-")}
                     </h2>
                 </div>
                 ))}

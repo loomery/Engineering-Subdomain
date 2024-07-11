@@ -1,4 +1,5 @@
 ---
+import TitleDetail from '../../layouts/TitleDetail.astro';
 import { urlForImage } from '../../sanity/urlForImage';
 import type { Actions } from '../../utils/sanity';
 import PortableText from '../PortableText/PortableText.astro';
@@ -10,21 +11,24 @@ actions: Actions;
 const { actions } = Astro.props;
 ---
 
-<section class="grid gap-16 space-y-20 md:grid-cols-1">
-    {actions.actions.map((action, index) => (
-        <div class="flex flex-col md:grid md:grid-cols-2 md:gap-16">
+<TitleDetail title='Methodology' sectionClass=`col-span-3 ${actions.actions.length > 3 ? 'md:grid md:grid-cols-2 md:gap-12' : 'space-y-12'}``>
+    {actions.actions.map((action) => (
+        <div class="flex flex-col space-y-8">
             {/* Image Block */}
-            <div data-aos="fade-in" data-aos-delay={`${index % 2 === 0 ? '0' : '200'}`}
-                 class={`${index % 2 === 0 ? 'md:order-first' : 'md:order-last'}`}>
-                <img src={urlForImage(action.image).url()} class="w-full md:max-h-96 object-contain bg-gray-800 rounded-lg mb-8 md:mb-0" />
+            <div data-aos="fade-in">
+                <img src={urlForImage(action.image).url()} 
+                class="w-full max-h-[60vh] object-cover bg-gray-800 rounded-lg mb-8 md:mb-0" 
+                />
             </div>
 
             {/* Text Block */}
-            <div data-aos="fade-in" data-aos-delay={`${index % 2 === 0 ? '200' : '0'}`}
-                 class={`space-y-8 text-lg leading-relaxed ${index % 2 === 0 ? 'md:order-last' : 'md:order-first'}`}>
-                <h2 class="text-3xl">{action.heading}</h2>
-                <PortableText portableText={action.content} />
+            <div data-aos="fade-in"
+                 class="text-lg leading-relaxed space-y-4">
+                <h2 class="text-xl">{action.heading}</h2>
+                <div class={`space-y-4 ${actions.actions.length > 3 ? '' : 'portable-text-columns'}`}>
+                    <PortableText portableText={action.content} />
+                </div>
             </div>
         </div>
     ))}
-</section>
+</TitleDetail>

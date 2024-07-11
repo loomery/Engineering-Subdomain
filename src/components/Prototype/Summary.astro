@@ -1,8 +1,8 @@
 ---
 import type { Contributor as Contributor } from '../../utils/sanity';
+import TitleDetail from '../../layouts/TitleDetail.astro';
 
 interface Props {
-icons: string[];
 technologies: string[];
 tools: string[];
 features: string[];
@@ -10,7 +10,6 @@ contributors: Contributor[];
 }
 
 const {
-icons,
 technologies,
 tools,
 features,
@@ -18,13 +17,9 @@ contributors
 } = Astro.props;
 ---
 
-<section class="grid md:grid-cols-2 lg:grid-cols-4">
-    <div class="mb-8" data-aos="fade-in">
-        <h1 class="text-3xl">Project overview</h1>
-    </div>
-
-    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 col-span-3">
+<TitleDetail title='Project overview' sectionClass='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 col-span-3'>
         <div data-aos="fade-in">
+            <img src="/technologies.svg">
             <h1 class="text-xl">Technologies</h1>
             <ul class="space-y-1 py-4 font-thin">
                 {technologies.map((technology: string) => (
@@ -34,6 +29,7 @@ contributors
         </div>
 
         <div data-aos="fade-in">
+            <img src="/tools.svg">
             <h1 class="text-xl">Tools</h1>
             <ul class="space-y-1 py-4 font-thin">
                 {tools.map((tool: string) => (
@@ -43,6 +39,7 @@ contributors
         </div>
 
         <div data-aos="fade-in">
+            <img src="/key-features.svg">
             <h1 class="text-xl">Key features</h1>
             <ul class="space-y-1 py-4 font-thin">
                 {features.map((feature: string) => (
@@ -52,6 +49,7 @@ contributors
         </div>
 
         <div data-aos="fade-in">
+            <img src="/contributors.svg">
             <h1 class="text-xl">Contributors</h1>
             <ul class="space-y-1 py-4 font-thin">
                 {contributors.map((contributor: Contributor) => (
@@ -63,5 +61,4 @@ contributors
                 ))}
             </ul>
         </div>
-    </section>
-</section>
+</TitleDetail>

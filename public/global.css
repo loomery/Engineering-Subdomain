@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 :root {
-    --accent: #52A894;
+    --accent: rgba(50, 255, 181, 1);
 }
 html {
     background: #141414;
@@ -24,4 +24,27 @@ code {
 }
 p, ul, ol, li {
     font-family: "IBM Plex Sans", sans-serif;
+}
+ol {
+    list-style: none; /* Remove default list style */
+    counter-reset: list-counter; /* Initialize the counter */
+    padding-left: 0; /* Adjust padding as needed */
+}
+
+ol li {
+    counter-increment: list-counter; /* Increment the counter for each item */
+}
+
+ol li::before {
+    content: counter(list-counter, decimal-leading-zero) "."; /* Format the counter with leading zero */
+    left: 0; /* Adjust based on your design */
+    padding-right: 0.5rem;
+    color: var(--accent);
+}
+@media (min-width: 768px) {
+    .portable-text-columns {
+        column-count: 2; /* Creates two columns */
+        column-gap: 2rem; /* Adjusts the gap between columns */
+        /* Add additional styling as needed */
+    }
 }

@@ -2,6 +2,7 @@
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
+		accentColor: 'rgba(50, 255, 181, 1)',
 		fontFamily: {
 			mono: ['IBM Plex Mono', 'monospace'],
 			sans: ['IBM Plex Sans', 'sans-serif'],

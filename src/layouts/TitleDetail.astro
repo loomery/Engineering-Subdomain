@@ -1,0 +1,21 @@
+---
+interface Props {
+    title: string,
+    sectionClass?: string,
+}
+
+const {
+    title,
+    sectionClass
+} = Astro.props;
+---
+
+<section class="grid gap-4 lg:grid-cols-4">
+    <div class="mb-8" data-aos="fade-in">
+        <h1 class="text-3xl">{title}</h1>
+    </div>
+
+    <section class={sectionClass ?? 'lg:col-span-3'} data-aos="fade-in" >
+        <slot />
+    </section>
+</section>
