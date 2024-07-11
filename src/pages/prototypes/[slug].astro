@@ -91,16 +91,18 @@ heroImageUrls: string[],
   <Break />
 
   {prototype.techStack ?
-  <TechStack stack={prototype.techStack} /> : null}
+  <TechStack stack={prototype.techStack} /> <Break />: null}
 
   {prototype.videoUrl ?
-  <VideoView src={prototype.videoUrl.toString()} /> : null}
+  <VideoView src={prototype.videoUrl.toString()} /> <Break /> : null}
 
   <ImageAndDetail title={prototype.useCases.title} prototypeName={prototype.prototypeName}
     useCases={prototype.useCases.useCases} />
 
+  <Break />
+
   {prototype.testimonies ?
-  <Testimonies testimonies={prototype.testimonies} /> : null}
+  <Testimonies testimonies={prototype.testimonies} /> <Break /> : null}
 
   {prototype.tryItOut ?
   <LargeCTACard href={prototype.tryItOut.link.toString()} bgColor='bg-slate-700'>

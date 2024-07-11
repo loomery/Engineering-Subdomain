@@ -1,4 +1,5 @@
 ---
+import TitleDetail from '../../layouts/TitleDetail.astro';
 import { urlForImage } from '../../sanity/urlForImage';
 import type { TechStack } from '../../utils/sanity';
 import PortableText from '../PortableText/PortableText.astro';
@@ -10,25 +11,34 @@ stack: TechStack;
 const { stack } = Astro.props;
 ---
 
-<section class="flex flex-col items-center space-y-16">
-    <h1 class="text-4xl" data-aos="fade-in">The stack</h1>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<TitleDetail title='Tech stack'>
+    <div class="grid lg:grid-cols-3 gap-8">
         {stack.tools.map((tool, index) => (
-            <div class="grid grid-cols-1 lg:grid-cols-4 text-center space-y-8 lg:space-y-0 md:space-x-4">
-                <div class="flex flex-col items-center">
-                    {index !== 0 && <img src="/arrow.down.svg" class="h-24 block lg:hidden" data-aos="fade-down" />}
-                    {index !== 0 && <img src="/arrow.right.svg" class="h-24 hidden lg:block" data-aos="fade-right" data-aos-delay={`${index % 3 * 100}`} />}
+        <div class="grid lg:grid-cols-4 space-y-8 lg:space-y-0 md:space-x-4">
+
+            <div class="grid grid-cols-3 gap-4 lg:grid-cols-1 text-left col-span-3">
+                <div class="flex items-center justify-center lg:justify-start h-32"
+                    data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
+                    <img src={urlForImage(tool.icon).url()} class="h-full">
                 </div>
-        
-                <div class="flex flex-col items-center col-span-3 space-y-4">
-                    <img src={urlForImage(tool.icon).url()} class="h-32 pb-4" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
-                    <h3 class="text-2xl" data-aos="fade-up" data-aos-delay={`${index % 3 * 200}`}>{tool.name}</h3>
-                    <div class="text-lg" data-aos="fade-up" data-aos-delay={`${index % 3 * 200}`}>
-                        <PortableText portableText={tool.detail} />
+
+                <div class="space-y-2 col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay={`${index % 3 * 200}`}>
+                    <h3 class="text-xl" data-aos="fade-up" data-aos-delay={`${index % 3 * 200}`}>{tool.name}</h3>
+                    <PortableText portableText={tool.detail} class:list={'font-light text-lg'} />
+                </div>
+
+                <div class="grid-row lg:hidden">
+                    <div class={`${index===2 ? 'hidden' : 'flex justify-center' }`}>
+                        {index !== 2 && <img src="/arrow.down.svg" class="h-24 block lg:hidden" data-aos="fade-down" />}
                     </div>
                 </div>
             </div>
+
+            <div class={`${index !==2 ? '' : 'flex justify-center' }`}>
+                {index !== 2 && <img src="/arrow.right.svg" class="h-24 hidden lg:block" data-aos="fade-right"
+                    data-aos-delay={`${index % 3 * 100}`} />}
+            </div>
+        </div>
         ))}
     </div>
-</section>
+</TitleDetail>

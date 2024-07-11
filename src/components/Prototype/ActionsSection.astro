@@ -23,10 +23,10 @@ const { actions } = Astro.props;
 
             {/* Text Block */}
             <div data-aos="fade-in"
-                 class="text-lg leading-relaxed space-y-4">
+                 class="leading-relaxed space-y-4">
                 <h2 class="text-xl">{action.heading}</h2>
                 <div class={`space-y-4 ${actions.actions.length > 3 ? '' : 'portable-text-columns'}`}>
-                    <PortableText portableText={action.content} />
+                    <PortableText portableText={action.content} class:list={'text-lg'} />
                 </div>
             </div>
         </div>
