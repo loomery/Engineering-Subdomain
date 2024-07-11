@@ -22,14 +22,14 @@ const { stack } = Astro.props;
                     <img src={urlForImage(tool.icon).url()} class="h-full">
                 </div>
 
-                <div class="space-y-2 col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay={`${index % 3 * 200}`}>
-                    <h3 class="text-xl" data-aos="fade-up" data-aos-delay={`${index % 3 * 200}`}>{tool.name}</h3>
+                <div class="space-y-2 col-span-2 lg:col-span-1" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
+                    <h3 class="text-xl" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>{tool.name}</h3>
                     <PortableText portableText={tool.detail} class:list={'font-light text-lg'} />
                 </div>
 
                 <div class="grid-row lg:hidden">
                     <div class={`${index===2 ? 'hidden' : 'flex justify-center' }`}>
-                        {index !== 2 && <img src="/arrow.down.svg" class="h-24 block lg:hidden" data-aos="fade-down" />}
+                        {index !== 2 && <img src="/arrow.down.svg" class="h-12 block lg:hidden" data-aos="fade-down" />}
                     </div>
                 </div>
             </div>
