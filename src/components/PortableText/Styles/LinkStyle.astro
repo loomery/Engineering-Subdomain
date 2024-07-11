@@ -6,7 +6,7 @@ export type Props = $<Mark<never>>;
 const props = Astro.props;
 ---
 
-<a target="_blank" class="text-accent" href={
+<a target="_blank" class="text-accent font-sans" href={
     // @ts-ignore
     props.node.markDef.href
 }><slot /></a>
