@@ -116,9 +116,9 @@ export const prototypeType = defineType({
       validation: (Rule) => Rule.required()
     },
     {
-      name: 'testimonies',
-      title: 'Testimonies',
-      type: 'testimonyObject'
+      name: 'contributorNotes',
+      title: 'Contributor Notes',
+      type: 'contributorNotesObject',
     },
     {
       name: 'tryItOut',

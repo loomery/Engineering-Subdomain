@@ -69,7 +69,7 @@ export interface PrototypeSchema {
     actions: Actions;
     techStack: TechStack;
     useCases: UseCases;
-    testimonies: Testimonies;
+    contributorNotes: ContributorNotes;
     tryItOut: TryItOutCTA;
 }
 
@@ -112,9 +112,9 @@ export interface UseCase {
   content: PortableTextBlock;
 }
 
-export interface Testimonies {
-  _type: "testimonyObject";
-  testimonies: { quote: string, author: string }[];
+export interface ContributorNotes {
+  _type: "contributorNotesObject";
+  notes: { content: PortableTextBlock, contributor: Contributor }[];
 }
 
 export interface TechStack {

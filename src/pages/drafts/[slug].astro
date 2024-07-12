@@ -10,7 +10,7 @@ import Goals from "../../components/Prototype/Goals.astro";
 import Summary from "../../components/Prototype/Summary.astro";
 import TechStack from "../../components/Prototype/TechStack.astro";
 import ImageAndDetail from "../../components/ImageDetail.astro";
-import Testimonies from "../../components/Prototype/Testimonies.astro";
+import ContributorNotes from "../../components/Prototype/ContributorNotes.astro";
 import VideoView from "../../components/VideoView.astro";
 import Prototype from "../../layouts/Prototype.astro";
 import { toPlainText } from "astro-portabletext/utils";
@@ -24,6 +24,10 @@ const { slug } = Astro.params;
 const groq = `*[_type == "prototype" && slug.current == $slug] {
     ..., 
     summary {
+      ...,
+      contributors[]->,
+    },
+    contributorNotes {
       ...,
       contributors[]->,
     },
@@ -57,7 +61,7 @@ keywords={prototype.keywords} heroSrcArray={heroImageUrls}>
   <ImageAndDetail title={prototype.useCases.title} 
     useCases={prototype.useCases.useCases} />
 
-  {prototype.testimonies ? <Testimonies testimonies={prototype.testimonies} /> : null}
+  {prototype.contributorNotes ? <ContributorNotes contributorNotes={prototype.contributorNotes} /> : null}
 
   {prototype.tryItOut ? 
   <LargeCTACard tryItOutObject={prototype.tryItOut} /> : null

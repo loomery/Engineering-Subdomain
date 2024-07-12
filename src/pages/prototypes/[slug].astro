@@ -2,7 +2,7 @@
 import { sanityClient } from "sanity:client";
 import { type Image } from "@sanity/types";
 import { urlForImage } from "../../sanity/urlForImage";
-import { type PrototypeSchema, type Tag } from "../../utils/sanity";
+import { type PrototypeSchema } from "../../utils/sanity";
 
 import Prototype from "../../layouts/Prototype.astro";
 import Summary from "../../components/Prototype/Summary.astro";
@@ -10,7 +10,7 @@ import Goals from "../../components/Prototype/Goals.astro";
 import ActionsSection from "../../components/Prototype/ActionsSection.astro";
 import VideoView from "../../components/VideoView.astro";
 import ImageAndDetail from "../../components/ImageDetail.astro";
-import Testimonies from "../../components/Prototype/Testimonies.astro";
+import ContributorNotes from "../../components/Prototype/ContributorNotes.astro";
 import LargeCTACard from "../../components/LargeCTACard.astro";
 import TechStack from "../../components/Prototype/TechStack.astro";
 import { toPlainText } from "astro-portabletext/utils";
@@ -22,12 +22,18 @@ export const prerender = true;
 export async function getStaticPaths() {
 const groq = `
 *[_type == "prototype"]{
-...,
-summary {
-...,
-contributors[]->,
-},
-tags[]->
+  ...,
+  summary {
+    ...,
+    contributors[]->,
+  },
+  contributorNotes {
+    notes[] {
+      ...,
+      contributor->,
+    },
+  },
+  tags[]->
 }
 `;
 
@@ -50,6 +56,8 @@ const { prototype, heroImageUrls }: {
 prototype: PrototypeSchema,
 heroImageUrls: string[],
 } = Astro.props;
+
+console.log(prototype);
 ---
 
 <Prototype name={prototype.prototypeName} slug={slug} excerpt={toPlainText(prototype.excerpt)}
@@ -90,19 +98,21 @@ heroImageUrls: string[],
   <Break />
 
   {prototype.techStack ?
-  <TechStack stack={prototype.techStack} /> <Break />: null}
+  <TechStack stack={prototype.techStack} />
+  <Break />: null}
 
   {prototype.videoUrl ?
-  <VideoView src={prototype.videoUrl.toString()} /> <Break /> : null}
+  <VideoView src={prototype.videoUrl.toString()} />
+  <Break /> : null}
 
-  <ImageAndDetail title={prototype.useCases.title}
-    useCases={prototype.useCases.useCases} />
+  <ImageAndDetail title={prototype.useCases.title} useCases={prototype.useCases.useCases} />
 
-  {prototype.testimonies ? <Break />
-  <Testimonies testimonies={prototype.testimonies} /> : null}
+  {prototype.contributorNotes ?
+  <ContributorNotes contributorNotes={prototype.contributorNotes} /> : null}
 
-  {prototype.tryItOut ? <Break />
-  <LargeCTACard tryItOutObject={prototype.tryItOut} /> 
+  {prototype.tryItOut ?
+  <Break />
+  <LargeCTACard tryItOutObject={prototype.tryItOut} />
   : null
   }
 </Prototype>
