@@ -14,4 +14,4 @@ export const schemaTypes = [
     prototypeType, contributorType, tagType, summaryObject,
     goalsObject, actionObject, actionsObject, useCasesObject, 
     useCaseObject, testimonyObject, tryItOutObject, techStackObject,
-];
+]

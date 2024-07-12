@@ -26,19 +26,22 @@ p, ul, ol, li {
     font-family: "IBM Plex Sans", sans-serif;
 }
 ol {
-    list-style: none; /* Remove default list style */
-    counter-reset: list-counter; /* Initialize the counter */
-    padding-left: 0; /* Adjust padding as needed */
+    list-style: none;
+    counter-reset: list-counter;
+    padding-left: 0;
 }
 
 ol li {
     counter-increment: list-counter; /* Increment the counter for each item */
+    position: relative; /* Position relative to allow absolute positioning inside */
+    padding-left: 2rem;
 }
 
 ol li::before {
     content: counter(list-counter, decimal-leading-zero) "."; /* Format the counter with leading zero */
     left: 0; /* Adjust based on your design */
-    padding-right: 0.5rem;
+    position: absolute;
+    text-align: right;
     color: var(--accent);
 }
 @media (min-width: 768px) {
