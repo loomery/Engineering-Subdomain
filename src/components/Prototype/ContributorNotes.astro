@@ -10,13 +10,15 @@ interface Props {
 const { contributorNotes } = Astro.props;
 ---
 
-<TitleDetail title='Contributor Notes' sectionClass='col-span-3 mb-12'>
+<TitleDetail title='Contributor Notes'>
     <section class={`grid ${contributorNotes.notes.length > 1 ? 'md:grid-cols-2' : ''} ${contributorNotes.notes.length > 2 ? 'xl:grid-cols-3' : ''} gap-16`}>
         {contributorNotes.notes.map((note, index) => (
             <div class="space-y-4" data-aos="fade-in">
                 <PortableText portableText={note.content} class:list={'text-lg'} />
                 <div class="transition duration-300 ease-in-out hover:text-accent">
-                    <a href={note.contributor.url} class="text-sm font-sans">- {note.contributor.name}</a>
+                    <a href={note.contributor.url} class="font-sans">
+                        {note.contributor.name}, {note.contributor.role}
+                    </a>
                 </div>
             </div>
         ))}

@@ -14,6 +14,12 @@ export const contributorType = defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
+            name: 'role',
+            title: 'Role',
+            type: 'string',
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
             name: 'url',
             title: 'Website',
             type: 'url',

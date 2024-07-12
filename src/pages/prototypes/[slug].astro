@@ -107,7 +107,7 @@ console.log(prototype);
 
   <ImageAndDetail title={prototype.useCases.title} useCases={prototype.useCases.useCases} />
 
-  {prototype.contributorNotes ?
+  {prototype.contributorNotes ? <Break />
   <ContributorNotes contributorNotes={prototype.contributorNotes} /> : null}
 
   {prototype.tryItOut ?

@@ -135,6 +135,7 @@ export interface Contributor {
     _type: "contributorType";
     _id: string;
     name: string;
+    role: string;
     url: URL;
     image: Image;
 }
