@@ -5,27 +5,29 @@ import type { UseCase } from '../utils/sanity';
 import PortableText from './PortableText/PortableText.astro';
 
 interface Props {
-title: string,
-useCases: UseCase[],
+  title: string,
+  useCases: UseCase[],
 };
 
 const {
-title,
-useCases
+  title,
+  useCases
 } = Astro.props;
 ---
 
 <TitleDetail title={title}>
-    <section class="grid gap-12 md:grid-cols-2">
-        {useCases.map(useCase => (
-        <div class="space-y-8">
-            <div class="space-y-4" data-aos="fade-in" data-aos-delay="200">
-                <h1 class="text-xl">{useCase.heading}</h1>
-                <PortableText portableText={useCase.content} class:list={'text-lg font-light'} />
-            </div>
-
-            <img src={urlForImage(useCase.image).url()} class="rounded-lg" data-aos="fade-in">
+  <section class="grid gap-12 md:grid-cols-2">
+    {useCases.map(useCase => (
+      <div class="flex flex-col h-full">
+        <div class="space-y-4 flex-grow" data-aos="fade-in" data-aos-delay="200">
+          <h1 class="text-xl">{useCase.heading}</h1>
+          <PortableText portableText={useCase.content} class:list={'text-lg font-light'} />
         </div>
-        ))}
-    </section>
+
+        <div class="mt-8">
+          <img src={urlForImage(useCase.image).url()} class="rounded-lg w-full h-64 object-cover" data-aos="fade-in">
+        </div>
+      </div>
+    ))}
+  </section>
 </TitleDetail>
