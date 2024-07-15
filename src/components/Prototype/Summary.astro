@@ -19,8 +19,10 @@ contributors
 
 <TitleDetail title='Project overview' sectionClass='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 col-span-3'>
         <div data-aos="fade-in">
-            <img src="/technologies.svg">
-            <h1 class="text-xl">Technologies</h1>
+            <div class="space-y-2">
+                <img src="/technologies.svg">
+                <h1 class="text-xl">Technologies</h1>
+            </div>
             <ul class="space-y-1 py-4 font-light">
                 {technologies.map((technology: string) => (
                 <li>{technology}</li>
@@ -29,8 +31,10 @@ contributors
         </div>
 
         <div data-aos="fade-in">
+            <div class="space-y-2">
             <img src="/tools.svg">
             <h1 class="text-xl">Tools</h1>
+        </div>
             <ul class="space-y-1 py-4 font-light">
                 {tools.map((tool: string) => (
                 <li>{tool}</li>
@@ -39,8 +43,10 @@ contributors
         </div>
 
         <div data-aos="fade-in">
+            <div class="space-y-2">
             <img src="/key-features.svg">
             <h1 class="text-xl">Key features</h1>
+        </div>
             <ul class="space-y-1 py-4 font-light">
                 {features.map((feature: string) => (
                 <li>{feature}</li>
@@ -49,8 +55,10 @@ contributors
         </div>
 
         <div data-aos="fade-in">
+            <div class="space-y-2">
             <img src="/contributors.svg">
             <h1 class="text-xl">Contributors</h1>
+        </div>
             <ul class="space-y-1 py-4 font-light">
                 {contributors.map((contributor: Contributor) => (
                 <li><a href={contributor.url}

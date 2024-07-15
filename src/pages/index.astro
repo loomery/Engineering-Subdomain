@@ -25,10 +25,10 @@ const { prototypes = await sanityClient.fetch(
 ) } = Astro.props;
 
 const firstHeroImageUrls = prototypes.map((prototype: PrototypeSchema) => {
-  if (prototype.heroImageAssets.length > 0) {
+  if (prototype.heroImageAssets.slice(0, 5).length > 0) {
     return urlForImage(prototype.heroImageAssets[0]).url();
   }
-  return null; // or a default image URL or any other fallback
+  return null;
 });
 
 const prototypeUrls = prototypes.map((prototype: PrototypeSchema) => {
