@@ -23,32 +23,30 @@ const { title, stack, includeArrow } = Astro.props as Props;
 <TitleDetail title={title}>
     <div class="grid lg:grid-cols-3 gap-8">
         {stack.tools.map((tool, index) => (
-        <div class="grid lg:grid-cols-4 space-y-8 lg:space-y-0 md:space-x-4">
-            <div class="grid grid-cols-3 gap-4 lg:grid-cols-1 text-left col-span-3">
-                <div class="flex items-center justify-center lg:justify-start h-32"
-                    data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
-                    <img src={urlForImage(tool.icon).url()} class="h-full aspect-square">
-                </div>
-                <div class="space-y-2 col-span-2 lg:col-span-1" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
+        <div class="flex flex-col">
+            <div class="flex items-start mb-4">
+                <div class="flex flex-col flex-grow">
+                    <div class="h-32 mb-4 flex items-center justify-start"
+                        data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
+                        <img src={urlForImage(tool.icon).url()} class="h-full aspect-square">
+                    </div>
                     <h3 class="text-xl" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>{tool.name}</h3>
-                    <PortableText portableText={tool.detail} class:list={'font-light text-lg'} />
                 </div>
-
-                {includeArrow && (
-    <div class="grid-row lg:hidden">
-        <div class={`${index === 2 ? 'hidden' : 'flex justify-center'}`}>
-            {index !== 2 && <img src="/arrow.down.svg" class="h-12 block lg:hidden" data-aos="fade-down" />}
-        </div>
-    </div>
-)}
+                {includeArrow && index !== 2 && (
+                <div class="hidden lg:flex items-center justify-center ml-4 h-full">
+                    <img src="/arrow.right.svg" class="h-12" data-aos="fade-right"
+                    data-aos-delay={`${index % 3 * 100}`} />
+                </div>
+                )}
             </div>
-
-            {includeArrow && (
-    <div class={`${index !== 2 ? '' : 'flex justify-center'}`}>
-        {index !== 2 && <img src="/arrow.right.svg" class="h-24 hidden lg:block" data-aos="fade-right"
-            data-aos-delay={`${index % 3 * 100}`} />}
-    </div>
-)}
+            <div class="flex-grow" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
+                <PortableText portableText={tool.detail} class:list={'font-light text-lg'} />
+            </div>
+            {includeArrow && index !== 2 && (
+            <div class="flex lg:hidden justify-start mt-4">
+                <img src="/arrow.down.svg" class="h-12" data-aos="fade-down" />
+            </div>
+            )}
         </div>
         ))}
     </div>
