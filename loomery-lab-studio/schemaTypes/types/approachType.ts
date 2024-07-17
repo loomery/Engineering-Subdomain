@@ -8,11 +8,6 @@ export const approachType = defineType({
   icon: OlistIcon,
   fields: [
     defineField({
-      name: 'title',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: 'subtitle',
       type: 'string',
       validation: (Rule) => Rule.required(),
