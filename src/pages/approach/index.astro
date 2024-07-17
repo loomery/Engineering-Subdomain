@@ -1,20 +1,41 @@
 ---
+import { sanityClient } from "sanity:client";
 import Break from "../../components/Break.astro";
 import IconDetailStack from "../../components/Prototype/IconDetailStack.astro";
+import ImageAndDetail from "../../components/ImageDetail.astro";
 import Layout from "../../layouts/Layout.astro";
 
+const { approachArray = await sanityClient.fetch(
+      `*[_type == "approach"] | order(publishedAt desc)`
+) } = Astro.props;
+
+const approachSchema = approachArray[0];
 ---
 
-<Layout title="Our Approach" description="Loomery's approach to experimentation" imageSrc="">
+<Layout 
+title={approachSchema.title} 
+description={approachSchema.subtitle}
+imageSrc="" navBarLogo={true}>
+
     <section class="space-y-8 mt-24">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div class="lg:col-span-2 space-y-6">
-            <h1 class="text-5xl font-light leading-normal">Our approach</h1>
-            <h1 class="text-2xl font-light">Loomery's approach to experimentation</h1>
+            <h1 class="text-5xl font-light leading-normal">{approachSchema.title}</h1>
+            <h1 class="text-2xl font-light">{approachSchema.subtitle}</h1>
           </div>
         </div>
       </section>
 
       <Break />
+
+      <IconDetailStack title="Who we are" stack={approachSchema.whoWeAre} />
+
+      <Break />
+
+      <IconDetailStack title="How we experiment" stack={approachSchema.howWeExperiment} />
+
+      <Break />
+
+      <ImageAndDetail title={approachSchema.techWeAreUsing.title} useCases={approachSchema.techWeAreUsing.useCases} />
 
 </Layout>

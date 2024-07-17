@@ -3,6 +3,7 @@ import TitleDetail from '../../layouts/TitleDetail.astro';
 import { urlForImage } from '../../sanity/urlForImage';
 import { type Image, type PortableTextBlock } from "@sanity/types";
 import PortableText from '../PortableText/PortableText.astro';
+import type { TechStack } from '../../utils/sanity';
 
 interface GenericTool {
   icon: Image;
@@ -11,16 +12,17 @@ interface GenericTool {
 }
 
 interface Props {
-  tools: GenericTool[];
+    title: string;
+  stack: TechStack;
   includeArrow?: boolean;
 }
 
-const { tools, includeArrow } = Astro.props as Props;
+const { title, stack, includeArrow } = Astro.props as Props;
 ---
 
-<TitleDetail title='Tech stack'>
+<TitleDetail title={title}>
     <div class="grid lg:grid-cols-3 gap-8">
-        {tools.map((tool, index) => (
+        {stack.tools.map((tool, index) => (
         <div class="grid lg:grid-cols-4 space-y-8 lg:space-y-0 md:space-x-4">
             <div class="grid grid-cols-3 gap-4 lg:grid-cols-1 text-left col-span-3">
                 <div class="flex items-center justify-center lg:justify-start h-32"

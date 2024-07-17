@@ -4,7 +4,7 @@ export const techStackObject = defineType({
     name: 'techStackObject',
     title: 'Tech stack',
     type: 'object',
-    description: 'The tech stack used in the project. (Optional)',
+    description: 'A stack of icons that can be used to tell a narrative. (Optional)',
     fieldsets: [
         {
           name: 'techStack',

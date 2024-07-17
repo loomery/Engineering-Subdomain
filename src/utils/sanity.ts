@@ -73,6 +73,16 @@ export interface PrototypeSchema {
     tryItOut: TryItOutCTA;
 }
 
+export interface ApproachSchema {
+    _type: "approach";
+    _id: string;
+    title: string;
+    subtitle: string;
+    whoWeAre: TechStack;
+    howWeExperiment: TechStack;
+    techWeAreUsing: UseCases;
+}
+
 export interface Summary {
   _type: "summaryObject";
   technologies: string[];

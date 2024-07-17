@@ -56,8 +56,6 @@ const { prototype, heroImageUrls }: {
 prototype: PrototypeSchema,
 heroImageUrls: string[],
 } = Astro.props;
-
-console.log(prototype);
 ---
 
 <Prototype name={prototype.prototypeName} slug={slug} excerpt={toPlainText(prototype.excerpt)}
@@ -99,13 +97,8 @@ console.log(prototype);
 
   {prototype.techStack ?
   // @ts-ignore
-  <IconDetailStack tools={
-      prototype.techStack.tools.map((tool) => ({
-      icon: tool.icon,
-      name: tool.name,
-      detail: tool.detail,
-    }))
-  } includeArrow={true} />
+  <IconDetailStack title="Tech stack" stack={prototype.techStack}
+  includeArrow={true} />
   <Break />: null}
 
   {prototype.videoUrl ?

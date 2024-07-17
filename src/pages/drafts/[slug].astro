@@ -85,13 +85,8 @@ keywords={prototype.keywords} heroSrcArray={heroImageUrls}>
 
   {prototype.techStack ?
     // @ts-ignore
-    <IconDetailStack tools={
-        prototype.techStack.tools.map((tool) => ({
-        icon: tool.icon,
-        name: tool.name,
-        detail: tool.detail,
-      }))
-    } includeArrow={true} />
+    <IconDetailStack title="Tech stack" stack={prototype.techStack})
+    includeArrow={true} />
     <Break />: null}
 
   {prototype.videoUrl ? <VideoView src={prototype.videoUrl.toString()} /> <Break /> : null}
