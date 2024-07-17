@@ -12,7 +12,7 @@ import VideoView from "../../components/VideoView.astro";
 import ImageAndDetail from "../../components/ImageDetail.astro";
 import ContributorNotes from "../../components/Prototype/ContributorNotes.astro";
 import LargeCTACard from "../../components/LargeCTACard.astro";
-import TechStack from "../../components/Prototype/TechStack.astro";
+import IconDetailStack from "../../components/Prototype/IconDetailStack.astro";
 import { toPlainText } from "astro-portabletext/utils";
 import Slideshow from "../../components/Slideshow.astro";
 import Break from "../../components/Break.astro";
@@ -56,8 +56,6 @@ const { prototype, heroImageUrls }: {
 prototype: PrototypeSchema,
 heroImageUrls: string[],
 } = Astro.props;
-
-console.log(prototype);
 ---
 
 <Prototype name={prototype.prototypeName} slug={slug} excerpt={toPlainText(prototype.excerpt)}
@@ -98,7 +96,9 @@ console.log(prototype);
   <Break />
 
   {prototype.techStack ?
-  <TechStack stack={prototype.techStack} />
+  // @ts-ignore
+  <IconDetailStack title="Tech stack" stack={prototype.techStack}
+  includeArrow={true} />
   <Break />: null}
 
   {prototype.videoUrl ?

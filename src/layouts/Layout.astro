@@ -6,9 +6,10 @@ interface Props {
 	title: string;
 	imageSrc: string;
 	description: string;
+	navBarLogo: boolean;
 }
 
-const { title, imageSrc, description } = Astro.props;
+const { title, imageSrc, description, navBarLogo } = Astro.props;
 ---
 
 <!doctype html>
@@ -51,7 +52,7 @@ const { title, imageSrc, description } = Astro.props;
 	</head>
 
 	<body>
-		<NavBar includeLogo={false} />
+		<NavBar includeLogo={navBarLogo} />
 
 		<main class="mx-4 md:mx-8 lg:mx-10 max-w-7xl space-y-8 xl:mx-auto">
 			<slot />

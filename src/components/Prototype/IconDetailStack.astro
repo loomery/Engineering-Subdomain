@@ -1,0 +1,47 @@
+---
+import TitleDetail from '../../layouts/TitleDetail.astro';
+import { urlForImage } from '../../sanity/urlForImage';
+import PortableText from '../PortableText/PortableText.astro';
+import type { TechStack } from '../../utils/sanity';
+
+interface Props {
+    title: string;
+  stack: TechStack;
+  includeArrow?: boolean;
+  largeIcons?: boolean;
+}
+
+const { title, stack, includeArrow, largeIcons } = Astro.props as Props;
+---
+
+<TitleDetail title={title}>
+    <div class="grid lg:grid-cols-3 gap-8">
+        {stack.tools.map((tool, index) => (
+        <div class="flex flex-col">
+            <div class="flex items-start mb-4">
+                <div class="flex flex-col flex-grow">
+                    <div class="h-32 flex justify-start"
+                        data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
+                        <img src={urlForImage(tool.icon).url()} class="h-24 aspect-square">
+                    </div>
+                    <h3 class="text-xl" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>{tool.name}</h3>
+                </div>
+                {includeArrow && index !== 2 && (
+                <div class="hidden lg:flex items-center justify-center ml-4 h-full">
+                    <img src="/arrow.right.svg" class="h-12" data-aos="fade-right"
+                    data-aos-delay={`${index % 3 * 100}`} />
+                </div>
+                )}
+            </div>
+            <div class="flex-grow space-y-4" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
+                <PortableText portableText={tool.detail} class:list={'font-light text-lg'} />
+            </div>
+            {includeArrow && index !== 2 && (
+            <div class="flex lg:hidden justify-start mt-4">
+                <img src="/arrow.down.svg" class="h-12" data-aos="fade-down" />
+            </div>
+            )}
+        </div>
+        ))}
+    </div>
+</TitleDetail>

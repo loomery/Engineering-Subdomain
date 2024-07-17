@@ -1,0 +1,47 @@
+---
+import { sanityClient } from "sanity:client";
+import { type Image } from "@sanity/types";
+import { urlForImage } from "../../sanity/urlForImage";
+import Break from "../../components/Break.astro";
+import IconDetailStack from "../../components/Prototype/IconDetailStack.astro";
+import ImageAndDetail from "../../components/ImageDetail.astro";
+import Layout from "../../layouts/Layout.astro";
+import Slideshow from "../../components/Slideshow.astro";
+
+const { approachArray = await sanityClient.fetch(
+      `*[_type == "approach"] | order(publishedAt desc)`
+) } = Astro.props;
+
+const approachSchema = approachArray[0];
+const heroImageUrls = approachSchema.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
+---
+
+<Layout 
+title="Our Approach" 
+description={approachSchema.subtitle}
+imageSrc="/our-approach.png" navBarLogo={true}>
+
+    <section class="space-y-8 mt-24">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div class="lg:col-span-2 space-y-6">
+            <h1 class="text-5xl font-light leading-normal">Our<span class="text-accent">Approach</span></h1>
+            <h1 class="text-2xl font-light">{approachSchema.subtitle}</h1>
+          </div>
+        </div>
+
+        <Slideshow imageUrls={heroImageUrls} />
+      </section>
+
+      <Break />
+
+      <IconDetailStack title="Who we are" stack={approachSchema.whoWeAre} />
+
+      <Break />
+
+      <IconDetailStack title="How we experiment" stack={approachSchema.howWeExperiment} />
+
+      <Break />
+
+      <ImageAndDetail title={approachSchema.techWeAreUsing.title} useCases={approachSchema.techWeAreUsing.useCases} />
+
+</Layout>
