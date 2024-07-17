@@ -12,7 +12,7 @@ import VideoView from "../../components/VideoView.astro";
 import ImageAndDetail from "../../components/ImageDetail.astro";
 import ContributorNotes from "../../components/Prototype/ContributorNotes.astro";
 import LargeCTACard from "../../components/LargeCTACard.astro";
-import TechStack from "../../components/Prototype/TechStack.astro";
+import IconDetailStack from "../../components/Prototype/IconDetailStack.astro";
 import { toPlainText } from "astro-portabletext/utils";
 import Slideshow from "../../components/Slideshow.astro";
 import Break from "../../components/Break.astro";
@@ -98,7 +98,14 @@ console.log(prototype);
   <Break />
 
   {prototype.techStack ?
-  <TechStack stack={prototype.techStack} />
+  // @ts-ignore
+  <IconDetailStack tools={
+      prototype.techStack.tools.map((tool) => ({
+      icon: tool.icon,
+      name: tool.name,
+      detail: tool.detail,
+    }))
+  } includeArrow={true} />
   <Break />: null}
 
   {prototype.videoUrl ?
