@@ -12,6 +12,13 @@ export const approachType = defineType({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'heroImageAssets',
+      description: "Images for the hero, the first image will be the main image used in the site's meta tags.",
+      title: 'Hero Images',
+      type: 'array',
+      of: [{ type: 'image' }],
+    }),
     {
         name: 'whoWeAre',
         title: 'Who we are',

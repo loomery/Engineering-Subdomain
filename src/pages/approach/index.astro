@@ -1,21 +1,25 @@
 ---
 import { sanityClient } from "sanity:client";
+import { type Image } from "@sanity/types";
+import { urlForImage } from "../../sanity/urlForImage";
 import Break from "../../components/Break.astro";
 import IconDetailStack from "../../components/Prototype/IconDetailStack.astro";
 import ImageAndDetail from "../../components/ImageDetail.astro";
 import Layout from "../../layouts/Layout.astro";
+import Slideshow from "../../components/Slideshow.astro";
 
 const { approachArray = await sanityClient.fetch(
       `*[_type == "approach"] | order(publishedAt desc)`
 ) } = Astro.props;
 
 const approachSchema = approachArray[0];
+const heroImageUrls = approachSchema.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
 ---
 
 <Layout 
 title="Our Approach" 
 description={approachSchema.subtitle}
-imageSrc="" navBarLogo={true}>
+imageSrc="/our-approach.png" navBarLogo={true}>
 
     <section class="space-y-8 mt-24">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -24,6 +28,8 @@ imageSrc="" navBarLogo={true}>
             <h1 class="text-2xl font-light">{approachSchema.subtitle}</h1>
           </div>
         </div>
+
+        <Slideshow imageUrls={heroImageUrls} />
       </section>
 
       <Break />

@@ -1,23 +1,17 @@
 ---
 import TitleDetail from '../../layouts/TitleDetail.astro';
 import { urlForImage } from '../../sanity/urlForImage';
-import { type Image, type PortableTextBlock } from "@sanity/types";
 import PortableText from '../PortableText/PortableText.astro';
 import type { TechStack } from '../../utils/sanity';
-
-interface GenericTool {
-  icon: Image;
-  name: string;
-  detail: PortableTextBlock;
-}
 
 interface Props {
     title: string;
   stack: TechStack;
   includeArrow?: boolean;
+  largeIcons?: boolean;
 }
 
-const { title, stack, includeArrow } = Astro.props as Props;
+const { title, stack, includeArrow, largeIcons } = Astro.props as Props;
 ---
 
 <TitleDetail title={title}>
@@ -26,9 +20,9 @@ const { title, stack, includeArrow } = Astro.props as Props;
         <div class="flex flex-col">
             <div class="flex items-start mb-4">
                 <div class="flex flex-col flex-grow">
-                    <div class="h-32 mb-4 flex items-center justify-start"
+                    <div class="h-32 flex justify-start"
                         data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
-                        <img src={urlForImage(tool.icon).url()} class="h-full aspect-square">
+                        <img src={urlForImage(tool.icon).url()} class="h-24 aspect-square">
                     </div>
                     <h3 class="text-xl" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>{tool.name}</h3>
                 </div>
@@ -39,7 +33,7 @@ const { title, stack, includeArrow } = Astro.props as Props;
                 </div>
                 )}
             </div>
-            <div class="flex-grow" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
+            <div class="flex-grow space-y-4" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
                 <PortableText portableText={tool.detail} class:list={'font-light text-lg'} />
             </div>
             {includeArrow && index !== 2 && (

@@ -76,8 +76,8 @@ export interface PrototypeSchema {
 export interface ApproachSchema {
     _type: "approach";
     _id: string;
-    title: string;
     subtitle: string;
+    heroImageAssets: Image[];
     whoWeAre: TechStack;
     howWeExperiment: TechStack;
     techWeAreUsing: UseCases;
