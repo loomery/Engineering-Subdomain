@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity'
 import { ProjectsIcon } from '@sanity/icons'
 
 export const prototypeType = defineType({
@@ -28,6 +28,19 @@ export const prototypeType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'liveStatus',
+      title: "Live Status",
+      type: 'string',
+      initialValue: 'preview',
+      options: {
+        list: [
+          { title: 'Live', value: 'live' },
+          { title: 'Preview', value: 'preview' }
+        ],
+        layout: 'radio'
+      }
+    }),
+    defineField({
       name: 'shortVideo',
       type: 'file',
       description: 'A short video of the prototype, keep under 30 seconds, 720p, 16:9, with no sound. (Optional)',
@@ -37,14 +50,14 @@ export const prototypeType = defineType({
       type: 'array',
       description: 'A short description of the prototype.',
       title: 'Excerpt',
-      of: [{ 
-          type: 'block',
-          styles: [
-              {title: 'Normal', value: 'normal'},
-          ],
-          lists: []
-       }],
-       validation: (Rule) => Rule.required()
+      of: [{
+        type: 'block',
+        styles: [
+          { title: 'Normal', value: 'normal' },
+        ],
+        lists: []
+      }],
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'title',

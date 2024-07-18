@@ -16,11 +16,12 @@ import IconDetailStack from "../../components/Prototype/IconDetailStack.astro";
 import { toPlainText } from "astro-portabletext/utils";
 import Slideshow from "../../components/Slideshow.astro";
 import Break from "../../components/Break.astro";
+import { isPreviewMode } from "../../utils/isPreviewMode";
 
 export const prerender = true;
 
 export async function getStaticPaths() {
-const groq = `
+  const groq = `
 *[_type == "prototype"]{
   ...,
   summary {
@@ -37,30 +38,46 @@ const groq = `
 }
 `;
 
-const prototypes = await sanityClient.fetch(groq);
+  const prototypes = await sanityClient.fetch(groq);
 
-return prototypes.map((prototype: PrototypeSchema) => {
-const heroImageUrls = prototype.heroImageAssets.map((asset: Image) => urlForImage(asset).url())
-// const tagImgs = prototype.tags.map((tag: Tag) => tag.icon);
-// const tagIcons = tagImgs.map((icon: Image) => urlForImage(icon).url());
+  return prototypes
+    .filter((prototype: PrototypeSchema) => {
+      if (isPreviewMode) {
+        return true;
+      }
+      return prototype.liveStatus === "live";
+    })
+    .map((prototype: PrototypeSchema) => {
+      const heroImageUrls = prototype.heroImageAssets.map((asset: Image) =>
+        urlForImage(asset).url(),
+      );
+      // const tagImgs = prototype.tags.map((tag: Tag) => tag.icon);
+      // const tagIcons = tagImgs.map((icon: Image) => urlForImage(icon).url());
 
-return {
-params: { slug: prototype.slug.current },
-props: { prototype, heroImageUrls },
-};
-});
+      return {
+        params: { slug: prototype.slug.current },
+        props: { prototype, heroImageUrls },
+      };
+    });
 }
 
 const { slug } = Astro.params;
-const { prototype, heroImageUrls }: {
-prototype: PrototypeSchema,
-heroImageUrls: string[],
+const {
+  prototype,
+  heroImageUrls,
+}: {
+  prototype: PrototypeSchema;
+  heroImageUrls: string[];
 } = Astro.props;
 ---
 
-<Prototype name={prototype.prototypeName} slug={slug} excerpt={toPlainText(prototype.excerpt)}
-  keywords={prototype.keywords} heroSrcArray={heroImageUrls}>
-
+<Prototype
+  name={prototype.prototypeName}
+  slug={slug}
+  excerpt={toPlainText(prototype.excerpt)}
+  keywords={prototype.keywords}
+  heroSrcArray={heroImageUrls}
+>
   <section class="space-y-8 mt-24">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
       <div class="lg:col-span-2 space-y-6">
@@ -68,11 +85,13 @@ heroImageUrls: string[],
         <h1 class="text-2xl font-light">{prototype.subtitle}</h1>
 
         <div class="space-x-2 font-light">
-          {prototype.tags.map((tag) => (
-          <span class="text-xs px-2 rounded-full ring-1 ring-bg-light inline-block my-1">
-            {"# " + tag.title.toLocaleLowerCase().replace(/\s/g, "-")}
-          </span>
-          ))}
+          {
+            prototype.tags.map((tag) => (
+              <span class="text-xs px-2 rounded-full ring-1 ring-bg-light inline-block my-1">
+                {"# " + tag.title.toLocaleLowerCase().replace(/\s/g, "-")}
+              </span>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -82,8 +101,12 @@ heroImageUrls: string[],
 
   <Break />
 
-  <Summary technologies={prototype.summary.technologies} tools={prototype.summary.tools}
-    features={prototype.summary.keyFeatures} contributors={prototype.summary.contributors} />
+  <Summary
+    technologies={prototype.summary.technologies}
+    tools={prototype.summary.tools}
+    features={prototype.summary.keyFeatures}
+    contributors={prototype.summary.contributors}
+  />
 
   <Break />
 
@@ -95,24 +118,50 @@ heroImageUrls: string[],
 
   <Break />
 
-  {prototype.techStack ?
-  // @ts-ignore
-  <IconDetailStack title="Tech stack" stack={prototype.techStack}
-  includeArrow={true} largeIcons={true} />
-  <Break />: null}
+  {
+    prototype.techStack ? (
+      // @ts-ignore
+      <>
+        <IconDetailStack
+          title="Tech stack"
+          stack={prototype.techStack}
+          includeArrow={true}
+          largeIcons={true}
+        />
+        <Break />
+      </>
+    ) : null
+  }
 
-  {prototype.videoUrl ?
-  <VideoView src={prototype.videoUrl.toString()} />
-  <Break /> : null}
+  {
+    prototype.videoUrl ? (
+      <>
+        <VideoView src={prototype.videoUrl.toString()} />
+        <Break />
+      </>
+    ) : null
+  }
 
-  <ImageAndDetail title={prototype.useCases.title} useCases={prototype.useCases.useCases} />
+  <ImageAndDetail
+    title={prototype.useCases.title}
+    useCases={prototype.useCases.useCases}
+  />
 
-  {prototype.contributorNotes ? <Break />
-  <ContributorNotes contributorNotes={prototype.contributorNotes} /> : null}
+  {
+    prototype.contributorNotes ? (
+      <>
+        <Break />
+        <ContributorNotes contributorNotes={prototype.contributorNotes} />
+      </>
+    ) : null
+  }
 
-  {prototype.tryItOut ?
-  <Break />
-  <LargeCTACard tryItOutObject={prototype.tryItOut} />
-  : null
+  {
+    prototype.tryItOut ? (
+      <>
+        <Break />
+        <LargeCTACard tryItOutObject={prototype.tryItOut} />
+      </>
+    ) : null
   }
 </Prototype>

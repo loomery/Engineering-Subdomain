@@ -17,7 +17,6 @@
     "@sanity/image-url": "^1.0.2",
     "aos": "^2.3.4",
     "astro": "^4.11.5",
-    "astro-aws-amplify": "^0.1.0",
     "astro-portabletext": "^0.9.7",
     "aws-amplify": "^6.0.30",
     "dotenv": "^16.4.5",

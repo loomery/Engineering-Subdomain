@@ -4,83 +4,84 @@ import type { Image, Slug } from "@sanity/types";
 import groq from "groq";
 
 export const client = createClient({
-    projectId: '84596ftn',
-    dataset: 'production',
-    useCdn: false, // `false` if you want to ensure fresh data
-    apiVersion: "2024-04-16", // date of setup
+  projectId: '84596ftn',
+  dataset: 'production',
+  useCdn: false, // `false` if you want to ensure fresh data
+  apiVersion: "2024-04-16", // date of setup
 });
 
 export async function fetchPrototypes(): Promise<PrototypeSchema[]> {
-    return await client.fetch(
-      groq`*[_type == "prototypeType" && defined(slug.current)] | order(publishedAt desc)`
-    );
+  return await client.fetch(
+    groq`*[_type == "prototypeType" && defined(slug.current)] | order(publishedAt desc)`
+  );
 }
 
 export async function fetchPrototype(slug: string): Promise<PrototypeSchema> {
-    return await client.fetch(
-      groq`*[_type == "prototypeType" && slug.current == $slug][0]`,
-      {
-        slug,
-      }
-    );
+  return await client.fetch(
+    groq`*[_type == "prototypeType" && slug.current == $slug][0]`,
+    {
+      slug,
+    }
+  );
 }
 
 export async function fetchContributor(ref: string): Promise<Contributor> {
-    return await client.fetch(
-      groq`*[_type == "contributorType" && _id == $ref][0]`,
-      {
-        ref,
-      }
-    );
+  return await client.fetch(
+    groq`*[_type == "contributorType" && _id == $ref][0]`,
+    {
+      ref,
+    }
+  );
 }
 
 export async function fetchTags(): Promise<Tag[]> {
-    return await client.fetch(
-        `*[_type == "tagType"]`
-    );
+  return await client.fetch(
+    `*[_type == "tagType"]`
+  );
 }
 
 export async function fetchTag(ref: string): Promise<Tag> {
-    return await client.fetch(
-      groq`*[_type == "tagType" && _id == $ref][0]`,
-      {
-        ref,
-      }
-    );
+  return await client.fetch(
+    groq`*[_type == "tagType" && _id == $ref][0]`,
+    {
+      ref,
+    }
+  );
 }
 
 export interface PrototypeSchema {
-    _type: "prototype";
-    _id: string;
-    _createdAt: string;
-    prototypeName: string;
-    title: string;
-    slug: Slug;
-    publishedAt: string;
-    shortVideo: URL;
-    excerpt: PortableTextBlock;
-    subtitle: string;
-    keywords: string;
-    videoUrl: URL;
-    tags: Tag[];
-    heroImageAssets: Image[];
-    summary: Summary;
-    goals: Goals;
-    actions: Actions;
-    techStack: TechStack;
-    useCases: UseCases;
-    contributorNotes: ContributorNotes;
-    tryItOut: TryItOutCTA;
+  _type: "prototype";
+  _id: string;
+  _createdAt: string;
+  prototypeName: string;
+  title: string;
+  slug: Slug;
+  liveStatus: "live" | "preview";
+  publishedAt: string;
+  shortVideo: URL;
+  excerpt: PortableTextBlock;
+  subtitle: string;
+  keywords: string;
+  videoUrl: URL;
+  tags: Tag[];
+  heroImageAssets: Image[];
+  summary: Summary;
+  goals: Goals;
+  actions: Actions;
+  techStack: TechStack;
+  useCases: UseCases;
+  contributorNotes: ContributorNotes;
+  tryItOut: TryItOutCTA;
 }
 
 export interface ApproachSchema {
-    _type: "approach";
-    _id: string;
-    subtitle: string;
-    heroImageAssets: Image[];
-    whoWeAre: TechStack;
-    howWeExperiment: TechStack;
-    techWeAreUsing: UseCases;
+  _type: "approach";
+  _id: string;
+  subtitle: string;
+  heroImageAssets: Image[];
+  whoWeAre: TechStack;
+  howWeExperiment: TechStack;
+  techWeAreUsing: UseCases;
 }
 
 export interface Summary {
@@ -142,17 +143,17 @@ export interface TryItOutCTA {
 }
 
 export interface Contributor {
-    _type: "contributorType";
-    _id: string;
-    name: string;
-    role: string;
-    url: URL;
-    image: Image;
+  _type: "contributorType";
+  _id: string;
+  name: string;
+  role: string;
+  url: URL;
+  image: Image;
 }
 
 export interface Tag {
-    _type: "tagType";
-    _id: string;
-    title: string;
-    icon: Image;
+  _type: "tagType";
+  _id: string;
+  title: string;
+  icon: Image;
 }

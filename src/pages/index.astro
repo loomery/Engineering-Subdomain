@@ -1,14 +1,16 @@
 ---
 import { sanityClient } from "sanity:client";
-import Layout from '../layouts/Layout.astro';
-import Showcase from '../components/Home/Showcase.astro';
+import Layout from "../layouts/Layout.astro";
+import Showcase from "../components/Home/Showcase.astro";
 import Break from "../components/Break.astro";
 import Slideshow from "../components/Slideshow.astro";
 import { urlForImage } from "../sanity/urlForImage";
 import { type PrototypeSchema } from "../utils/sanity";
+import { isPreviewMode } from "../utils/isPreviewMode";
 
-const { prototypes = await sanityClient.fetch(
-      `*[_type == "prototype"] {
+const {
+	prototypes = await sanityClient.fetch(
+		`*[_type == "prototype" ${isPreviewMode ? "" : '&& liveStatus == "live"'}] {
 	  	prototypeName,		
         title,
 		summary {
@@ -21,59 +23,69 @@ const { prototypes = await sanityClient.fetch(
 		slug,
         "shortVideo": shortVideo.asset->url,
       }
-      | order(publishedAt desc)`
-) } = Astro.props;
+      | order(publishedAt desc)`,
+	),
+} = Astro.props;
 
 const firstHeroImageUrls = prototypes.map((prototype: PrototypeSchema) => {
-  if (prototype.heroImageAssets.slice(0, 5).length > 0) {
-    return urlForImage(prototype.heroImageAssets[0]).url();
-  }
-  return null;
+	if (prototype.heroImageAssets.slice(0, 5).length > 0) {
+		return urlForImage(prototype.heroImageAssets[0]).url();
+	}
+	return null;
 });
 
 const prototypeUrls = prototypes.map((prototype: PrototypeSchema) => {
-  return `/prototypes/${prototype.slug.current}`; // Assuming 'prototypeUrl' is the property name
+	return `/prototypes/${prototype.slug.current}`; // Assuming 'prototypeUrl' is the property name
 });
 ---
 
-<Layout 
-	title="Loomery LAB" 
-	imageSrc="/main.png" 
+<Layout
+	title="Loomery LAB"
+	imageSrc="/main.png"
 	description="Step insde the Lab and see what technologies we have been experimenting with."
-	navBarLogo={false}>
-
+	navBarLogo={false}
+>
 	<section class="space-y-12 mt-24">
 		<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
 			<div class="lg:col-span-2 space-y-4">
-				<h1 class="text-5xl font-light">Loomery<span class="text-accent">Lab</span></h1>
+				<h1 class="text-5xl font-light">
+					Loomery<span class="text-accent">Lab</span>
+				</h1>
 				<h1 class="text-2xl font-light">
-					A space dedicated to exploring new technologies and creating innovative solutions.
+					A space dedicated to exploring new technologies and creating
+					innovative solutions.
 				</h1>
 			</div>
 		</div>
 
 		<div>
-			<Slideshow imageUrls={firstHeroImageUrls} prototypeUrls={prototypeUrls} />
+			<Slideshow
+				imageUrls={firstHeroImageUrls}
+				prototypeUrls={prototypeUrls}
+			/>
 		</div>
 	</section>
 
 	<Break />
 
 	<section class="flex flex-col gap-8">
-		{// @ts-ignore
-		prototypes.map((prototype, index) => (
-			<div>
-			  <Showcase 
-				title={prototype.prototypeName}
-				number={index + 1}
-				tags={prototype.tags}
-				tools={prototype.summary.tools}
-				videoSrc={prototype.shortVideo}
-				heroImage={prototype.heroImageAssets[0]}
-				excerpt={prototype.excerpt}
-				link={`/prototypes/${prototype.slug.current}`} />
-			  {index !== prototypes.length - 1 && <Break />}
-			</div>
-		  ))}
-	  </section>
+		{
+			// @ts-ignore
+			prototypes.map((prototype, index) => (
+				<div>
+					<Showcase
+						title={prototype.prototypeName}
+						number={index + 1}
+						tags={prototype.tags}
+						tools={prototype.summary.tools}
+						videoSrc={prototype.shortVideo}
+						heroImage={prototype.heroImageAssets[0]}
+						excerpt={prototype.excerpt}
+						link={`/prototypes/${prototype.slug.current}`}
+					/>
+					{index !== prototypes.length - 1 && <Break />}
+				</div>
+			))
+		}
+	</section>
 </Layout>
