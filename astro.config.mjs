@@ -4,12 +4,11 @@ import { isPreviewMode } from './src/utils/isPreviewMode';
 import tailwind from "@astrojs/tailwind";
 import sanity from "@sanity/astro";
 import react from "@astrojs/react";
-import awsAmplify from 'astro-aws-amplify';
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://lab.loomery.com",
-  output: isPreviewMode ? "hybrid" : "static",
+  output: "static",
   build: {
     format: "directory"
   },
@@ -28,11 +27,9 @@ export default defineConfig({
   integrations: [tailwind(), sanity({
     projectId: "84596ftn",
     dataset: "production",
-    perspective: isPreviewMode ? "previewDrafts" : "published",
+    perspective: "published",
     useCdn: !isPreviewMode,
-    token: isPreviewMode ? process.env.SANITY_STUDIO_TOKEN : undefined,
     studioBasePath: "/admin",
     ignoreBrowserTokenWarning: isPreviewMode
-  }), react()],
-  ...(isPreviewMode ? { adapter: awsAmplify() } : {})
+  }), react()]
 });
