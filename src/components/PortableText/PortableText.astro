@@ -4,6 +4,7 @@ import { mergeComponents } from 'astro-portabletext/utils';
 import BulletListStyle from './Styles/BulletListStyle.astro';
 // import NumberedListStyle from './Styles/NumberedListStyle.astro';
 import LinkStyle from './Styles/LinkStyle.astro';
+import BoldStyle from './Styles/BoldStyle.astro';
 
 const { portableText } = Astro.props;
 
@@ -14,6 +15,7 @@ const customComponents = {
     },
     mark: {
         link: LinkStyle,
+        strong: BoldStyle,
     }
 };
 
