@@ -25,14 +25,14 @@ export const approachType = defineType({
         type: 'techStackObject'
     },
     {
-        name: 'howWeExperiment',
-        title: 'How we experiment',
-        type: 'techStackObject'
-    },
-    {
         name: 'techWeAreUsing',
         title: 'Technology we are using',
         type: 'useCasesObject',
+    },
+    {
+      name: 'howWeExperiment',
+      title: 'How we experiment with AI',
+      type: 'techStackObject'
     },
   ]
 })

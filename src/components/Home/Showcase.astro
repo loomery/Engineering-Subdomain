@@ -32,11 +32,15 @@ link
         {/* Video/Image Block */}
         <div class="col-span-2 lg:order-last">
             {videoSrc ?
-            <video src={videoSrc.toString()} class="aspect-video rounded-lg bg-gray-800 w-full" autoplay muted loop
-                data-aos="fade-in" />
+            // <video src={videoSrc.toString()} class="aspect-video rounded-lg bg-gray-800 w-full" autoplay muted loop
+                // data-aos="fade-in" />
+                // TEMPORARY: due to CMS limits on our free plan
+                <img src={urlForImage(heroImage).url()} class="aspect-video object-contain rounded-lg bg-gray-800 w-full"
+                data-aos="fade-in">
             :
             <img src={urlForImage(heroImage).url()} class="aspect-video object-contain rounded-lg bg-gray-800 w-full"
-                data-aos="fade-in">}
+                data-aos="fade-in">
+                }
         </div>
 
         {/* Text Block */}
