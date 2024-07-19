@@ -19,12 +19,17 @@ const { title, stack, includeArrow, largeIcons = false } = Astro.props as Props;
         {stack.tools.map((tool, index) => (
         <div class="flex flex-col">
             <div class="flex items-start mb-4">
-                <div class="flex flex-col flex-grow">
-                    <div class="mb-8 flex justify-start"
+                <div class="flex flex-col md:flex-row lg:flex-col flex-grow">
+                    <div class="mb-8 md:mb-0 lg:mb-8 md:mr-4 lg:mr-0 flex justify-start"
                         data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
-                        <img src={urlForImage(tool.icon).url()} class=`${largeIcons ? 'h-24' : 'h-16'} aspect-square`>
+                        <img src={urlForImage(tool.icon).url()} class={`${largeIcons ? 'h-24' : 'h-16'} aspect-square`}>
                     </div>
-                    <h3 class="text-xl" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>{tool.name}</h3>
+                    <div class="md:flex md:flex-col md:justify-center lg:block">
+                        <h3 class="text-xl mb-2" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>{tool.name}</h3>
+                        <div class="hidden md:block lg:hidden" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
+                            <PortableText portableText={tool.detail} class:list={'font-light text-lg'} />
+                        </div>
+                    </div>
                 </div>
                 {includeArrow && index !== 2 && (
                 <div class="hidden lg:flex items-center justify-center ml-4 h-full">
@@ -33,7 +38,7 @@ const { title, stack, includeArrow, largeIcons = false } = Astro.props as Props;
                 </div>
                 )}
             </div>
-            <div class="flex-grow space-y-4" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
+            <div class="flex-grow space-y-4 md:hidden lg:block" data-aos="fade-in" data-aos-delay={`${index % 3 * 200}`}>
                 <PortableText portableText={tool.detail} class:list={'font-light text-lg'} />
             </div>
             {includeArrow && index !== 2 && (
