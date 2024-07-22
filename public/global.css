@@ -44,10 +44,3 @@ ol li::before {
     text-align: right;
     color: var(--accent);
 }
-@media (min-width: 768px) {
-    .portable-text-columns {
-        column-count: 2; /* Creates two columns */
-        column-gap: 2rem; /* Adjusts the gap between columns */
-        /* Add additional styling as needed */
-    }
-}

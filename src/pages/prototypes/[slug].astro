@@ -7,7 +7,6 @@ import { type PrototypeSchema } from "../../utils/sanity";
 import Prototype from "../../layouts/Prototype.astro";
 import Summary from "../../components/Prototype/Summary.astro";
 import Goals from "../../components/Prototype/Goals.astro";
-import ActionsSection from "../../components/Prototype/ActionsSection.astro";
 import VideoView from "../../components/VideoView.astro";
 import ImageAndDetail from "../../components/ImageDetail.astro";
 import ContributorNotes from "../../components/Prototype/ContributorNotes.astro";
@@ -17,6 +16,7 @@ import { toPlainText } from "astro-portabletext/utils";
 import Slideshow from "../../components/Slideshow.astro";
 import Break from "../../components/Break.astro";
 import { isPreviewMode } from "../../utils/isPreviewMode";
+import Methodology from "../../components/Prototype/Methodology.astro";
 
 export const prerender = true;
 
@@ -114,7 +114,7 @@ const {
 
   <Break />
 
-  <ActionsSection actions={prototype.actions} />
+  <Methodology actions={prototype.actions} />
 
   <Break />
 
