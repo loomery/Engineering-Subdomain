@@ -2,19 +2,19 @@ import {defineField, defineType} from 'sanity'
 
 export const actionsObject = defineType({
     name: 'actionsObject',
-    title: 'Actions',
+    title: 'Methodology',
     type: 'object',
     description: 'The actions/steps taken to build the prototype.',
     fieldsets: [
         {
           name: 'actions',
-          title: 'Actions',
+          title: 'Methodology',
         },
     ],
     fields: [
         defineField({
             name: 'actions',
-            title: 'Actions',
+            title: 'Methodology',
             type: 'array',
             of: [{ type: 'actionObject' }],
             validation: (Rule) => Rule.required().min(1),

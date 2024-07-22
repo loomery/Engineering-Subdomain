@@ -113,7 +113,7 @@ export const prototypeType = defineType({
     },
     {
       name: 'actions',
-      title: 'Actions',
+      title: 'Methodology',
       type: 'actionsObject',
       validation: (Rule) => Rule.required()
     },
