@@ -34,9 +34,15 @@ const firstHeroImageUrls = prototypes.map((prototype: PrototypeSchema) => {
 	return null;
 });
 
+const firstHeroImg = firstHeroImageUrls.shift();
+firstHeroImageUrls.push(firstHeroImg);
+
 const prototypeUrls = prototypes.map((prototype: PrototypeSchema) => {
 	return `/prototypes/${prototype.slug.current}`; // Assuming 'prototypeUrl' is the property name
 });
+
+const firstPrototypeUrl = prototypeUrls.shift();
+prototypeUrls.push(firstPrototypeUrl);
 ---
 
 <Layout
