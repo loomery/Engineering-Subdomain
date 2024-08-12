@@ -37,6 +37,12 @@ const firstHeroImageUrls = prototypes.map((prototype: PrototypeSchema) => {
 const prototypeUrls = prototypes.map((prototype: PrototypeSchema) => {
 	return `/prototypes/${prototype.slug.current}`;
 });
+
+// Move back the first image and prototype to the end of the array of the slideshow
+const firstHeroImg = firstHeroImageUrls.shift();
+const firstPrototypeUrl = prototypeUrls.shift();
+firstHeroImageUrls.push(firstHeroImg);
+prototypeUrls.push(firstPrototypeUrl);
 ---
 
 <Layout
