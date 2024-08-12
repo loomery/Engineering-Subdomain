@@ -34,9 +34,6 @@ const firstHeroImageUrls = prototypes.map((prototype: PrototypeSchema) => {
 	return null;
 });
 
-const firstHeroImg = firstHeroImageUrls.shift();
-firstHeroImageUrls.push(firstHeroImg);
-
 const prototypeUrls = prototypes.map((prototype: PrototypeSchema) => {
 	return `/prototypes/${prototype.slug.current}`;
 });
