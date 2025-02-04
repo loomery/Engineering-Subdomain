@@ -1,199 +1,201 @@
 ---
 interface Props {
-  includeLogo: boolean;
+    includeLogo: boolean;
 }
 
 const { includeLogo = true } = Astro.props;
 ---
 
 <header>
-  <div class="max-w-7xl mx-4 md:mx-8 lg:mx-10 xl:mx-auto md:py-6">
-    <nav class="text-brand-light flex md:flex-row justify-between items-center">
-      <a
-        href="https://lab.loomery.com"
-        class="text-2xl font-light"
-        style={{ visibility: includeLogo ? "inline" : "hidden" }}
-        >Loomery<span class="text-accent">Lab</span></a
-      >
-
-      <div class="hidden space-x-2 lg:block">
-        <span class="space-x-2">
-          <a
-            href="/approach"
-            id="scrambleText"
-            class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out"
-            >Approach</a
-          >
-          <a
-            target="_blank"
-            href="https://www.loomery.com/third-era-of-personal-computing"
-            id="scrambleText"
-            class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out"
-            >ThirdEra</a
-          >
-          <a
-            target="_blank"
-            href="https://loomery.com/services"
-            id="scrambleText"
-            class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out"
-            >Services</a
-          >
-          <a
-            target="_blank"
-            href="https://loomery.com/insights"
-            id="scrambleText"
-            class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out"
-            >Insights</a
-          >
-          <a
-            target="_blank"
-            href="https://loomery.com/join-us"
-            id="scrambleText"
-            class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out"
-            >JoinUs</a
-          >
-        </span>
-        <a
-          target="_blank"
-          href="https://loomery.com/contact-us"
-          class="px-4 py-2 rounded-full ring-1 ring-white transition-all duration-500 hover:ring-4 hover:ring-accent hover:text-accent"
+    <div class="max-w-7xl mx-4 md:mx-8 lg:mx-10 xl:mx-auto md:py-6">
+        <nav
+            class="text-brand-light flex md:flex-row justify-between items-center"
         >
-          Get in touch
-        </a>
-      </div>
-
-      <div class="relative lg:hidden">
-        <!-- Burger Icon Button -->
-        <button
-          id="burger-menu-button"
-          class="lg:hidden p-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
-          aria-expanded="false"
-          aria-controls="mobile-menu"
-        >
-          <svg
-            class="block h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16m-7 6h7"></path>
-          </svg>
-        </button>
-
-        <!-- Mobile Menu -->
-        <div
-          id="mobile-menu"
-          class="fixed w-full z-20 hidden top-auto left-0 bg-white shadow-lg lg:hidden"
-        >
-          <div class="px-5 pt-2 pb-3 space-y-1">
             <a
-              target="_blank"
-              href="https://lab.loomery.com"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
-              >Home</a
-            >
-            <!-- Add other links similar to the desktop navbar here -->
-            <a
-            href="/approach"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
-            >Approach
-            </a>
-            <a
-              target="_blank"
-              href="https://www.loomery.com/third-era-of-personal-computing"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
-              >Third Era
-            </a>
-            <a
-              target="_blank"
-              href="https://loomery.com/team"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
-              >Team
-            </a>
-            <a
-              target="_blank"
-              href="https://loomery.com/services"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
-              >Services</a
-            >
-            <a
-              target="_blank"
-              href="https://loomery.com/case-studies"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
-              >Work</a
-            >
-            <a
-              target="_blank"
-              href="https://loomery.com/insights"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
-              >Insights</a
-            >
-            <a
-              target="_blank"
-              href="https://loomery.com/join-us"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
-              >JoinUs</a
+                href="https://lab.loomery.com"
+                class="text-2xl font-light"
+                style={{ visibility: includeLogo ? "inline" : "hidden" }}
+                >Loomery<span class="text-accent">Lab</span></a
             >
 
-            <a
-              target="_blank"
-              href="https://loomery.com/contact-us"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
-            >
-              Get in touch
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
-  <hr class="h-px border-0 bg-bg-light" />
+            <div class="hidden space-x-2 lg:block">
+                <span class="space-x-2">
+                    <a
+                        href="/approach"
+                        id="scrambleText"
+                        class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out"
+                        >Approach</a
+                    >
+                    <a
+                        target="_blank"
+                        href="https://www.loomery.com/third-era-of-personal-computing"
+                        id="scrambleText"
+                        class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out"
+                        >ThirdEra</a
+                    >
+                    <a
+                        target="_blank"
+                        href="https://loomery.com/services"
+                        id="scrambleText"
+                        class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out"
+                        >Services</a
+                    >
+                    <a
+                        target="_blank"
+                        href="https://loomery.com/insights"
+                        id="scrambleText"
+                        class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out"
+                        >Insights</a
+                    >
+                    <a
+                        target="_blank"
+                        href="https://loomery.com/join-us"
+                        id="scrambleText"
+                        class="px-4 py-2 rounded-full ring-1 ring-bg-light hover:ring-accent transition duration-300 ease-in-out"
+                        >JoinUs</a
+                    >
+                </span>
+                <a
+                    target="_blank"
+                    href="https://www.loomery.com/get-in-touch"
+                    class="px-4 py-2 rounded-full ring-1 ring-white transition-all duration-500 hover:ring-4 hover:ring-accent hover:text-accent"
+                >
+                    Get in touch
+                </a>
+            </div>
 
-  <script>
-    const burgerMenuButton = document.getElementById("burger-menu-button");
-    if (burgerMenuButton) {
-      burgerMenuButton.addEventListener("click", () => {
-        const mobileMenu = document.getElementById("mobile-menu");
-        if (mobileMenu) {
-          mobileMenu.classList.toggle("hidden");
+            <div class="relative lg:hidden">
+                <!-- Burger Icon Button -->
+                <button
+                    id="burger-menu-button"
+                    class="lg:hidden p-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                >
+                    <svg
+                        class="block h-6 w-6"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <!-- Mobile Menu -->
+                <div
+                    id="mobile-menu"
+                    class="fixed w-full z-20 hidden top-auto left-0 bg-white shadow-lg lg:hidden"
+                >
+                    <div class="px-5 pt-2 pb-3 space-y-1">
+                        <a
+                            target="_blank"
+                            href="https://lab.loomery.com"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                            >Home</a
+                        >
+                        <!-- Add other links similar to the desktop navbar here -->
+                        <a
+                            href="/approach"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                            >Approach
+                        </a>
+                        <a
+                            target="_blank"
+                            href="https://www.loomery.com/third-era-of-personal-computing"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                            >Third Era
+                        </a>
+                        <a
+                            target="_blank"
+                            href="https://loomery.com/team"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                            >Team
+                        </a>
+                        <a
+                            target="_blank"
+                            href="https://loomery.com/services"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                            >Services</a
+                        >
+                        <a
+                            target="_blank"
+                            href="https://loomery.com/case-studies"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                            >Work</a
+                        >
+                        <a
+                            target="_blank"
+                            href="https://loomery.com/insights"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                            >Insights</a
+                        >
+                        <a
+                            target="_blank"
+                            href="https://loomery.com/join-us"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                            >JoinUs</a
+                        >
+
+                        <a
+                            target="_blank"
+                            href="https://loomery.com/contact-us"
+                            class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+                        >
+                            Get in touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <hr class="h-px border-0 bg-bg-light" />
+
+    <script>
+        const burgerMenuButton = document.getElementById("burger-menu-button");
+        if (burgerMenuButton) {
+            burgerMenuButton.addEventListener("click", () => {
+                const mobileMenu = document.getElementById("mobile-menu");
+                if (mobileMenu) {
+                    mobileMenu.classList.toggle("hidden");
+                }
+            });
         }
-      });
-    }
-  </script>
+    </script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const links = document.querySelectorAll("nav span a"); // Select all <a> tags within the navbar
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll("nav span a"); // Select all <a> tags within the navbar
 
-      links.forEach((link) => {
-        // Iterate over each <a> tag
-        let originalText = link.textContent; // Get original text from the link
-        let isRotating = false; // Flag to indicate if rotation is in progress for this link
+            links.forEach((link) => {
+                // Iterate over each <a> tag
+                let originalText = link.textContent; // Get original text from the link
+                let isRotating = false; // Flag to indicate if rotation is in progress for this link
 
-        link.addEventListener("mouseenter", () => {
-          if (isRotating) return; // If already rotating, do nothing
-          isRotating = true; // Set flag to indicate rotation has started
-          originalText = link.textContent; // Update original text in case it has changed
-          const rotateText = (text: string) =>
-            text.substring(1) + text.charAt(0); // Rotate function
+                link.addEventListener("mouseenter", () => {
+                    if (isRotating) return; // If already rotating, do nothing
+                    isRotating = true; // Set flag to indicate rotation has started
+                    originalText = link.textContent; // Update original text in case it has changed
+                    const rotateText = (text: string) =>
+                        text.substring(1) + text.charAt(0); // Rotate function
 
-          const intervalId = setInterval(() => {
-            link.textContent = rotateText(link.textContent || "");
-          }, 100); // Rotate text every 100 milliseconds
+                    const intervalId = setInterval(() => {
+                        link.textContent = rotateText(link.textContent || "");
+                    }, 100); // Rotate text every 100 milliseconds
 
-          setTimeout(() => {
-            clearInterval(intervalId); // Stop rotating
-            link.textContent = originalText; // Revert to original text
-            isRotating = false; // Reset flag as rotation is complete
-          }, 2000); // After 2 seconds
+                    setTimeout(() => {
+                        clearInterval(intervalId); // Stop rotating
+                        link.textContent = originalText; // Revert to original text
+                        isRotating = false; // Reset flag as rotation is complete
+                    }, 2000); // After 2 seconds
+                });
+            });
         });
-      });
-    });
-  </script>
+    </script>
 </header>
