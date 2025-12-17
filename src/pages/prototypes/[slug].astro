@@ -113,6 +113,15 @@ const {
   <Goals title={prototype.goals.heading} goals={prototype.goals.goals} />
 
   <Break />
+  
+   {
+    prototype.videoUrl ? (
+      <>
+        <VideoView src={prototype.videoUrl.toString()} />
+        <Break />
+      </>
+    ) : null
+  }
 
   <Methodology actions={prototype.actions} />
 
@@ -128,15 +137,6 @@ const {
           includeArrow={true}
           largeIcons={true}
         />
-        <Break />
-      </>
-    ) : null
-  }
-
-  {
-    prototype.videoUrl ? (
-      <>
-        <VideoView src={prototype.videoUrl.toString()} />
         <Break />
       </>
     ) : null
